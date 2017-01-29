@@ -1,5 +1,7 @@
 module.exports = {
+  id: 1,
   name: 'Model 1',
+  breakTime: 3,
   steps: 5,
   initialState: 1,
   states: [
@@ -73,6 +75,24 @@ module.exports = {
         param3: -35
       },
       last: true
+    }
+  ],
+
+  tools: [
+    // Tool 1
+    {
+      id: 1,
+      name: 'Tool 1',
+      type: 'range',
+      minValue: 0,
+      maxValue: 200,
+    },
+
+    // Tool 2
+    {
+      id: 2,
+      name: 'Tool 2',
+      type: 'switch'
     }
   ]
 };

@@ -3,8 +3,18 @@
  */
 const UIController = (function() {
   /**
+   * Scene elements
+   */
+  $stateImg = document.querySelector('.state-visual');
+  $stateParams = document.querySelector('.state-params');
+  $event = document.querySelector('.event');
+  $response = document.querySelector('.response');
+  $tools = document.querySelector('.tools');
+
+  /**
    * Load model with given id
    */
+  let currentModel;
   function loadModel(id) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `/models/${id}`, true);
@@ -22,23 +32,26 @@ const UIController = (function() {
       }
     })
   }
+  function setScene(model) {
+    console.log(model);
+  }
   $loadButton = document.querySelector('#load-model-btn');
   $select = document.querySelector("#model-select");
   $loadButton.addEventListener('click', () => {
     const modelId = $select.value;
     loadModel(modelId)
-    .then(model => {
-      console.log(model);
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
+      .then(model => {
+        currentModel = new Model(model);
+        setScene(currentModel);
+      })
+      .catch(err => { console.error(err.message) });
   });
 
   $startButton = document.querySelector('#start-btn');
   $stopButton = document.querySelector('#stop-btn');
 
-  return {
-    loadModel
-  }
+  /** Public interface */
+  // return {
+  //   loadModel
+  // }
 })();
