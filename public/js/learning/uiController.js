@@ -5,6 +5,7 @@ const UIController = (function() {
   /**
    * Scene elements
    */
+  $modelName = document.querySelector('.model-name');
   $stateImg = document.querySelector('.state-visual');
   $stateParams = document.querySelector('.state-params');
   $event = document.querySelector('.event');
@@ -39,14 +40,25 @@ const UIController = (function() {
    */
   // TODO
   function setScene(model) {
-    console.log(model);
+    $stateImg.setAttribute('src', model.currentState.img);
+    const { params } = model.currentState;
+    let html = '';
+    for (param in params) {
+      html += `
+        <div>
+          <span>${param}:</span>
+          <span>${params[param]}</span>
+        </div>
+      `
+    }
+    $stateParams.innerHTML = html;
   }
 
   /**
    * Set tools from received model to UI
    */
   function initTools(tools) {
-    html = tools.map(tool => {
+    const html = tools.map(tool => {
       return `<div class='tool'>${createTool(tool)}</div>`
     }).join('');
 
@@ -89,8 +101,11 @@ const UIController = (function() {
     const modelId = $select.value;
     loadModel(modelId)
       .then(model => {
+        /** initializing static parts of UI */
+        $modelName.textContent = model.name;
         initTools(model.tools);
         currentModel = new Model(model);
+        /** dynamic parts */
         setScene(currentModel);
       })
       .catch(err => { console.error(err.message) });

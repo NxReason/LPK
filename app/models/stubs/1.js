@@ -9,7 +9,7 @@ module.exports = {
     {
       id: 1,
       name: 'State 1',
-      img: 'state1.png',
+      img: 'img/state1.png',
       params: {
         param1: 152,
         param2: 16,
@@ -38,7 +38,7 @@ module.exports = {
     {
       id: 2,
       name: 'State 2',
-      img: 'state2.png',
+      img: 'img/state2.png',
       params: {
         param1: 100,
         param2: 32,
@@ -67,7 +67,7 @@ module.exports = {
     {
       id: 3,
       name: 'State 3',
-      img: 'state3.png',
+      img: 'img/state3.png',
       params: {
         param1: 250,
         param2: 40,
