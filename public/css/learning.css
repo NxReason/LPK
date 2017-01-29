@@ -1,0 +1,78 @@
+@import url("reset.css");
+
+/***
+ * user styles
+***/
+* {
+  color: #333;
+  font-family: Roboto, 'Open Sans', Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-size: 2.2em;
+}
+
+/***
+ * layout
+***/
+.content {
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+}
+.row {
+  display: flex;
+  padding: 10px;
+}
+.tools-row {
+  align-items:flex-start;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.ml1p {
+  margin-left: 1%;
+}
+/***
+ * components
+***/
+
+/**** form ****/
+.select, .btn {
+  height: 30px;
+}
+.select {
+  width: 255px;
+}
+.btn {
+  width: 120px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #eee;
+  font-weight: bold;
+}
+/**** learning scene ****/
+.info {
+  height: 25vw;
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+.state {
+  width: 55%;
+}
+.params {
+  width: 10%;
+  border-left: none;
+}
+.notify {
+  width: 40%;
+}
+.tools {
+  width: 55%;
+  height: 10vw;
+  border: 1px solid #555;
+  border-radius: 8px;
+}

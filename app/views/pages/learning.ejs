@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Learning</title>
+
+  <link rel="stylesheet" href="css/learning.css">
+</head>
+<body>
+  <div class="content">
+    <div class="row">
+      <select class="select" id="model-select">
+        <% models.forEach(model => { %>
+          <option value="<%= model.id %>"><%= model.name %></option>
+        <% }) %>
+      </select>
+
+      <button class="btn ml15" id="load-model-btn">Загрузить</button>
+    </div>
+    <div class="row">
+      <button class="btn" id="start-btn">Start</button>
+      <button class="btn ml15" id="stop-btn">Stop</button>
+    </div>
+    <div class="row">
+      <h1>Загрузите модель...</h1>
+    </div>
+    <div class="row">
+      <div class="info state">
+        <div class="state-visual"></div>
+        <div class="state-params"></div>
+      </div>
+      <div class="info notify ml1p">
+        <div id="event"></div>
+        <div id="response"></div>
+      </div>
+    </div>
+    <div class="row tools-row">
+      <div class="tools"></div>
+      <button class="btn ml1p">Run</button>
+    </div>
+  </div>
+
+  <script src="js/learning/uiController.js" type="text/javascript"></script>
+  <script src="js/learning/app.js" type="text/javascript"></script>
+
+</body>
+</html>

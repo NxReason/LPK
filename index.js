@@ -14,13 +14,10 @@ app.use(express.static(join(__dirname, 'public')));
 app.set('views', join('.', 'app', 'views', 'pages'));
 app.set('view engine', 'ejs');
 
-
 app.use(router);
 
 app.listen(port, err => {
-  if(err) {
-    throw err;
-  }
+  if(err) throw err;
 
   console.log(`Server listening on port: ${port}`);
 });
