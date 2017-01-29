@@ -4,6 +4,5 @@ class Action {
     // like this.tool = data.tool;
     // given id, need to link to actual object
 
-    
   }
 }

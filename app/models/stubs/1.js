@@ -84,8 +84,8 @@ module.exports = {
       id: 1,
       name: 'Tool 1',
       type: 'range',
-      minValue: 0,
-      maxValue: 200,
+      min: 0,
+      max: 200,
     },
 
     // Tool 2

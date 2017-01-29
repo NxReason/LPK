@@ -32,15 +32,52 @@ const UIController = (function() {
       }
     })
   }
+
+  /**
+   * Set dinamic parts of the model to UI
+   * State image / state params e.g.
+   */
+  // TODO
   function setScene(model) {
     console.log(model);
   }
+
+  /**
+   * Set tools from received model to UI
+   */
+  function initTools(tools) {
+    html = tools.map(tool => {
+      return `<div class='tool'>${createTool(tool)}</div>`
+    }).join('');
+
+    $tools.innerHTML = html;
+  }
+
+  /**
+   * Create html for single tool
+   */
+  function createTool(tool) {
+    switch (tool.type) {
+      case 'range':
+        return `
+          <label for='${tool.name}'>${tool.name}</label>
+          <input data-id='${tool.id}' name='${tool.name}' type='range' min='${tool.min}' max='${tool.max}'>
+          `
+      case 'switch':
+      //TODO change button to toggle switch
+        return `<button>${tool.name}</button>`
+      default:
+        return 'Unknown tool type';
+    }
+  }
+
   $loadButton = document.querySelector('#load-model-btn');
   $select = document.querySelector("#model-select");
   $loadButton.addEventListener('click', () => {
     const modelId = $select.value;
     loadModel(modelId)
       .then(model => {
+        initTools(model.tools);
         currentModel = new Model(model);
         setScene(currentModel);
       })

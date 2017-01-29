@@ -7,8 +7,6 @@ class Model {
 
     this.states = data.states.map(state => new State(state));
     this.currentState = this.getState(data.id);
-
-    this.tools = data.tools.map(tool => new Tool(tool));
   }
 
   getState(id) {
