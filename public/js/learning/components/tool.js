@@ -1,5 +1,0 @@
-class Tool {
-  constructor(data) {
-    
-  }
-}

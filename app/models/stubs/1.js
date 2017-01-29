@@ -22,8 +22,7 @@ module.exports = {
         actions: [
           {
             tool: 1,
-            minValue: 80,
-            maxValue: 100,
+            value: [80, 100],
             nextState: 2,
             minTime: 0,
             maxTime: 10
