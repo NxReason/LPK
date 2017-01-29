@@ -61,16 +61,28 @@ const UIController = (function() {
       case 'range':
         return `
           <label for='${tool.name}'>${tool.name}</label>
-          <input data-id='${tool.id}' name='${tool.name}' type='range' min='${tool.min}' max='${tool.max}'>
+          <div>
+            <span>${tool.min}</span>
+            <input data-id='${tool.id}' name='${tool.name}' type='range' min='${tool.min}' max='${tool.max}'>
+            <span>${tool.max}</span>
+          </div>
           `
       case 'switch':
-      //TODO change button to toggle switch
-        return `<button>${tool.name}</button>`
+        return `
+          <label for="${tool.name}">${tool.name}</label>
+          <label class='switch'>
+            <input type='checkbox'>
+            <div class='slider'></div>
+          </label>
+        `
       default:
         return 'Unknown tool type';
     }
   }
 
+  /**
+   * UI button's handlers
+   */
   $loadButton = document.querySelector('#load-model-btn');
   $select = document.querySelector("#model-select");
   $loadButton.addEventListener('click', () => {

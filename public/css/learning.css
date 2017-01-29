@@ -1,9 +1,10 @@
 @import url("reset.css");
 
-/***
+/**
  * user styles
-***/
+ */
 * {
+  box-sizing: border-box;
   color: #333;
   font-family: Roboto, 'Open Sans', Arial, Helvetica, sans-serif;
 }
@@ -11,9 +12,9 @@ h1 {
   font-size: 2.2em;
 }
 
-/***
+/**
  * layout
-***/
+ */
 .content {
   display: flex;
   flex-direction: column;
@@ -32,17 +33,19 @@ h1 {
 .ml1p {
   margin-left: 1%;
 }
-/***
- * components
-***/
-
-/**** form ****/
+/** COMPONENTS */
+/**
+ * components-select
+ */
 .select, .btn {
   height: 30px;
 }
 .select {
   width: 255px;
 }
+/**
+ * components-button
+ */
 .btn {
   width: 120px;
   border: 1px solid #999;
@@ -54,7 +57,51 @@ h1 {
   background-color: #eee;
   font-weight: bold;
 }
-/**** learning scene ****/
+/**
+ * components-switch
+ */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+/**
+ * learning scene
+ */
 .info {
   height: 25vw;
   border: 1px solid #555;
@@ -72,7 +119,18 @@ h1 {
 }
 .tools {
   width: 55%;
-  height: 10vw;
-  border: 1px solid #555;
   border-radius: 8px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.tools:not(:empty) {
+  border: 1px solid #555;
+}
+.tool {
+  width: 33.3333%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
