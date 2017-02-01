@@ -6,6 +6,12 @@ class Scene {
     this.$event = $event;
     this.$response = $response;
     this.$tools = $tools;
+
+    pubsub.subscribe('event', data => { this.setEvent(data) });
+  }
+
+  set(model) {
+    this.setModelName(model.name).initTools(model.tools).setState(model.currentState);
   }
 
   /** Set actual node content */
@@ -64,4 +70,7 @@ class Scene {
     return this;
   }
 
+  setEvent({ event }) {
+    this.$event.textContent = event.name;
+  }
 }

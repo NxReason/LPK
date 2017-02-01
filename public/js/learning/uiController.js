@@ -14,7 +14,6 @@ const UIController = (function() {
   /**
    * Load model with given id
    */
-  let currentModel;
   function loadModel(id) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `/models/${id}`, true);
@@ -36,28 +35,30 @@ const UIController = (function() {
   /**
    * UI button's handlers
    */
-  $loadButton = document.querySelector('#load-model-btn');
-  $select = document.querySelector("#model-select");
+  const $loadButton = document.querySelector('#load-model-btn');
+  const $select = document.querySelector("#model-select");
+  let model = {};
   $loadButton.addEventListener('click', () => {
     const modelId = $select.value;
     loadModel(modelId)
-      .then(model => {
-        /** initializing static parts of UI */
-        scene.setModelName(model.name).initTools(model.tools);
+      .then(response => {
+        model = new Model(response);
+        scene.set(model);
 
-        /** creating model from received data */
-        currentModel = new Model(model);
-        /** initializing dynamic parts */
-        scene.setState(currentModel.currentState);
+        $startButton.disabled = false;
+        $stopButton.disabled = false;
       })
       .catch(err => { console.error(err) });
   });
 
-  $startButton = document.querySelector('#start-btn');
-  $stopButton = document.querySelector('#stop-btn');
+  const $startButton = document.querySelector('#start-btn');
+  $startButton.addEventListener('click', () => {
+    model.start();
+  });
 
-  /** Public interface */
-  // return {
-  //   loadModel
-  // }
+  const $stopButton = document.querySelector('#stop-btn');
+  $stopButton.addEventListener('click', () => {
+    model.stop();
+  });
+
 })();
