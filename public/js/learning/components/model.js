@@ -2,14 +2,13 @@ class Model {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
-    this.breakTime = data.breakTime * 1000; // seconds -> ms
+    this.breakTime = data.breakTime;
     this.steps = data.steps;
 
     this.states = data.states.map(state => new State(state));
     this.currentState = this.getState(data.id);
 
-    // TODO stub
-    this.tools = data.tools;
+    this.timeout = null;
   }
 
   getState(id) {
@@ -23,19 +22,35 @@ class Model {
        .then(() => { return this.makeBreak() })
        .then(() => { return this.handleEvent() })
     }
+    intervals.catch(state => { pubsub.publish('new_state',  state) });
   }
 
   makeBreak() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => { console.log(`foo`); resolve() }, this.breakTime);
+      setTimeout(() => { resolve() }, this.breakTime);
     });
   }
 
   handleEvent() {
     const event = this.currentState.event;
     return new Promise((resolve, reject) => {
+      // send data about new event to other modules
       pubsub.publish('event', { event });
-      setTimeout(() => { resolve() }, 1000);
+
+      // listen to user action
+      // and if user input correct go to next state
+      const sub = pubsub.subscribe('user_input', data => {
+        // TODO check tools input and decide about next state
+      })
+
+      // handle inactive
+      const inactiveTime = event.getInactiveTime();
+      this.timeout = setTimeout(() => {
+        const nextStateId = event.getInactiveAction().nextState;
+        const nextState = this.getState(nextStateId);
+        console.log(nextState);
+        nextState.last ? reject(nextState) : resolve(nextState);
+      }, inactiveTime);
     })
   }
 

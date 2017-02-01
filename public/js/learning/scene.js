@@ -10,8 +10,9 @@ class Scene {
     pubsub.subscribe('event', data => { this.setEvent(data) });
   }
 
-  set(model) {
-    this.setModelName(model.name).initTools(model.tools).setState(model.currentState);
+  init(model) {
+    this.setModelName(model.name).setState(model.currentState);
+    return this;
   }
 
   /** Set actual node content */
@@ -56,6 +57,7 @@ class Scene {
 
   /** Setting img and parameters of current state to UI */
   setState({ img, params }) {
+    console.log(img, params);
     this.$stateImg.setAttribute('src', img);
     let html = '';
     for (let key in params) {

@@ -1,7 +1,7 @@
 module.exports = {
   id: 1,
   name: 'Model 1',
-  breakTime: 3,
+  breakTime: 3000,
   steps: 5,
   initialState: 1,
   states: [
@@ -25,7 +25,7 @@ module.exports = {
             value: [80, 100],
             nextState: 2,
             minTime: 0,
-            maxTime: 10
+            maxTime: 10000
           },
           {
             inactive: true,
@@ -54,7 +54,7 @@ module.exports = {
             value: true,
             nextState: 1,
             minTime: 0,
-            maxTime: 5
+            maxTime: 5000
           },
           {
             inactive: true,

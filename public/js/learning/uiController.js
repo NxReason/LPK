@@ -43,13 +43,16 @@ const UIController = (function() {
     loadModel(modelId)
       .then(response => {
         model = new Model(response);
-        scene.set(model);
+        scene.init(model);
+        scene.initTools(response.tools);
 
         $startButton.disabled = false;
         $stopButton.disabled = false;
       })
       .catch(err => { console.error(err) });
   });
+
+  pubsub.subscribe('new_state', state => scene.setState(state));
 
   const $startButton = document.querySelector('#start-btn');
   $startButton.addEventListener('click', () => {
@@ -60,5 +63,7 @@ const UIController = (function() {
   $stopButton.addEventListener('click', () => {
     model.stop();
   });
+
+
 
 })();
