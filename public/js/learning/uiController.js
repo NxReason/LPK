@@ -19,6 +19,11 @@ const UIController = (function() {
       .then(response => JSON.parse(response));
   }
 
+  function toggleControlButtons() {
+    $startButton.disabled = !$startButton.disabled;
+    $stopButton.disabled = !$stopButton.disabled;
+  }
+
   /**
    * UI button's handlers
    */
@@ -31,9 +36,7 @@ const UIController = (function() {
       .then(response => {
         model = new Model(response);
         scene.init(model).initTools(response.tools);
-
-        $startButton.disabled = false;
-        $stopButton.disabled = false;
+        toggleControlButtons();
       })
       .catch(err => { console.error(err) });
   });

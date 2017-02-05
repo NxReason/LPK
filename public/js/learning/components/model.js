@@ -22,12 +22,12 @@ class Model {
       intervals = intervals
        .then(() => { return this.makeBreak() })
        .then(() => { return this.handleEvent() })
+       .then(state => { this.handleNewState(state) })
     }
     intervals.catch(state => { pubsub.publish('new_state',  state) });
   }
 
   makeBreak() {
-    if (this.subscribtion) { this.subscribtion.remove() }
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, this.breakTime);
     });
@@ -35,6 +35,7 @@ class Model {
 
   handleEvent() {
     const event = this.currentState.event;
+    const eventStartTime = Date.now();
     return new Promise((resolve, reject) => {
       // send data about new event to other modules
       pubsub.publish('event', { event });
@@ -42,8 +43,12 @@ class Model {
       // listen to user action
       // and if user input correct go to next state
       this.subscribtion = pubsub.subscribe('user_input', data => {
-        // TODO check tools input and decide about next state
-        console.log(data);
+        const timeSpent = Date.now() - eventStartTime;
+        const nextStateId = event.handleInput(data, timeSpent);
+        const nextState = this.getState(nextStateId);
+        if (nextState) {
+          nextState.last ? reject(nextState) : resolve(nextState);
+        }
       })
 
       // handle inactive
@@ -54,6 +59,13 @@ class Model {
         nextState.last ? reject(nextState) : resolve(nextState);
       }, inactiveTime);
     })
+  }
+
+  handleNewState(state) {
+    this.currentState = state;
+    clearTimeout(this.timeout);
+    this.subscribtion.remove();
+    pubsub.publish('new_state', state);
   }
 
   // TODO

@@ -18,4 +18,11 @@ class Event {
   getAllActionTimes() {
     return this.actions.map(action => action.maxTime || 0);
   }
+
+  handleInput(data, time) {
+    const suitedActions = this.actions.filter(action => action.isSuitable(data, time));
+    if (suitedActions) {
+      return suitedActions[0].nextState;
+    }
+  }
 }
