@@ -9,6 +9,7 @@ class Model {
     this.currentState = this.getState(data.id);
 
     this.timeout = null;
+    this.subscribtion = null;
   }
 
   getState(id) {
@@ -26,6 +27,7 @@ class Model {
   }
 
   makeBreak() {
+    if (this.subscribtion) { this.subscribtion.remove() }
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, this.breakTime);
     });
@@ -39,8 +41,9 @@ class Model {
 
       // listen to user action
       // and if user input correct go to next state
-      const sub = pubsub.subscribe('user_input', data => {
+      this.subscribtion = pubsub.subscribe('user_input', data => {
         // TODO check tools input and decide about next state
+        console.log(data);
       })
 
       // handle inactive
@@ -48,13 +51,14 @@ class Model {
       this.timeout = setTimeout(() => {
         const nextStateId = event.getInactiveAction().nextState;
         const nextState = this.getState(nextStateId);
-        console.log(nextState);
         nextState.last ? reject(nextState) : resolve(nextState);
       }, inactiveTime);
     })
   }
 
+  // TODO
   stop() {
 
   }
+
 }

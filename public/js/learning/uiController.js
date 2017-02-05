@@ -15,21 +15,8 @@ const UIController = (function() {
    * Load model with given id
    */
   function loadModel(id) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/models/${id}`, true);
-    xhr.send();
-
-    return new Promise((resolve, reject) => {
-      xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4) {
-          if(xhr.status == 200) {
-            resolve(JSON.parse(xhr.responseText));
-          } else {
-            reject(xhr.statusText);
-          }
-        }
-      }
-    })
+    return ajax(`/models/${id}`)
+      .then(response => JSON.parse(response));
   }
 
   /**
@@ -43,16 +30,13 @@ const UIController = (function() {
     loadModel(modelId)
       .then(response => {
         model = new Model(response);
-        scene.init(model);
-        scene.initTools(response.tools);
+        scene.init(model).initTools(response.tools);
 
         $startButton.disabled = false;
         $stopButton.disabled = false;
       })
       .catch(err => { console.error(err) });
   });
-
-  pubsub.subscribe('new_state', state => scene.setState(state));
 
   const $startButton = document.querySelector('#start-btn');
   $startButton.addEventListener('click', () => {
@@ -64,6 +48,16 @@ const UIController = (function() {
     model.stop();
   });
 
+  const $runButton = document.querySelector('#run-btn');
+  $runButton.addEventListener('click', () => {
+    const toolsData = scene.getToolsData();
+    pubsub.publish('user_input', toolsData);
+  });
 
+  /**
+   * Handle custom events here (user input, programm messages etc.)
+   */
+  pubsub.subscribe('new_state', state => scene.setState(state));
+  pubsub.subscribe('event', data => scene.setEvent(data.event));
 
 })();

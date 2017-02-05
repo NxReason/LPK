@@ -1,13 +1,11 @@
 class Scene {
-  constructor($modelName, $stateImg, $stateParams, $event, $response, $tools) {
+  constructor($modelName, $stateImg, $stateParams, $event, $responseBox, $toolsBox) {
     this.$modelName = $modelName;
     this.$stateImg = $stateImg;
     this.$stateParams = $stateParams;
     this.$event = $event;
-    this.$response = $response;
-    this.$tools = $tools;
-
-    pubsub.subscribe('event', data => { this.setEvent(data) });
+    this.$responseBox = $responseBox;
+    this.$toolsBox = $toolsBox;
   }
 
   init(model) {
@@ -21,58 +19,132 @@ class Scene {
     return this;
   }
 
-  /** Create input elements in 'tools' block */
+  /** Creates input elements in 'tools' box */
   initTools(tools) {
-    const html = tools.map(tool => {
-      return `<div class='tool'>${this.createTool(tool)}</div>`
-    }).join('');
+    const toolsFragment = document.createDocumentFragment();
 
-    this.$tools.innerHTML = html;
+    tools.forEach(tool => {
+      // Wrap every tool for proper display and add label
+      const div = document.createElement('div');
+      div.classList.add('tool');
+
+      const label = document.createElement('label');
+      label.setAttribute('for', tool.name);
+      label.textContent = tool.name;
+      div.appendChild(label);
+
+      const toolNode = this.createToolNode(tool);
+      div.appendChild(toolNode);
+
+      // Append to fragment
+      toolsFragment.appendChild(div);
+    });
+
+    this.$toolsBox.innerHTML = '';
+    this.$toolsBox.appendChild(toolsFragment);
     return this;
   }
 
-  createTool(tool) {
-    switch (tool.type) {
+  createToolNode(tool) {
+    switch(tool.type) {
       case 'range':
-        return `
-          <label for='${tool.name}'>${tool.name}</label>
-          <div>
-            <span>${tool.min}</span>
-            <input data-id='${tool.id}' name='${tool.name}' type='range' min='${tool.min}' max='${tool.max}'>
-            <span>${tool.max}</span>
-          </div>
-          `
+        return this.createRangeTool(tool);
       case 'switch':
-        return `
-          <label for="${tool.name}">${tool.name}</label>
-          <label class='switch'>
-            <input type='checkbox'>
-            <div class='slider'></div>
-          </label>
-        `
+        return this.createSwitchTool(tool);
       default:
         return 'Unknown tool type';
     }
   }
 
-  /** Setting img and parameters of current state to UI */
+  createRangeTool(tool) {
+    const div = document.createElement('div');
+
+    const spanMin = document.createElement('span');
+    spanMin.textContent = tool.min;
+    div.appendChild(spanMin)
+
+    const input = document.createElement('input');
+    input.setAttribute('data-id', tool.id);
+    input.setAttribute('data-type', 'range');
+    input.setAttribute('name', tool.name);
+    input.setAttribute('type', 'range');
+    input.setAttribute('min', tool.min);
+    input.setAttribute('max', tool.max);
+    div.appendChild(input);
+
+    const spanMax = document.createElement('span');
+    spanMax.textContent = tool.max;
+    div.appendChild(spanMax);
+
+    return div;
+  }
+
+  createSwitchTool(tool) {
+    const label = document.createElement('label');
+    label.classList.add('switch');
+
+    const input = document.createElement('input');
+    input.setAttribute('data-id', tool.id);
+    input.setAttribute('data-type', 'switch');
+    input.setAttribute('type', 'checkbox');
+    label.appendChild(input);
+
+    const div = document.createElement('div');
+    div.classList.add('slider');
+    label.appendChild(div);
+
+    return label;
+  }
+
+  /** Sets img and parameters of current state to UI */
   setState({ img, params }) {
-    console.log(img, params);
+    // Change state image
     this.$stateImg.setAttribute('src', img);
-    let html = '';
+
+    // Set state parameters
+    const paramsFragment = document.createDocumentFragment();
     for (let key in params) {
-      html += `
-        <div>
-          <span>${key}:</span>
-          <span>${params[key]}</span>
-        </div>
-      `
+      paramsFragment.appendChild(this.createParameterNode(key, params[key]));
     }
-    this.$stateParams.innerHTML = html;
+    this.$stateParams.innerHTML = '';
+    this.$stateParams.appendChild(paramsFragment);
+
     return this;
   }
 
-  setEvent({ event }) {
+  createParameterNode(key, value) {
+    const div = document.createElement('div');
+
+    const keySpan = document.createElement('span');
+    keySpan.textContent = key;
+    div.appendChild(keySpan);
+
+    const valueSpan = document.createElement('span');
+    valueSpan.textContent = value;
+    div.appendChild(valueSpan);
+
+    return div;
+  }
+
+  /** Sets event data to UI */
+  setEvent(event) {
     this.$event.textContent = event.name;
+  }
+
+  /** Get data from tool nodes */
+  getToolsData() {
+    const toolsData = {};
+    const inputs = this.$toolsBox.querySelectorAll('input[data-id]');
+    inputs.forEach(input => {
+      const { id, type } = input.dataset;
+      let value;
+      switch(type) {
+        case 'range': value = parseInt(input.value); break;
+        case 'switch': value = input.checked; break;
+        default: throw new Error('Invalid tool type');
+      }
+      toolsData[id] = value;
+    });
+    return toolsData;
   }
 }
