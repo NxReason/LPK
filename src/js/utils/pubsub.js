@@ -27,3 +27,5 @@ const pubsub = (function() {
     }
   };
 })();
+
+export default pubsub;

@@ -1,3 +1,6 @@
+import State from './components/state';
+import pubsub from '../utils/pubsub';
+
 class Model {
   constructor(data) {
     this.id = data.id;
@@ -74,3 +77,5 @@ class Model {
   }
 
 }
+
+export default Model;

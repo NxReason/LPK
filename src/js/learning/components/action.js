@@ -35,3 +35,5 @@ class Action {
     return (time > this.minTime) && (time < this.maxTime);
   }
 }
+
+export default Action;

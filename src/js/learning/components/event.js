@@ -1,3 +1,5 @@
+import Action from './action';
+
 class Event {
   constructor(data) {
     this.id = data.id;
@@ -26,3 +28,5 @@ class Event {
     }
   }
 }
+
+export default Event;

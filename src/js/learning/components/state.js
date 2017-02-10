@@ -1,3 +1,5 @@
+import Event from './event' ;
+
 class State {
   constructor(data) {
     this.id = data.id;
@@ -15,3 +17,5 @@ class State {
 
   }
 }
+
+export default State;

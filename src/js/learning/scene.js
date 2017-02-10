@@ -148,3 +148,5 @@ class Scene {
     return toolsData;
   }
 }
+
+export default Scene;
