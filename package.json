@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "build:watch": "npm run build -- --watch",
+    "build:production": "npm run build -- -p",
     "test": "mocha ./test/**/*.js --watch",
     "start": "nodemon index.js"
   },
@@ -33,6 +36,7 @@
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-import": "^2.2.0",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "file-loader": "^0.10.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "request": "^2.79.0",

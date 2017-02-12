@@ -1,0 +1,14 @@
+$model-icon-url: '../img/model25.png';
+$info-icon-url: '../img/info25.png';
+
+.icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+.icon-model {
+  background-image: url($model-icon-url);
+}
+.icon-info {
+  background-image: url($info-icon-url);
+}

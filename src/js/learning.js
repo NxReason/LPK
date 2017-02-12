@@ -7,11 +7,11 @@ import Model from './learning/model';
 
 const scene = new Scene(
   document.querySelector('.model-name'),
-  document.querySelector('.state-visual'),
-  document.querySelector('.state-params'),
-  document.querySelector('.event'),
-  document.querySelector('.response'),
-  document.querySelector('.tools')
+  document.querySelector('.model-state-img'),
+  document.querySelector('.model-params-values'),
+  document.querySelector('.model-event'),
+  document.querySelector('.model-response'),
+  document.querySelector('.tools-list')
 )
 
 /**

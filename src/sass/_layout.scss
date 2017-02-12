@@ -1,0 +1,40 @@
+.l-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 900px;
+  max-width: 1600px;
+}
+.l-row {
+  width: 100%;
+  display: flex;
+  padding: $row-padding;
+  justify-content: space-between;
+}
+.l-main {
+  width: calc(60% - 20px);
+}
+.l-aside {
+  width: 40%;
+}
+// Helpers
+.l-mtop15 {
+  margin-top: 15px;
+}
+
+// Model
+.l-model-left {
+  width: 33%;
+}
+.l-model-right {
+  width: 67%;
+}
+.l-event-response {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.l-event-response div {
+  width: calc(50% - 10px);
+}

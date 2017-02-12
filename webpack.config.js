@@ -47,6 +47,20 @@ module.exports = {
           ],
           fallback: 'style-loader'
         })
+      },
+      {
+        test: /.(jpe?g|gif|png|svg)$/i,
+        include: [
+          path.resolve(__dirname, 'src/img')
+        ],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '../img/[name].[ext]'
+            }
+          }
+        ],
       }
     ]
   },

@@ -1,0 +1,104 @@
+.model {
+  display: flex;
+  flex-wrap: wrap;
+}
+.model-header {
+  display: flex;
+  border-bottom: $separator;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  text-shadow: 1px 1px 2px $shadow-color;
+}
+.model-header-buttons button:first-of-type {
+  margin-right: 5px;
+}
+
+// Model parameters box
+.model-params {
+  border-right: $separator;
+  height: 100%;
+  padding-top: 10px;
+  padding-right: 10px;
+
+  &-header {
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 2px $shadow-color;
+  }
+}
+
+.parameter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted $shadow-color;
+
+  &:first-of-type {
+    margin-top: 5px;
+  }
+  &:last-of-type {
+    border-bottom: none;
+  }
+  span:first-child {
+    width: calc(100% - 45px);
+  }
+  span:last-child {
+    color: $box-color;
+    background-color: $primary-blue;
+    width: 45px;
+    height: 25px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// Model state img box
+.state-img-wrapper {
+  padding: 10px;
+  padding-right: 0;
+  border-bottom: $separator;
+}
+.model-state-img {
+  width: 100%;
+  display: block;
+}
+
+// Event and response
+.model-event, .model-response {
+  padding: 10px;
+  background-color: lighten($primary-blue, 5%);
+  border-radius: 8px;
+  color: $box-color;
+  align-self: flex-start;
+
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 0;
+
+  &.is-hidden {
+    // transform: translateY(-100%);
+    // opacity: 0;
+    // z-index: -1;
+    transition: transform .8s, opacity .8s;
+  }
+}
+.model-event {
+  margin-left: 10px;
+
+  &-name {
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+    border-bottom: 1px dotted rgba(255, 255, 255, .25);
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 5px;
+    }
+  }
+}

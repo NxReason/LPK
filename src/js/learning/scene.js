@@ -114,6 +114,7 @@ class Scene {
 
   createParameterNode(key, value) {
     const div = document.createElement('div');
+    div.classList.add('parameter');
 
     const keySpan = document.createElement('span');
     keySpan.textContent = key;

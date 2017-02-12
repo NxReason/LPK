@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font: 100% $font-stack;
+  color: $primary-grey;
+  background-color: $background-color;
+  min-width: 960px;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+select, button {
+  font: 100% $font-stack;
+  color: $primary-grey;
+  font-size: 0.9em;
+
+  &:focus {
+    outline: none;
+  }
+}
+button {
+  background-color: transparent;
+  border: 1px solid lighten($primary-grey, 20%);
+  border-radius: 5px;
+  transition: background-color .2s;
+  width: 100px;
+  height: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.box {
+  background-color: $box-color;
+  border-radius: $box-border-radius;
+  box-shadow: $box-shadow;
+  padding: 10px;
+}
