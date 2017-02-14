@@ -38,12 +38,6 @@ button {
   button:hover {
     cursor: pointer; }
 
-.box {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.25);
-  padding: 10px; }
-
 .l-content {
   display: flex;
   flex-direction: column;
@@ -110,6 +104,30 @@ button {
     box-shadow: none;
     border: 1px solid #cedbe4;
     transform: translateY(2px); }
+  .btn-material:disabled {
+    box-shadow: none;
+    color: #868686;
+    border: 1px solid #868686;
+    transform: none; }
+
+.box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start; }
+
+.box-header, .model-header, .tools-header {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  height: 50px; }
 
 .header {
   width: 100%;
@@ -128,19 +146,6 @@ button {
     width: calc(100% - 145px); }
   .model-select-box button {
     width: 100px; }
-
-.model {
-  display: flex;
-  flex-wrap: wrap; }
-
-.model-header {
-  display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); }
 
 .model-header-buttons button:first-of-type {
   margin-right: 5px; }
@@ -209,4 +214,104 @@ button {
     .model-event-name span {
       margin-right: 5px; }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi4vY3NzL2xlYXJuaW5nLnN0eWxlcy5jc3MiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsiLCJzb3VyY2VSb290IjoiIn0=*/
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+
+.tool {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  border-bottom: 1px solid #cedbe4;
+  justify-content: stretch; }
+  .tool-name {
+    height: 30px;
+    border-bottom: 1px dotted #cedbe4;
+    text-align: center; }
+  .tool:nth-child(odd) {
+    border-right: 1px solid #cedbe4; }
+
+.range {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; }
+  .range span {
+    display: inline-block; }
+    .range span:first-child {
+      padding-right: 5px; }
+    .range span:last-child {
+      padding-left: 5px;
+      padding-right: 5px; }
+  .range input {
+    display: inline-block;
+    flex: 1; }
+
+.range-current-value {
+  display: flex;
+  justify-content: center; }
+  .range-current-value span {
+    display: inline-block;
+    color: #fff;
+    background-color: #4c58fb;
+    height: 25px;
+    padding: 5px;
+    margin-top: 3px;
+    border-radius: 5px; }
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  margin: auto; }
+
+.switch input {
+  display: none; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%; }
+
+.slider:after {
+  position: absolute;
+  content: "off";
+  height: 26px;
+  width: 26px;
+  right: 2px;
+  bottom: 0px;
+  color: #fff;
+  font-size: .9em; }
+
+input:checked + .slider {
+  background-color: #4c58fb; }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3; }
+
+input:checked + .slider:before {
+  transform: translateX(26px); }
+
+input:checked + .slider:after {
+  content: "on";
+  left: 6px; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi4vY3NzL2xlYXJuaW5nLnN0eWxlcy5jc3MiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsiLCJzb3VyY2VSb290IjoiIn0=*/

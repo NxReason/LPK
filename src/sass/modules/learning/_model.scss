@@ -1,15 +1,5 @@
-.model {
-  display: flex;
-  flex-wrap: wrap;
-}
 .model-header {
-  display: flex;
-  border-bottom: $separator;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  text-shadow: 1px 1px 2px $shadow-color;
+  @extend .box-header
 }
 .model-header-buttons button:first-of-type {
   margin-right: 5px;

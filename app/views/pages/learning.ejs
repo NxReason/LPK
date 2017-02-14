@@ -27,12 +27,12 @@
 
     <div class="l-row l-mtop15">
 
-      <div class="l-main box model">
+      <div class="l-main box">
         <div class="model-header">
           <h2 class='model-name'>Загрузите модель...</h2>
           <div class="model-header-buttons">
-            <button class="btn-material" id="start-btn">Старт</button>
-            <button class="btn-material" id="stop-btn">Стоп</button>
+            <button class="btn-material" id="start-btn" disabled>Старт</button>
+            <button class="btn-material" id="stop-btn" disabled>Стоп</button>
           </div>
         </div>
 
@@ -58,9 +58,14 @@
 
       </div>
 
-      <div class="l-aside box tools">
-        <h2 class="box-header">Приборы:</h2>
-        <button id="run-btn">Run</button>
+      <div class="l-aside box">
+        <div class="tools-header">
+          <h2 class="tools-name">Приборы:</h2>
+          <div class="tools-header-buttons">
+            <button class="btn-material" id="run-btn" disabled>Run</button>
+          </div>
+        </div>
+
         <div class="tools-list"></div>
       </div>
 

@@ -30,6 +30,7 @@ class Scene {
 
       const label = document.createElement('label');
       label.setAttribute('for', tool.name);
+      label.classList.add('tool-name');
       label.textContent = tool.name;
       div.appendChild(label);
 
@@ -57,11 +58,12 @@ class Scene {
   }
 
   createRangeTool(tool) {
-    const div = document.createElement('div');
+    const divInput = document.createElement('div');
+    divInput.classList.add('range');
 
     const spanMin = document.createElement('span');
     spanMin.textContent = tool.min;
-    div.appendChild(spanMin)
+    divInput.appendChild(spanMin)
 
     const input = document.createElement('input');
     input.setAttribute('data-id', tool.id);
@@ -70,13 +72,31 @@ class Scene {
     input.setAttribute('type', 'range');
     input.setAttribute('min', tool.min);
     input.setAttribute('max', tool.max);
-    div.appendChild(input);
+    divInput.appendChild(input);
 
     const spanMax = document.createElement('span');
     spanMax.textContent = tool.max;
-    div.appendChild(spanMax);
+    divInput.appendChild(spanMax);
 
-    return div;
+    const divCurrent = document.createElement('div');
+    divCurrent.classList.add('range-current-value');
+    const spanCurrent = document.createElement('span');
+    spanCurrent.textContent = input.value;
+    divCurrent.appendChild(spanCurrent);
+
+    input.addEventListener('input', (evt) => {
+      this.updateCurrentRangeValue(spanCurrent, evt.target.value);
+    });
+
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(divInput);
+    fragment.appendChild(divCurrent);
+
+    return fragment;
+  }
+
+  updateCurrentRangeValue(node, value) {
+    node.textContent = value;
   }
 
   createSwitchTool(tool) {
