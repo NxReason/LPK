@@ -118,6 +118,9 @@ class Scene {
 
   /** Sets img and parameters of current state to UI */
   setState({ img, params }) {
+    // Hide last event data
+    this.hideEvent();
+
     // Change state image
     this.$stateImg.setAttribute('src', img);
 
@@ -149,7 +152,12 @@ class Scene {
 
   /** Sets event data to UI */
   setEvent(event) {
-    this.$event.textContent = event.name;
+    this.$event.querySelector('.model-event-name span').textContent = event.name;
+    this.$event.querySelector('.model-event-info').textContent = event.description;
+    this.$event.classList.remove('is-hidden');
+  }
+  hideEvent() {
+    this.$event.classList.add('is-hidden');
   }
 
   /** Get data from tool nodes */

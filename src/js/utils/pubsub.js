@@ -7,7 +7,6 @@ const pubsub = (function() {
       if (!topics[topic]) topics[topic] = { queue: [] };
 
       const index = topics[topic].queue.push(listener) - 1;
-
       // function to delete topic
       return {
         remove: function() {

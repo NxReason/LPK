@@ -24,6 +24,12 @@ function loadModel(id) {
 function toggleControlButtons() {
   $startButton.disabled = !$startButton.disabled;
   $stopButton.disabled = !$stopButton.disabled;
+  $runButton.disabled = !$runButton.disabled;
+}
+
+function setContentDisplay(display) {
+  const content = document.querySelector('.content');
+  content.style.display = display;
 }
 
 /**
@@ -39,6 +45,7 @@ $loadButton.addEventListener('click', () => {
       model = new Model(response);
       scene.init(model).initTools(response.tools);
       toggleControlButtons();
+      setContentDisplay('flex');
     })
     .catch(err => { console.error(err) });
 });

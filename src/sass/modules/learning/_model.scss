@@ -71,9 +71,9 @@
   z-index: 0;
 
   &.is-hidden {
-    // transform: translateY(-100%);
-    // opacity: 0;
-    // z-index: -1;
+    transform: translateY(-100%);
+    opacity: 0;
+    z-index: -1;
     transition: transform .8s, opacity .8s;
   }
 }
@@ -87,7 +87,7 @@
     display: flex;
     align-items: center;
 
-    span {
+    .icon {
       margin-right: 5px;
     }
   }
