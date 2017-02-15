@@ -21,8 +21,18 @@ module.exports = {
         description: 'Event 1 just happened',
         actions: [
           {
-            tool: 1,
-            value: [80, 100],
+            // tool: 1,
+            // value: [80, 100],
+            tools: [
+              {
+                id: 1,
+                value: [80, 100]
+              },
+              {
+                id: 2,
+                value: false
+              }
+            ],
             nextState: 2,
             minTime: 0,
             maxTime: 10000
@@ -50,8 +60,14 @@ module.exports = {
         description: 'Event 2 just happened',
         actions: [
           {
-            tool: 2,
-            value: true,
+            // tool: 2,
+            // value: true,
+            tools: [
+              {
+                id: 2,
+                value: true
+              }
+            ],
             nextState: 1,
             minTime: 0,
             maxTime: 5000

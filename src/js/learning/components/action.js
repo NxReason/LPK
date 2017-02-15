@@ -1,38 +1,52 @@
 class Action {
   constructor(data) {
-    this.toolId = data.tool;
     this.minTime = data.minTime;
     this.maxTime = data.maxTime;
     this.nextState = data.nextState;
     if (data.inactive) {
       this.inactive = true;
-      this.value = null;
+      this.tools = [];
     } else {
       this.inactive = false;
-      this.value = data.value;
+      this.tools = data.tools;
     }
 
   }
 
+  /**
+   * @param [{ id: Number, value: Number/Boolean }, {...}]
+   * @param Number
+   * @return Boolean
+   */
   isSuitable(data, time) {
     return this.rightTime(time) && this.rightData(data);
   }
 
-  rightData(data) {
-    if (typeof this.value == 'boolean' && data[this.toolId] && data[this.toolId] == this.value) {
-      return true;
-    } else if (Array.isArray(this.value) && data[this.toolId] && this.includesValue(data[this.toolId])) {
-      return true;
-    }
-    return false;
+  rightData(data = []) {
+    if(!Array.isArray(data)) { throw new TypeError(`Invalid type of data from tools. Expected array, got ${typeof data}`); }
+    return this.tools.every(tool => {
+      // Если среди полученных итемов нет, того который есть в данном экшене
+      const checkTool = data.find(obj => obj.id === tool.id);
+      if (!checkTool) { return false; }
+
+      // Для переключателя
+      if (typeof tool.value === 'boolean') { return checkTool.value === tool.value; }
+
+      // Для ренджа
+      if (Array.isArray(tool.value)) { return this.includesValue(checkTool.value, tool.value) }
+
+      return false;
+    });
   }
 
   includesValue(value, borders) {
-    return (value > this.value[0]) && (value < this.value[1]);
+    if (typeof value !== 'number') throw new TypeError('Value should be integer');
+    return (value >= borders[0]) && (value <= borders[1]);
   }
 
   rightTime(time) {
-    return (time > this.minTime) && (time < this.maxTime);
+    if (typeof time !== 'number') throw new TypeError('Time should be integer (ms)');
+    return (time >= this.minTime) && (time <= this.maxTime);
   }
 }
 

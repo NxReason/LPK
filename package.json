@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
     "build:production": "npm run build -- -p",
-    "test": "mocha ./test/**/*.js --watch",
+    "test": "mocha ./test/**/*.js --watch --compilers js:babel-core/register",
     "start": "nodemon index.js"
   },
   "repository": {

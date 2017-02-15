@@ -47,6 +47,7 @@ class Model {
       // and if user input correct go to next state
       this.subscribtion = pubsub.subscribe('user_input', data => {
         const timeSpent = Date.now() - eventStartTime;
+        console.log(data);
         const nextStateId = event.handleInput(data, timeSpent);
         const nextState = this.getState(nextStateId);
         if (nextState) {
