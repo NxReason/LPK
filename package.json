@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
     "build:production": "npm run build -- -p",
-    "test": "mocha ./test/**/*.js --watch --compilers js:babel-core/register",
-    "start": "nodemon index.js"
+    "test": "mocha ./test/**/*.js --compilers js:babel-core/register",
+    "test:watch": "npm run test -- --watch",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

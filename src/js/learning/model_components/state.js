@@ -1,11 +1,22 @@
+import Event from './event' ;
 import Action from './action';
 
-class Event {
+class State {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
-    this.description = data.description;
-    this.actions = data.actions.map(action => new Action(action));
+    this.img = data.img;
+    this.params = data.params;
+
+    if(data.last) {
+      this.last = true;
+      this.event = null;
+      this.action = null;
+    } else {
+      this.event = new Event(data.event);
+      this.actions = data.actions.map(action => new Action(action));
+      this.last = false;
+    }
   }
 
   getInactiveTime() {
@@ -29,4 +40,4 @@ class Event {
   }
 }
 
-export default Event;
+export default State;

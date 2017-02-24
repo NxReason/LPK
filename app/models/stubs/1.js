@@ -18,31 +18,31 @@ module.exports = {
       event: {
         id: 1,
         name: 'Event 1',
-        description: 'Event 1 just happened',
-        actions: [
-          {
-            // tool: 1,
-            // value: [80, 100],
-            tools: [
-              {
-                id: 1,
-                value: [80, 100]
-              },
-              {
-                id: 2,
-                value: false
-              }
-            ],
-            nextState: 2,
-            minTime: 0,
-            maxTime: 10000
-          },
-          {
-            inactive: true,
-            nextState: 3
-          }
-        ],
-      }
+        description: 'Event 1 just happened'
+      },
+      actions: [
+        {
+          // tool: 1,
+          // value: [80, 100],
+          tools: [
+            {
+              id: 1,
+              value: [80, 100]
+            },
+            {
+              id: 2,
+              value: false
+            }
+          ],
+          nextState: 2,
+          minTime: 0,
+          maxTime: 10000
+        },
+        {
+          inactive: true,
+          nextState: 3
+        }
+      ]
     },
     // State 2
     {
@@ -57,27 +57,27 @@ module.exports = {
       event: {
         id: 2,
         name: 'Event 2',
-        description: 'Event 2 just happened',
-        actions: [
-          {
-            // tool: 2,
-            // value: true,
-            tools: [
-              {
-                id: 2,
-                value: true
-              }
-            ],
-            nextState: 1,
-            minTime: 0,
-            maxTime: 5000
-          },
-          {
-            inactive: true,
-            nextState: 3
-          }
-        ],
-      }
+        description: 'Event 2 just happened'
+      },
+      actions: [
+        {
+          // tool: 2,
+          // value: true,
+          tools: [
+            {
+              id: 2,
+              value: true
+            }
+          ],
+          nextState: 1,
+          minTime: 0,
+          maxTime: 5000
+        },
+        {
+          inactive: true,
+          nextState: 3
+        }
+      ]
     },
     // State 3
     {

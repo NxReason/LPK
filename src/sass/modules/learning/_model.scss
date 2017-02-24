@@ -47,15 +47,23 @@
   }
 }
 
-// Model state img box
-.state-img-wrapper {
-  padding: 10px;
-  padding-right: 0;
+// Model state box
+.model-state {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-left: 10px;
   border-bottom: $separator;
-}
-.model-state-img {
-  width: 100%;
-  display: block;
+
+  &-name {
+    text-shadow: 1px 1px 2px $shadow-color;
+    padding-bottom: 5px;
+  }
+
+  &-img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 // Event and response
@@ -75,7 +83,7 @@
     transform: translateY(-100%);
     opacity: 0;
     z-index: -1;
-    
+
   }
 }
 .model-event {

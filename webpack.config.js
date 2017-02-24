@@ -8,10 +8,10 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  devtool: 'cheap-inline-source-map',
+  devtool: 'inline-source-map',
   context: path.resolve(__dirname, 'src/js'),
   entry: {
-    learning: './learning.js',
+    learning: './learning/index.js',
   },
 
   output: {

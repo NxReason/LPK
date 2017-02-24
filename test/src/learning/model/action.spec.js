@@ -1,4 +1,4 @@
-import Action from '../../../../src/js/learning/components/action';
+import Action from '../../../../src/js/learning/model/action';
 import { expect } from 'chai';
 
 const stubOne = {
