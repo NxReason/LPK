@@ -1,4 +1,4 @@
-import Action from '../../../../src/js/learning/model/action';
+import Action from '../../../../src/js/learning/model_components/action';
 import { expect } from 'chai';
 
 const stubOne = {
@@ -34,7 +34,7 @@ const stubThree = {
 
 describe('Action', function() {
 
-  describe('constructor', function() {
+  describe('#constructor', function() {
 
     it('usual action should be properly created', function() {
       const action = new Action(stubOne);
@@ -61,7 +61,7 @@ describe('Action', function() {
 
   });
 
-  describe('isSuitable', function() {
+  describe('#isSuitable', function() {
 
     const actionOne = new Action(stubOne);
     const actionTwo = new Action(stubTwo);
@@ -83,7 +83,7 @@ describe('Action', function() {
 
   });
 
-  describe('rightTime', function() {
+  describe('#rightTime', function() {
 
     const action = new Action(stubOne);
 
@@ -106,7 +106,7 @@ describe('Action', function() {
 
   });
 
-  describe('includesValue', function() {
+  describe('#includesValue', function() {
     const action = new Action(stubOne);
 
     it('should return true if value is within borders', function() {
@@ -127,7 +127,7 @@ describe('Action', function() {
 
   });
 
-  describe('rightData', function() {
+  describe('#rightData', function() {
 
     const actionOne = new Action(stubOne);
     const actionTwo = new Action(stubTwo);

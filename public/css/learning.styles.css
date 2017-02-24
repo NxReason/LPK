@@ -242,7 +242,10 @@ button {
     border-bottom: 1px dotted #cedbe4;
     text-align: center; }
   .tool:nth-child(odd) {
-    border-right: 1px solid #cedbe4; }
+    border-right: 1px solid #cedbe4;
+    padding-right: 5px; }
+  .tool:nth-child(even) {
+    padding-left: 5px; }
 
 .range {
   display: flex;

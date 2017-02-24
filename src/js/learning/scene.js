@@ -37,33 +37,4 @@ function setButtonsState(buttons, value) {
   buttons.forEach(button => button.disabled = value);
 }
 
-//   /** Sets event data to UI */
-//   setEvent(event) {
-//     console.log(event);
-//     this.$event.querySelector('.model-event-name span').textContent = event.name;
-//     this.$event.querySelector('.model-event-info').textContent = event.description;
-//     this.$event.classList.remove('is-hidden');
-//   }
-//   hideEvent() {
-//     this.$event.classList.add('is-hidden');
-//   }
-//
-//   /** Get data from tool nodes */
-//   getToolsData() {
-//     const toolsData = {};
-//     const inputs = this.$toolsBox.querySelectorAll('input[data-id]');
-//     inputs.forEach(input => {
-//       const { id, type } = input.dataset;
-//       let value;
-//       switch(type) {
-//         case 'range': value = parseInt(input.value); break;
-//         case 'switch': value = input.checked; break;
-//         default: throw new Error('Invalid tool type');
-//       }
-//       toolsData[id] = value;
-//     });
-//     return toolsData;
-//   }
-// }
-
 export default exports;

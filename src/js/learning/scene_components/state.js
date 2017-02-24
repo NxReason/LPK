@@ -3,7 +3,11 @@ import nodeFactory from '../../utils/nodeFactory';
 const $name = document.querySelector('.model-state-name');
 const $img = document.querySelector('.model-state-img');
 const $params = document.querySelector('.model-params-values');
+
 const $event = document.querySelector('.model-event');
+const $eventHeader = $event.querySelector('.model-event-name span');
+const $eventBody = $event.querySelector('.model-event-info');
+
 const $response = document.querySelector('.model-response');
 
 function set({ name, img, params }) {
@@ -33,6 +37,19 @@ function createParameteNode(key, value) {
   return div;
 }
 
+
+/** Sets event data to UI */
+function showEvent(event) {
+  $eventHeader.textContent = event.name;
+  $eventBody.textContent = event.description;
+  $event.classList.remove('is-hidden');
+}
+function hideEvent() {
+  $event.classList.add('is-hidden');
+}
+
 export default {
-  set
+  set,
+  showEvent,
+  hideEvent
 }

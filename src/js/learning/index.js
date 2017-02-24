@@ -29,15 +29,19 @@ $loadButton.addEventListener('click', () => {
 });
 //
 const $startButton = document.querySelector('#start-btn');
-// $startButton.addEventListener('click', () => {
-//   model.start();
-// });
-//
+$startButton.addEventListener('click', () => {
+  model.start();
+  scene.disableButtons($startButton);
+  scene.enableButtons($stopButton, $runButton);
+});
+
 const $stopButton = document.querySelector('#stop-btn');
-// $stopButton.addEventListener('click', () => {
-//   model.stop(); // TODO
-// });
-//
+$stopButton.addEventListener('click', () => {
+  model.stop(); // TODO
+  scene.enableButtons($startButton);
+  scene.disableButtons($stopButton, $runButton);
+});
+
 const $runButton = document.querySelector('#run-btn');
 // $runButton.addEventListener('click', () => {
 //   const toolsData = scene.getToolsData();

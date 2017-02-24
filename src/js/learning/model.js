@@ -28,6 +28,7 @@ class Model {
        .then(state => { this.handleNewState(state) })
     }
     intervals.catch(state => { pubsub.publish('new_state',  state) });
+    console.log(intervals);
   }
 
   makeBreak() {

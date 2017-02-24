@@ -22,8 +22,6 @@ module.exports = {
       },
       actions: [
         {
-          // tool: 1,
-          // value: [80, 100],
           tools: [
             {
               id: 1,
@@ -61,8 +59,6 @@ module.exports = {
       },
       actions: [
         {
-          // tool: 2,
-          // value: true,
           tools: [
             {
               id: 2,

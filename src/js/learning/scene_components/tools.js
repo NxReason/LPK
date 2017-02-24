@@ -1,5 +1,9 @@
 import nodeFactory from '../../utils/nodeFactory';
 
+const toolTypes = {
+  RANGE: 'range',
+  SWITCH: 'switch'
+}
 const $tools = document.querySelector('.tools-list');
 
 function init(tools) {
@@ -28,12 +32,9 @@ function init(tools) {
 
 function createToolNode(tool) {
   switch(tool.type) {
-    case 'range':
-      return createRangeTool(tool);
-    case 'switch':
-      return createSwitchTool(tool);
-    default:
-      return 'Unknown tool type';
+    case toolTypes.RANGE:   return createRangeTool(tool);
+    case toolTypes.SWITCH:  return createSwitchTool(tool);
+    default:                return 'Неизвестный прибор';
   }
 }
 
@@ -91,6 +92,23 @@ function createSwitchTool(tool) {
   return label;
 }
 
+function getToolsData() {
+  const toolsData = {};
+  const inputs = this.$toolsBox.querySelectorAll('input[data-id]');
+  inputs.forEach(input => {
+    const { id, type } = input.dataset;
+    let value;
+    switch(type) {
+      case toolTypes.RANGE: value = parseInt(input.value); break;
+      case toolTypes.SWITCH: value = input.checked; break;
+      default: throw new Error(`Некорректный тип прибора. ID: ${id}`);
+    }
+    toolsData[id] = value;
+  });
+  return toolsData;
+}
+
 export default {
   init,
+  getToolsData
 };

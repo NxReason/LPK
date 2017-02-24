@@ -11,7 +11,7 @@ class State {
     if(data.last) {
       this.last = true;
       this.event = null;
-      this.action = null;
+      this.actions = null;
     } else {
       this.event = new Event(data.event);
       this.actions = data.actions.map(action => new Action(action));
@@ -34,9 +34,10 @@ class State {
 
   handleInput(data, time) {
     const suitedActions = this.actions.filter(action => action.isSuitable(data, time));
-    if (suitedActions) {
+    if (suitedActions.length > 0) {
       return suitedActions[0].nextState;
     }
+    return null;
   }
 }
 
