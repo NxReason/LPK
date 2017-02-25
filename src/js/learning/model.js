@@ -28,7 +28,7 @@ class Model {
        .then(state => { this.handleNewState(state) })
     }
     intervals.catch(state => { pubsub.publish('new_state',  state) });
-    console.log(intervals);
+    return intervals;
   }
 
   makeBreak() {
@@ -68,7 +68,9 @@ class Model {
   handleNewState(state) {
     this.currentState = state;
     clearTimeout(this.timeout);
-    this.subscribtion.remove();
+    if (this.subscription) {
+      this.subscribtion.remove();
+    }
     pubsub.publish('new_state', state);
   }
 
