@@ -37,4 +37,17 @@ function setButtonsState(buttons, value) {
   buttons.forEach(button => button.disabled = value);
 }
 
+// Delegate public methods to components
+exports.getToolsData = () =>
+  tools.getToolsData();
+
+exports.setState = stateData =>
+  state.set(stateData);
+
+exports.showEvent = eventData =>
+  state.showEvent(eventData);
+
+exports.hideEvent = () =>
+  state.hideEvent();
+
 export default exports;

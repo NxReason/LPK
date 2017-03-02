@@ -26,7 +26,7 @@ class Action {
     if(!Array.isArray(data)) { throw new TypeError(`Invalid type of data from tools. Expected array, got ${typeof data}`); }
     return this.tools.every(tool => {
       // Если среди полученных итемов нет, того который есть в данном экшене
-      const checkTool = data.find(obj => obj.id === tool.id);
+      const checkTool = data.find(obj => obj.id == tool.id);
       if (!checkTool) { return false; }
 
       // Для переключателя

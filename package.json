@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
     "build:production": "npm run build -- -p",
     "test": "mocha ./test/**/*.js --compilers js:babel-core/register",
-    "test:watch": "npm run test -- --watch",
-    "dev": "nodemon index.js"
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,10 @@
   "homepage": "https://github.com/westqt/LPK#readme",
   "dependencies": {
     "ejs": "^2.5.5",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.2"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

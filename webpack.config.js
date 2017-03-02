@@ -12,6 +12,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src/js'),
   entry: {
     learning: './learning/index.js',
+    login: './login/index.js',
   },
 
   output: {

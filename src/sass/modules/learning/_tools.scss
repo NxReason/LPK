@@ -5,6 +5,8 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  overflow-y: auto;
+  max-height: 400px;
 }
 // Common tool styles
 .tool {
@@ -13,7 +15,6 @@
   flex-direction: column;
   padding: 10px 0;
   border-bottom: 1px solid darken($light-grey, 10%);
-  justify-content: stretch;
 
   &-name {
     height: 30px;
@@ -75,7 +76,7 @@
   position: relative;
   width: 60px;
   height: 34px;
-  margin: auto;
+  margin: 10px auto;
 }
 .switch input {
   display: none;

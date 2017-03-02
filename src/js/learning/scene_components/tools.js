@@ -93,8 +93,8 @@ function createSwitchTool(tool) {
 }
 
 function getToolsData() {
-  const toolsData = {};
-  const inputs = this.$toolsBox.querySelectorAll('input[data-id]');
+  const toolsData = [];
+  const inputs = $tools.querySelectorAll('input[data-id]');
   inputs.forEach(input => {
     const { id, type } = input.dataset;
     let value;
@@ -103,7 +103,7 @@ function getToolsData() {
       case toolTypes.SWITCH: value = input.checked; break;
       default: throw new Error(`Некорректный тип прибора. ID: ${id}`);
     }
-    toolsData[id] = value;
+    toolsData.push({ id, value });
   });
   return toolsData;
 }

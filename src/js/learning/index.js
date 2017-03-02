@@ -43,13 +43,24 @@ $stopButton.addEventListener('click', () => {
 });
 
 const $runButton = document.querySelector('#run-btn');
-// $runButton.addEventListener('click', () => {
-//   const toolsData = scene.getToolsData();
-//   pubsub.publish('user_input', toolsData);
-// });
-//
-// /**
-//  * Handle custom events here (user input, programm messages etc.)
-//  */
-// pubsub.subscribe('new_state', state => scene.setState(state));
-// pubsub.subscribe('event', data => scene.setEvent(data.event));
+$runButton.addEventListener('click', () => {
+  const toolsData = scene.getToolsData();
+  pubsub.publish('user_input', toolsData);
+});
+
+/**
+ * Handle custom events here (user input, programm messages etc.)
+ */
+pubsub.subscribe('new_state', state => {
+  scene.hideEvent();
+  scene.setState(state);
+});
+pubsub.subscribe('event', event => scene.showEvent(event));
+
+/**
+* Timer (currently for dev mode only)
+*/
+import timer from '../utils/timer';
+document.querySelector('.header').appendChild(timer.node);
+pubsub.subscribe('new_state', state => timer.stop());
+pubsub.subscribe('event', event => timer.start());

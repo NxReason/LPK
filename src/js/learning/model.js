@@ -9,7 +9,7 @@ class Model {
     this.steps = data.steps;
 
     this.states = data.states.map(state => new State(state));
-    this.currentState = this.getState(data.id);
+    this.currentState = this.getState(data.initialState);
 
     this.timeout = null;
     this.subscribtion = null;
@@ -42,7 +42,7 @@ class Model {
     const eventStartTime = Date.now();
     return new Promise((resolve, reject) => {
       // send data about new event to other modules
-      pubsub.publish('event', { event });
+      pubsub.publish('event', event);
 
       // listen to user action
       // and if user input correct go to next state
@@ -56,9 +56,9 @@ class Model {
       })
 
       // handle inactive
-      const inactiveTime = event.getInactiveTime();
+      const inactiveTime = this.currentState.getInactiveTime();
       this.timeout = setTimeout(() => {
-        const nextStateId = event.getInactiveAction().nextState;
+        const nextStateId = this.currentState.getInactiveAction().nextState;
         const nextState = this.getState(nextStateId);
         nextState.last ? reject(nextState) : resolve(nextState);
       }, inactiveTime);
