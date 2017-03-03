@@ -3,6 +3,7 @@ const app = express();
 const join = require('path').join;
 
 const { port } = require('./app/config');
+const db = require('./app/models');
 
 const router = require('./app/routes');
 
@@ -16,8 +17,12 @@ app.set('view engine', 'ejs');
 
 app.use(router);
 
-app.listen(port, err => {
-  if(err) throw err;
+db.sequelize.sync()
+.then(() => serverListen());
 
-  console.log(`Server listening on port: ${port}`);
-});
+function serverListen() {
+  app.listen(port, err => {
+    if(err) throw err;
+    console.log(`Server listening on port: ${port}`);
+  });
+}

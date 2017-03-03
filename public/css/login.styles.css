@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  font: 100% "Comfortaa", "Ubuntu", Helvetica, Arial, sans-serif;
+  color: #464646;
+  background-color: #eff3f6;
+  min-width: 960px; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+select, button {
+  font: 100% "Comfortaa", "Ubuntu", Helvetica, Arial, sans-serif;
+  color: #464646;
+  font-size: 0.9em; }
+  select:focus, button:focus {
+    outline: none; }
+
+button {
+  background-color: transparent;
+  border: 1px solid #797979;
+  border-radius: 5px;
+  transition: background-color .2s;
+  width: 100px;
+  height: 25px; }
+  button:hover {
+    cursor: pointer; }
+
+.l-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 900px;
+  max-width: 1600px; }
+
+.l-row {
+  width: 100%;
+  display: flex;
+  padding: 12px;
+  justify-content: space-between; }
+
+.l-main {
+  width: calc(60% - 20px); }
+
+.l-aside {
+  width: 40%; }
+
+.l-mtop15 {
+  margin-top: 15px; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvbG9naW4uc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

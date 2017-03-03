@@ -1,1 +1,1 @@
-console.log('foo');
+import '../../sass/login.scss';

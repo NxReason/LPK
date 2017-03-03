@@ -21,20 +21,3 @@
 .l-mtop15 {
   margin-top: 15px;
 }
-
-// Model
-.l-model-left {
-  width: 33%;
-}
-.l-model-right {
-  width: 67%;
-}
-.l-event-response {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 5px;
-}
-.l-event-response div {
-  width: calc(50% - 10px);
-}

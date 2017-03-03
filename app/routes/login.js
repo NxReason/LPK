@@ -1,7 +1,16 @@
 const router = require('express').Router();
+const User = require('../models').User;
 
-router.get('/', (req, res) => {
-  res.render('login');
+router.post('/', (req, res) => {
+  const { username, password } = req.body;
+  User.authorize( username, password )
+  .then( user => {
+    req.session.user = user;
+  })
+  .catch( error => {
+    req.session.authError = error;
+  })
+  .then( () => res.redirect('/'));
 });
 
 module.exports = router;

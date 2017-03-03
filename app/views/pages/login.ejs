@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <% include ../partials/head %>
+
   <title>Log In</title>
+  <link rel="stylesheet" href="css/login.styles.css">
 </head>
 <body>
-  Login page
+  <div class="l-content">
+    <div class="l-row">
+      <form action="/login" class="login-form" method="POST">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/login.bundle.js"></script>
 </body>
 </html>

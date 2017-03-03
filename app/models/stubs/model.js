@@ -16,7 +16,7 @@ Model.findById = function(id) {
   return new Promise((resolve, reject) => {
     // stub to get model from hardcoded file
     try {
-      const model = require(`./stubs/${id}`);
+      const model = require(`./${id}`);
       resolve(model);
     } catch(e) {
       reject(e);
