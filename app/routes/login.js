@@ -4,13 +4,14 @@ const User = require('../models').User;
 router.post('/', (req, res) => {
   const { username, password } = req.body;
   User.authorize( username, password )
-  .then( user => {
+  .then(user => {
     req.session.user = user;
+    req.session.authError = null;
   })
-  .catch( error => {
+  .catch(error => {
     req.session.authError = error;
   })
-  .then( () => res.redirect('/'));
+  .then(() => res.redirect('/'));
 });
 
 module.exports = router;

@@ -86,6 +86,9 @@ button {
 .icon-info {
   background-image: url(../img/info25.png); }
 
+.icon-error {
+  background-image: url(../img/error25.png); }
+
 .btn {
   background-color: #4c58fb;
   color: #fff;

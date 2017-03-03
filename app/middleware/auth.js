@@ -2,7 +2,9 @@ function auth (req, res, next) {
   if ( req.session.user ) {
     next();
   } else {
-    res.render('login');
+    const error = req.session.authError;
+    req.session.authError = null;
+    res.render('login', { error });
   }
 }
 

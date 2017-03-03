@@ -60,4 +60,84 @@ button {
 .l-mtop15 {
   margin-top: 15px; }
 
+.l-login {
+  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px; }
+
+.icon-model {
+  background-image: url(../img/model25.png); }
+
+.icon-info {
+  background-image: url(../img/info25.png); }
+
+.icon-error {
+  background-image: url(../img/error25.png); }
+
+.btn {
+  background-color: #4c58fb;
+  color: #fff;
+  border: #1a29fa; }
+  .btn:hover {
+    background-color: #1a29fa; }
+
+.btn-material {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid #eff3f6;
+  color: #464646;
+  transition: all .2s; }
+  .btn-material:hover {
+    box-shadow: none;
+    border: 1px solid #cedbe4;
+    transform: translateY(2px); }
+  .btn-material:disabled {
+    box-shadow: none;
+    color: #868686;
+    border: 1px solid #868686;
+    transform: none;
+    cursor: auto; }
+
+.login-form {
+  width: 400px; }
+  .login-form fieldset {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 2px solid #4c58fb;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); }
+  .login-form legend {
+    margin-left: 20px;
+    padding: 5px 5px;
+    border: 2px solid #4c58fb;
+    background-color: #fff; }
+
+.field {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center; }
+  .field label {
+    width: 25%;
+    cursor: pointer; }
+  .field input[type="text"], .field input[type="password"] {
+    width: 75%;
+    height: 25px; }
+
+.login-error {
+  margin-top: 20px;
+  display: flex;
+  align-items: center; }
+  .login-error p {
+    color: #ff3030;
+    font-weight: bold;
+    margin-left: 10px; }
+
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvbG9naW4uc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

@@ -8,13 +8,34 @@
 </head>
 <body>
   <div class="l-content">
-    <div class="l-row">
+
+    <div class="l-login">
       <form action="/login" class="login-form" method="POST">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <button>Войти</button>
+        <fieldset>
+          <legend>Авторизация</legend>
+
+          <div class="field">
+            <label for="username">Логин:</label>
+            <input type="text" name="username" id="username">
+          </div>
+
+          <div class="field">
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password">
+          </div>
+
+
+          <button class="btn">Войти</button>
+        </fieldset>
       </form>
+
+      <% if (error) { %>
+        <div class="login-error">
+          <i class="icon icon-error"></i><p><%= error %></p>
+        </div>
+      <% } %>
     </div>
+
   </div>
 
   <script type="text/javascript" src="js/login.bundle.js"></script>

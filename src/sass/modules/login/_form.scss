@@ -1,0 +1,38 @@
+.login-form {
+  width: 400px;
+
+  fieldset {
+    padding: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+    border: 2px solid $primary-blue;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
+  }
+
+  legend {
+    margin-left: 20px;
+    padding: 5px 5px;
+    border: 2px solid $primary-blue;
+    background-color: #fff;
+  }
+}
+
+.field {
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+
+  label {
+    width: 25%;
+    cursor: pointer;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 75%;
+    height: 25px;
+  }
+}

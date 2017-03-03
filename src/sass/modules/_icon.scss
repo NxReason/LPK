@@ -1,5 +1,6 @@
 $model-icon-url: '../img/model25.png';
 $info-icon-url: '../img/info25.png';
+$error-icon-url: '../img/error25.png';
 
 .icon {
   display: inline-block;
@@ -11,4 +12,7 @@ $info-icon-url: '../img/info25.png';
 }
 .icon-info {
   background-image: url($info-icon-url);
+}
+.icon-error {
+  background-image: url($error-icon-url);
 }
