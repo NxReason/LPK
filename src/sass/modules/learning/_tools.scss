@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   width: 100%;
   overflow-y: auto;
-  max-height: 400px;
+  max-height: $max-box-height;
 }
 // Common tool styles
 .tool {

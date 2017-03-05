@@ -7,7 +7,7 @@ const exports = {};
 const $modelName = document.querySelector('.model-name');
 exports.init = function(model, response) {
   $modelName.textContent = model.name;
-  state.set(model.currentState);
+  state.set(model.startState);
   tools.init(response.tools);
   return this;
 }
@@ -29,9 +29,11 @@ function setContentDisplay(display) {
 // Manage buttons state
 exports.enableButtons = function(...buttons) {
   setButtonsState(buttons, false);
+  return this;
 }
 exports.disableButtons = function(...buttons) {
   setButtonsState(buttons, true);
+  return this;
 }
 function setButtonsState(buttons, value) {
   buttons.forEach(button => button.disabled = value);

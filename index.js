@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const join = require('path').join;
 
-const { port } = require('./app/config');
+const { port, useDB } = require('./app/config');
 const db = require('./app/models');
 
 const router = require('./app/routes');
@@ -17,8 +17,12 @@ app.set('view engine', 'ejs');
 
 app.use(router);
 
-db.sequelize.sync()
-.then(() => serverListen());
+if ( useDB ) {
+  db.sequelize.sync()
+  .then(() => serverListen());
+} else {
+  serverListen();
+}
 
 function serverListen() {
   app.listen(port, err => {

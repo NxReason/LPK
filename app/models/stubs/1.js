@@ -2,7 +2,7 @@ module.exports = {
   id: 1,
   name: 'Model 1',
   breakTime: 3000,
-  steps: 5,
+  steps: 15,
   initialState: 1,
   states: [
     // State 1

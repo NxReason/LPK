@@ -250,7 +250,7 @@ module.exports = {
             }
           ],
           nextState: 8,
-          minTime: 250001,
+          minTime: 25001,
           maxTime: 30000
         },
         {

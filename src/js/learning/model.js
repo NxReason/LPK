@@ -1,6 +1,9 @@
 import State from './model_components/state';
 import pubsub from '../utils/pubsub';
 
+const INITIAL_STATE_NAME = 'Состояние модели';
+const STOP_STATE_NAME = 'Обучение остановлено';
+
 class Model {
   constructor(data) {
     this.id = data.id;
@@ -9,10 +12,14 @@ class Model {
     this.steps = data.steps;
 
     this.states = data.states.map(state => new State(state));
-    this.currentState = this.getState(data.initialState);
+    this.initialState = data.initialState;
+    this.currentState = this.getState(this.initialState);
 
     this.timeout = null;
-    this.subscribtion = null;
+    this.subInput = null;
+    this.subStop = null;
+    this.startState = new State({ id: 0, name: INITIAL_STATE_NAME, img: 'img/start.png', last: true });
+    this.stopState = new State({ id: -1, name: STOP_STATE_NAME, img: 'img/stop.png', last: true });
   }
 
   getState(id) {
@@ -20,6 +27,8 @@ class Model {
   }
 
   start() {
+    this.currentState = this.getState(this.initialState);
+    pubsub.publish('new_state', this.currentState);
     let intervals = Promise.resolve(); // init promise chain
     for (let i = 0; i < this.steps; i++) {
       intervals = intervals
@@ -27,13 +36,17 @@ class Model {
        .then(() => { return this.handleEvent() })
        .then(state => { this.handleNewState(state) })
     }
-    intervals.catch(state => { pubsub.publish('new_state',  state) });
+    intervals.catch(state => this.handleNewState(state));
     return intervals;
   }
 
   makeBreak() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => { resolve() }, this.breakTime);
+      this.subStop = pubsub.subscribe('model_stop', () => { reject(this.stopState); })
+      setTimeout(() => {
+        this.clearSubs();
+        resolve()
+      }, this.breakTime);
     });
   }
 
@@ -46,14 +59,18 @@ class Model {
 
       // listen to user action
       // and if user input correct go to next state
-      this.subscribtion = pubsub.subscribe('user_input', data => {
+      this.subInput = pubsub.subscribe('user_input', data => {
         const timeSpent = Date.now() - eventStartTime;
         const nextStateId = this.currentState.handleInput(data, timeSpent);
         const nextState = this.getState(nextStateId);
-        if (nextState) {
+        if ( nextState ) {
           nextState.last ? reject(nextState) : resolve(nextState);
         }
-      })
+      });
+
+      this.subStop = pubsub.subscribe('model_stop', () => {
+        reject(this.stopState);
+      });
 
       // handle inactive
       const inactiveTime = this.currentState.getInactiveTime();
@@ -65,18 +82,24 @@ class Model {
     })
   }
 
+  stop() {
+    pubsub.publish('model_stop');
+  }
+
   handleNewState(state) {
     this.currentState = state;
     clearTimeout(this.timeout);
-    if (this.subscription) {
-      this.subscribtion.remove();
-    }
+    this.clearSubs();
     pubsub.publish('new_state', state);
   }
 
-  // TODO
-  stop() {
-
+  clearSubs() {
+    if (this.subInput) {
+      this.subInput.remove();
+    }
+    if (this.subStop) {
+      this.subStop.remove();
+    }
   }
 
 }

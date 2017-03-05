@@ -11,6 +11,8 @@
   height: 100%;
   padding-top: 10px;
   padding-right: 10px;
+  max-height: $max-box-height;
+  overflow-y: auto;
 
   &-header {
     padding-bottom: 5px;
@@ -33,12 +35,13 @@
     border-bottom: none;
   }
   span:first-child {
-    width: calc(100% - 45px);
+    // width: calc(100% - 45px);
   }
   span:last-child {
     color: $box-color;
     background-color: $primary-blue;
-    width: 45px;
+    // width: 45px;
+    padding: 0 5px;
     height: 25px;
     border-radius: 5px;
     display: flex;

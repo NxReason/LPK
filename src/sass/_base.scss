@@ -42,3 +42,9 @@ button {
     cursor: pointer;
   }
 }
+input[type="text"], input[type="password"] {
+  font-family: $font-stack;
+}
+input[type="password"] {
+  font-size: 1.4em;
+}

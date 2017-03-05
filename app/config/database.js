@@ -1,11 +1,12 @@
 module.exports = {
   "development": {
-    "username": "postgres",
+    "username": "postgresa",
     "password": "root",
     "database": "lpk_dev",
     "host": "127.0.0.1",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "test": {
     "username": "postgres",

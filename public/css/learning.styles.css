@@ -38,6 +38,12 @@ button {
   button:hover {
     cursor: pointer; }
 
+input[type="text"], input[type="password"] {
+  font-family: "Comfortaa", "Ubuntu", Helvetica, Arial, sans-serif; }
+
+input[type="password"] {
+  font-size: 1.4em; }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -51,14 +57,14 @@ button {
   padding: 12px;
   justify-content: space-between; }
 
+.l-mtop15 {
+  margin-top: 15px; }
+
 .l-main {
   width: calc(60% - 20px); }
 
 .l-aside {
   width: 40%; }
-
-.l-mtop15 {
-  margin-top: 15px; }
 
 .l-model-left {
   width: 33%; }
@@ -163,7 +169,9 @@ button {
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   height: 100%;
   padding-top: 10px;
-  padding-right: 10px; }
+  padding-right: 10px;
+  max-height: 450px;
+  overflow-y: auto; }
   .model-params-header {
     padding-bottom: 5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); }
@@ -179,12 +187,10 @@ button {
     margin-top: 5px; }
   .parameter:last-of-type {
     border-bottom: none; }
-  .parameter span:first-child {
-    width: calc(100% - 45px); }
   .parameter span:last-child {
     color: #ffffff;
     background-color: #4c58fb;
-    width: 45px;
+    padding: 0 5px;
     height: 25px;
     border-radius: 5px;
     display: flex;
@@ -235,7 +241,7 @@ button {
   flex-wrap: wrap;
   width: 100%;
   overflow-y: auto;
-  max-height: 400px; }
+  max-height: 450px; }
 
 .tool {
   width: 50%;

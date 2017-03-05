@@ -38,6 +38,12 @@ button {
   button:hover {
     cursor: pointer; }
 
+input[type="text"], input[type="password"] {
+  font-family: "Comfortaa", "Ubuntu", Helvetica, Arial, sans-serif; }
+
+input[type="password"] {
+  font-size: 1.4em; }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -50,12 +56,6 @@ button {
   display: flex;
   padding: 12px;
   justify-content: space-between; }
-
-.l-main {
-  width: calc(60% - 20px); }
-
-.l-aside {
-  width: 40%; }
 
 .l-mtop15 {
   margin-top: 15px; }
