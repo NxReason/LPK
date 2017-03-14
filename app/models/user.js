@@ -1,5 +1,4 @@
-'use strict';
-const bcrypt = require('bcrypt-nodejs');
+const hashPassword = require('../services/auth/hashPassword');
 
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define('User', {
@@ -35,45 +34,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: (models) => {
         // associations can be defined here
-      },
-      authorize: (username, password) => {
-        return new Promise((resolve, reject) => {
-          User.findOne({ where: { username: username } })
-          .then(user => {
-            if ( !user ) reject('Пользователь не найден');
-            else {
-              
-              bcrypt.compare(password, user.password, (err, res) => {
-                if ( err || !res ) reject('Неверный пароль');
-
-                resolve({
-                  id: user.id,
-                  firstname: user.firstname,
-                  lastname: user.lastname,
-                  email: user.email,
-                  level: user.level
-                });
-              });
-
-            }
-          });
-        });
       }
     }
+  });
+  User.beforeBulkCreate(function(users) {
+    return Promise.all(users.map(user => hashPassword(user)));
   });
   User.beforeCreate(hashPassword);
   User.beforeUpdate(hashPassword);
   return User;
 };
-
-function hashPassword(user, options) {
-  if (!user.changed('password')) return;
-
-  return new Promise((resolve, reject) => {
-    bcrypt.hash(user.password, null, null, (err, hash) => {
-      if (err) reject(err);
-      else resolve(hash);
-    })
-  })
-  .then(hashedPassword => user.password = hashedPassword);
-}

@@ -12,6 +12,9 @@
     "test": "mocha ./test/**/*.js --compilers js:babel-core/register",
     "test:watch": "npm run test -- --watch"
   },
+  "babel": {
+    "presets": ["es2015"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/westqt/LPK.git"

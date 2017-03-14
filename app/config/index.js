@@ -1,6 +1,6 @@
 const config = {
   port: 8000,
-  useDB: false,
+  useDB: true,
   db: require('./database')
 };
 

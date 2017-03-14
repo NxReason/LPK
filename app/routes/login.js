@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const User = require('../models').User;
+const authorize = require('../services/auth');
 
 router.post('/', (req, res) => {
   const { username, password } = req.body;
-  User.authorize( username, password )
+  authorize( username, password )
   .then(user => {
     req.session.user = user;
     req.session.authError = null;

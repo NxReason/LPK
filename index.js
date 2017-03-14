@@ -4,6 +4,7 @@ const join = require('path').join;
 
 const { port, useDB } = require('./app/config');
 const db = require('./app/models');
+const populateDB = require('./app/dev/populateDB');
 
 const router = require('./app/routes');
 
@@ -18,8 +19,9 @@ app.set('view engine', 'ejs');
 app.use(router);
 
 if ( useDB ) {
-  db.sequelize.sync()
-  .then(() => serverListen());
+  db.sequelize.sync({ force: true })
+  .then(populateDB)
+  .then(serverListen);
 } else {
   serverListen();
 }

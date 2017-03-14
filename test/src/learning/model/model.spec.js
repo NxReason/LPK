@@ -20,7 +20,8 @@ describe('Model', function() {
         .with.lengthOf(3);
 
       expect(model).to.have.property('timeout', null);
-      expect(model).to.have.property('subscribtion', null);
+      expect(model).to.have.property('subInput', null);
+      expect(model).to.have.property('subStop', null);
     });
   });
 

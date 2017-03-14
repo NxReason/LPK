@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Model = require('../models/stubs/model');
+const Model = require('../dev/model_stubs');
 
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);

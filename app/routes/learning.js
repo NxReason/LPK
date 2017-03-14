@@ -1,6 +1,5 @@
 const router = require('express').Router();
-
-const Model = require('../models/stubs/model');
+const Model = require('../dev/model_stubs');
 
 router.get('/', (req, res) => {
   Model.findAll()

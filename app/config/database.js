@@ -1,6 +1,6 @@
 module.exports = {
   "development": {
-    "username": "postgresa",
+    "username": "postgres",
     "password": "root",
     "database": "lpk_dev",
     "host": "127.0.0.1",
