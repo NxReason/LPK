@@ -6,6 +6,7 @@ module.exports = {
     const now = new Date();
     const usersRaw = [
       {
+        id: 1,
         username: 'Admin',
         firstname: 'John',
         lastname: 'Doe',
@@ -14,6 +15,7 @@ module.exports = {
         level: 'admin'
       },
       {
+        id: 2,
         username: 'DeveloperOne',
         firstname: 'Jane',
         lastname: 'Doe',
@@ -22,6 +24,7 @@ module.exports = {
         level: 'dev'
       },
       {
+        id: 3,
         username: 'DeveloperTwo',
         firstname: 'Alan',
         lastname: 'Turing',
@@ -30,6 +33,7 @@ module.exports = {
         level: 'dev'
       },
       {
+        id: 4,
         username: 'UserOne',
         firstname: 'Alonzo',
         lastname: 'Church',
@@ -38,6 +42,7 @@ module.exports = {
         level: 'user'
       },
       {
+        id: 5,
         username: 'UserTwo',
         firstname: 'Haskell',
         lastname: 'Curry',
@@ -56,13 +61,6 @@ module.exports = {
   },
 
   down: function (queryInterface, Sequelize) {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('Person', null, {});
-    */
     return queryInterface.bulkDelete('Users', null, {});
   }
 };

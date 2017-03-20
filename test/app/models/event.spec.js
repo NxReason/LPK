@@ -1,4 +1,4 @@
-import { sequelize as db, Event, State } from '../../../app/models';
+import { sequelize as db, Event, State } from '../../../app/database/models';
 import { expect } from 'chai';
 
 describe('Event', () => {
