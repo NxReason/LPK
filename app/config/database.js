@@ -14,7 +14,8 @@ module.exports = {
     "database": "lpk_test",
     "host": "127.0.0.1",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "production": {
     "username": "postgres",
@@ -22,6 +23,7 @@ module.exports = {
     "database": "lpk_prod",
     "host": "127.0.0.1",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   }
 }

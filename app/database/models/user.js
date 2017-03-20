@@ -1,10 +1,9 @@
-const hashPassword = require('../services/auth/hashPassword');
-
+'use strict';
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define('User', {
+  var User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     firstname: {
       type: DataTypes.STRING,
@@ -25,22 +24,11 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'user'
     }
   }, {
-    indexes: [
-      {
-        unique: true,
-        fields: ['username']
-      }
-    ],
     classMethods: {
-      associate: (models) => {
+      associate: models => {
         // associations can be defined here
       }
     }
   });
-  User.beforeBulkCreate(function(users) {
-    return Promise.all(users.map(user => hashPassword(user)));
-  });
-  User.beforeCreate(hashPassword);
-  User.beforeUpdate(hashPassword);
   return User;
 };

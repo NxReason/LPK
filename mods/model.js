@@ -20,6 +20,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     // other stuff like class methods indexes etc.
+    underscored: true,
+    classMethods: {
+      associate: (models) => {
+        Model.hasMany(models.State);
+      }
+    }
   });
   return Model;
 }
