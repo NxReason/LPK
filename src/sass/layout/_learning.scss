@@ -1,3 +1,22 @@
+.l-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+.l-model-select {
+  display: flex;
+  width: 40%;
+}
+.l-nav-menu {
+  width: 30%;
+  min-width: 300px;
+}
+.l-dashboard {
+  width: 20%;
+}
+
 .l-main {
   width: calc(60% - 20px);
 }
@@ -10,12 +29,12 @@
 .l-model-right {
   width: 67%;
 }
-.l-event-response {
+.l-event {
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-top: 5px;
 }
-.l-event-response div {
+.l-event div {
   width: calc(50% - 10px);
 }

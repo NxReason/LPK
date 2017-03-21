@@ -2,25 +2,31 @@
 <html lang="ru">
 <head>
   <% include ../partials/head %>
-  
+
   <title>Learning</title>
   <link rel="stylesheet" href="css/learning.styles.css">
 </head>
 <body>
   <div class="l-content">
     <!-- Header -->
-    <div class="l-row header">
-      <div class="model-select-box">
-        <span class="icon icon-model"></span>
+    <div class="l-row l-header header">
+      <div class="l-model-select">
+        <div class="model-select-box">
+          <span class="icon icon-model"></span>
 
-        <select id="model-select">
-          <% models.forEach(model => { %>
-            <option value="<%= model.id %>"><%= model.name %></option>
-          <% }) %>
-        </select>
+          <select id="model-select">
+            <% models.forEach(model => { %>
+              <option value="<%= model.id %>"><%= model.name %></option>
+            <% }) %>
+          </select>
 
-        <button class="btn" id="load-model-btn">Загрузить</button>
+          <button class="btn" id="load-model-btn">Загрузить</button>
+        </div>
       </div>
+
+      <% include ../partials/navMenu %>
+
+      <% include ../partials/dashboard %>
     </div>
 
 
@@ -44,16 +50,16 @@
 
         <div class="l-model-right">
           <div class="model-state">
-            <h3 class="model-state-name">Lorem ipsum dolor.</h3>
+            <h3 class="model-state-name"></h3>
             <img class="model-state-img">
           </div>
 
-          <div class="l-event-response">
-            <div class="model-event is-hidden">
+          <div class="l-event">
+            <div class="model-event is-hidden slide-top">
               <h3 class="model-event-name"><i class="icon icon-info"></i><span></span></h3>
               <p class="model-event-info"></p>
             </div>
-            <div class="model-response is-hidden"></div>
+            <div class="model-timer is-hidden"></div>
           </div>
         </div>
 

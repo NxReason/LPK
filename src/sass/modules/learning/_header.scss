@@ -1,23 +1,50 @@
 .header {
-  width: 100%;
   background-color: $box-color;
-  height: 70px;
-  display: flex;
-  align-items: center;
   box-shadow: 0 3px 21px 9px rgba(0, 0, 0, .25);
-  position: relative;
 }
 .model-select-box {
-  width: 35%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-
-  padding-left: 10px;
 
   select {
     width: calc(100% - 145px);
+    max-width: 350px;
+    margin: 0 10px;
   }
   button {
     width: 100px;
+  }
+}
+
+.nav-menu {
+  ul {
+    list-style: none;
+    display: flex;
+    width: 100%;
+  }
+  li {
+    display: flex;
+    flex: 1;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    font-size: .9em;
+    text-decoration: none;
+    color: $primary-grey;
+
+    &.active {
+      text-decoration: underline;
+      cursor: default;
+    }
+
+    &:hover:not(.active) {
+      background: $light-grey;
+    }
   }
 }

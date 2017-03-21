@@ -1,0 +1,11 @@
+<% if(user && (user.level === 'dev' || user.level === 'admin')) { %>
+  <div class='l-nav-menu'>
+    <nav class='nav-menu'>
+      <ul>
+        <li><a href="/" <% if (path === '/') { %> class="active" <% } %>>Обучение</a></li>
+        <li><a href="/cad" <% if (path === '/cad') { %> class="active" <% } %>>Создание</a></li>
+        <% if (user.level === 'admin') { %><li><a href="/admin" <% if (path === '/admin') { %> class="active" <% } %>>Админ</a></li><% } %>
+      </ul>
+    </nav>
+  </div>
+<% } %>

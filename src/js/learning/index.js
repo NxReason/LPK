@@ -61,10 +61,10 @@ pubsub.subscribe('new_state', state => {
 });
 pubsub.subscribe('event', event => scene.showEvent(event));
 
-/**
-* Timer (currently for dev mode only)
-*/
-import timer from '../utils/timer';
-document.querySelector('.header').appendChild(timer.node);
-pubsub.subscribe('new_state', state => timer.stop());
-pubsub.subscribe('event', event => timer.start());
+// /**
+// * Timer (currently for dev mode only)
+// */
+// import timer from '../utils/timer';
+// document.querySelector('.header').appendChild(timer.node);
+// pubsub.subscribe('new_state', state => timer.stop());
+// pubsub.subscribe('event', event => timer.start());

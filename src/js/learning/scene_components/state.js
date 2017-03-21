@@ -1,4 +1,5 @@
 import nodeFactory from '../../utils/nodeFactory';
+import timer from '../../utils/timer';
 
 const $name = document.querySelector('.model-state-name');
 const $img = document.querySelector('.model-state-img');
@@ -8,7 +9,8 @@ const $event = document.querySelector('.model-event');
 const $eventHeader = $event.querySelector('.model-event-name span');
 const $eventBody = $event.querySelector('.model-event-info');
 
-const $response = document.querySelector('.model-response');
+const $timerContainer = document.querySelector('.model-timer');
+$timerContainer.appendChild(timer.node);
 
 function set({ name, img, params }) {
   $name.textContent = name;
@@ -42,10 +44,21 @@ function createParameteNode(key, value) {
 function showEvent(event) {
   $eventHeader.textContent = event.name;
   $eventBody.textContent = event.description;
-  $event.classList.remove('is-hidden');
+  $event.classList.remove('is-hidden', 'slide-top');
+  showTimer();
 }
 function hideEvent() {
-  $event.classList.add('is-hidden');
+  $event.classList.add('is-hidden', 'slide-top');
+  hideTimer();
+}
+
+function showTimer() {
+  $timerContainer.classList.remove('is-hidden');
+  timer.start();
+}
+function hideTimer() {
+  $timerContainer.classList.add('is-hidden');
+  timer.stop();
 }
 
 export default {

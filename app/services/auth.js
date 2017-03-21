@@ -1,4 +1,4 @@
-const User = require('../../database/models').User;
+const User = require('../database/models').User;
 const bcrypt = require('bcrypt-nodejs');
 
 const INVALID_USER_MSG = 'Пользователь не найден';

@@ -70,9 +70,7 @@
 }
 
 // Event and response
-.model-event, .model-response {
-  padding: 10px;
-  background-color: lighten($primary-blue, 5%);
+.model-event, .model-timer {
   border-radius: 8px;
   color: $box-color;
   align-self: flex-start;
@@ -83,14 +81,17 @@
   transition: transform .8s, opacity .8s;
 
   &.is-hidden {
-    transform: translateY(-100%);
     opacity: 0;
     z-index: -1;
-
+  }
+  &.slide-top {
+    transform: translateY(-100%);
   }
 }
 .model-event {
   margin-left: 10px;
+  padding: 10px;
+  background-color: lighten($primary-blue, 5%);
 
   &-name {
     padding-bottom: 2px;
