@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         State.belongsTo(models.Model, {
           foreignKey: 'modelId',
-          // onDelete: 'CASCADE',
+          onDelete: 'CASCADE',
           onUpdate: 'CASCADE'
         });
       }

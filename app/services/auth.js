@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const INVALID_USER_MSG = 'Пользователь не найден';
 const INVALID_PASS_MSG = 'Неверный пароль';
 
-function authorize( username, password ) {
+function auth( username, password ) {
   return new Promise(( resolve, reject ) => {
     User.findOne({ where: { username } })
     .then(user => {
@@ -26,4 +26,4 @@ function authorize( username, password ) {
   });
 }
 
-module.exports = authorize;
+module.exports = auth;

@@ -1,12 +1,17 @@
 const router = require('express').Router();
 const { auth } = require('../middleware');
+const { mainController, loginController, modelController } = require('../controllers');
 
 // Allow everyone to send credentials for authorization
-router.use('/login', require('./login'));
-router.use(auth);
+router.post('/login', loginController.logIn);
+// router.use(auth);
 
 // Allow access only to authorized users
-router.use('/', require('./learning'));
-router.use('/models', require('./models'));
+router.get('/', mainController.learning);
+router.get('/models/:id', modelController.getModelById);
+
+
+// TODO delete
+router.get('/test', modelController.getModels);
 
 module.exports = router;

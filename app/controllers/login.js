@@ -1,9 +1,8 @@
-const router = require('express').Router();
-const authorize = require('../services/auth');
+const auth = require('../services/auth')
 
-router.post('/', (req, res) => {
+const logIn = (req, res) => {
   const { username, password } = req.body;
-  authorize( username, password )
+  auth( username, password )
   .then(user => {
     req.session.user = user;
     req.session.authError = null;
@@ -12,6 +11,8 @@ router.post('/', (req, res) => {
     req.session.authError = error;
   })
   .then(() => res.redirect('/'));
-});
+}
 
-module.exports = router;
+module.exports = {
+  logIn
+}

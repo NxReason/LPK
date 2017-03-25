@@ -1,7 +1,6 @@
-const router = require('express').Router();
-const Model = require('../dev/model_stubs');
+const Model = require('../database/models').Model;
 
-router.get('/:id', (req, res) => {
+const getModelById = (req, res) => {
   const id = parseInt(req.params.id);
 
   if (Number.isNaN(id)) {
@@ -15,6 +14,15 @@ router.get('/:id', (req, res) => {
       res.status(400).json({ message: `Can't find model with given id` });
     });
   }
-});
+}
 
-module.exports = router;
+const getModels = (req, res) => {
+  Model.findAll({ include: [{ all: true, nested: true }] })
+    .then(models => res.json(models))
+    .catch(err => res.status(500).json({ err: err.message }));
+}
+
+module.exports = {
+  getModelById,
+  getModels
+}

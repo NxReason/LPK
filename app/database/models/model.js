@@ -31,11 +31,13 @@ module.exports = function(sequelize, DataTypes) {
         });
 
         Model.hasMany(models.State, {
-          as: 'states'
+          foreignKey: 'modelId',
+          as: 'States'
         });
 
         Model.hasMany(models.Tool, {
-          as: 'tools'
+          foreignKey: 'modelId',
+          as: 'Tools'
         })
       }
     }

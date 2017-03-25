@@ -24,7 +24,7 @@ describe('Event', () => {
         });
     });
 
-    it('should created correcty with given foreign key', () => {
+    it('should be created correctly with given foreign key', () => {
       let state_id$ = null;
       return State.create({ name: 'state', img: 'img' })
         .then(state => {
