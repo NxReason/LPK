@@ -1,42 +1,40 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Tools', {
+    return queryInterface.createTable('Actions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: 'Прибор'
+      nextState: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
-      type: {
-        type: Sequelize.ENUM('switch', 'range'),
-        allowNull: false,
-        defaultValue: 'switch'
+      minTime: {
+        type: Sequelize.INTEGER,
       },
-      min: {
+      maxTime: {
         type: Sequelize.INTEGER
       },
-      max: {
-        type: Sequelize.INTEGER
+      inactive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
-      modelId: {
+      stateId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'Models',
+          model: 'States',
           key: 'id',
-          as: 'modelId'
+          as: 'stateId'
         }
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Tools');
+    return queryInterface.dropTable('Actions');
   }
 };

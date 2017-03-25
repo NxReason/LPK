@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'state1.png'
     }
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
@@ -18,6 +19,18 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'modelId',
           onDelete: 'CASCADE',
           onUpdate: 'CASCADE'
+        });
+        State.hasMany(models.Parameter, {
+          foreignKey: 'stateId',
+          as: 'params'
+        });
+        State.hasOne(models.Event, {
+          foreignKey: 'stateId',
+          as: 'event'
+        });
+        State.hasMany(models.Action, {
+          foreignKey: 'stateId',
+          as: 'actions'
         });
       }
     }

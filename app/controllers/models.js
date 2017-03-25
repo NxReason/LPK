@@ -15,7 +15,7 @@ const getModelById = (req, res) => {
     });
   }
 }
-
+// TODO delete
 const getModels = (req, res) => {
   Model.findAll({ include: [{ all: true, nested: true }] })
     .then(models => res.json(models))

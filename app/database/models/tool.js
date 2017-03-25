@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     min: DataTypes.INTEGER,
     max: DataTypes.INTEGER
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         // associations can be defined here

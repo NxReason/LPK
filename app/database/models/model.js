@@ -27,17 +27,18 @@ module.exports = function(sequelize, DataTypes) {
         Model.belongsTo(models.User, {
           foreignKey: 'developerId',
           onDelete: 'SET NULL',
-          onUpdate: 'CASCADE'
+          onUpdate: 'CASCADE',
+          as: 'developer'
         });
 
         Model.hasMany(models.State, {
           foreignKey: 'modelId',
-          as: 'States'
+          as: 'states'
         });
 
         Model.hasMany(models.Tool, {
           foreignKey: 'modelId',
-          as: 'Tools'
+          as: 'tools'
         })
       }
     }

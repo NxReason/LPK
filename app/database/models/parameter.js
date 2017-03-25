@@ -1,21 +1,22 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Event = sequelize.define('Event', {
+  var Parameter = sequelize.define('Parameter', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'Название события'
+      defaultValue: 'Параметр'
     },
-    description: {
-      type: DataTypes.STRING,
+    value: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 'Описание события'
+      defaultValue: 0
     }
   }, {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        Event.belongsTo(models.State, {
+        // associations can be defined here
+        Parameter.belongsTo(models.State, {
           foreignKey: 'stateId',
           onDelete: 'CASCADE',
           onUpdate: 'CASCADE'
@@ -23,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Event;
+  return Parameter;
 };

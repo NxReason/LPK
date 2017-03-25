@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('States', {
+    return queryInterface.createTable('Parameters', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,25 +11,26 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: 'Название состояния'
+        defaultValue: 'Параметр'
       },
-      img: {
-        type: Sequelize.STRING,
-        defaultValue: 'state1.png'
+      value: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
       },
-      modelId: {
+      stateId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'Models',
+          model: 'States',
           key: 'id',
-          as: 'modelId'
+          as: 'stateId'
         }
       }
     });
   },
-  down: function(queryInterface/*, Sequelize*/) {
-    return queryInterface.dropTable('States');
+  down: function(queryInterface, Sequelize) {
+    return queryInterface.dropTable('Parameters');
   }
 };

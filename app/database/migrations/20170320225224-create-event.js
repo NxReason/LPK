@@ -18,14 +18,6 @@ module.exports = {
         allowNull: false,
         defaultValue: 'Описание события'
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       stateId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
