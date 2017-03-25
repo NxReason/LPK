@@ -4,12 +4,17 @@ const { mainController, loginController, modelController } = require('../control
 
 // Allow everyone to send credentials for authorization
 router.post('/login', loginController.logIn);
-// router.use(auth);
+router.use(auth);
 
 // Allow access only to authorized users
-router.get('/', mainController.learning);
+router.get('/', mainController.getLearningView);
 router.get('/models/:id', modelController.getModelById);
 
+// 404
+router.all('*', mainController.handle404);
+
+// Handle uncaught errors
+router.use('*', mainController.handleError)
 
 // TODO delete
 router.get('/test', modelController.getModels);

@@ -1,11 +1,19 @@
 $model-icon-url: '../img/model25.png';
 $info-icon-url: '../img/info25.png';
 $error-icon-url: '../img/error25.png';
+$user-icon-url: '../img/user35.png';
+$exit-icon-url: '../img/exit35.png';
 
 .icon {
   display: inline-block;
   width: 25px;
   height: 25px;
+
+  &-middle {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+  }
 }
 .icon-model {
   background-image: url($model-icon-url);
@@ -15,4 +23,10 @@ $error-icon-url: '../img/error25.png';
 }
 .icon-error {
   background-image: url($error-icon-url);
+}
+.icon-user {
+  background-image: url($user-icon-url);
+}
+.icon-exit {
+  background-image: url($exit-icon-url);
 }

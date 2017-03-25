@@ -60,6 +60,9 @@ input[type="password"] {
 .l-mtop15 {
   margin-top: 15px; }
 
+.l-mr15 {
+  margin-right: 15px; }
+
 .l-login {
   margin-top: 160px;
   display: flex;
@@ -70,6 +73,10 @@ input[type="password"] {
   display: inline-block;
   width: 25px;
   height: 25px; }
+  .icon-middle {
+    display: inline-block;
+    width: 35px;
+    height: 35px; }
 
 .icon-model {
   background-image: url(../img/model25.png); }
@@ -79,6 +86,12 @@ input[type="password"] {
 
 .icon-error {
   background-image: url(../img/error25.png); }
+
+.icon-user {
+  background-image: url(../img/user35.png); }
+
+.icon-exit {
+  background-image: url(../img/exit35.png); }
 
 .btn {
   background-color: #4c58fb;

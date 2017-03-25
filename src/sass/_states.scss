@@ -1,0 +1,6 @@
+.stretch {
+  transition: transform .25s ease-in-out;
+}
+.stretch:hover {
+  transform: scale(1.2, 1.2);
+}

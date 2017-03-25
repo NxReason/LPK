@@ -1,0 +1,44 @@
+.nav-menu {
+  ul {
+    list-style: none;
+    display: flex;
+    width: 100%;
+  }
+  li {
+    display: flex;
+    flex: 1;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    font-size: .9em;
+    text-decoration: none;
+    color: $primary-grey;
+
+    &.active {
+      cursor: default;
+
+      span {
+        height: 1.4em;
+        border-bottom: 2px solid $primary-grey;
+      }
+    }
+
+    &:hover:not(.active) {
+      background: $light-grey;
+    }
+  }
+}
+
+
+.dashboard {
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

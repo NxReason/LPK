@@ -44,6 +44,12 @@ input[type="text"], input[type="password"] {
 input[type="password"] {
   font-size: 1.4em; }
 
+.stretch {
+  transition: transform .25s ease-in-out; }
+
+.stretch:hover {
+  transform: scale(1.2, 1.2); }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -59,6 +65,9 @@ input[type="password"] {
 
 .l-mtop15 {
   margin-top: 15px; }
+
+.l-mr15 {
+  margin-right: 15px; }
 
 .l-header {
   display: flex;
@@ -103,6 +112,10 @@ input[type="password"] {
   display: inline-block;
   width: 25px;
   height: 25px; }
+  .icon-middle {
+    display: inline-block;
+    width: 35px;
+    height: 35px; }
 
 .icon-model {
   background-image: url(../img/model25.png); }
@@ -112,6 +125,12 @@ input[type="password"] {
 
 .icon-error {
   background-image: url(../img/error25.png); }
+
+.icon-user {
+  background-image: url(../img/user35.png); }
+
+.icon-exit {
+  background-image: url(../img/exit35.png); }
 
 .btn {
   background-color: #4c58fb;
@@ -137,6 +156,39 @@ input[type="password"] {
     border: 1px solid #868686;
     transform: none;
     cursor: auto; }
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  width: 100%; }
+
+.nav-menu li {
+  display: flex;
+  flex: 1; }
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  text-align: center;
+  width: 100%;
+  font-size: .9em;
+  text-decoration: none;
+  color: #464646; }
+  .nav-menu a.active {
+    cursor: default; }
+    .nav-menu a.active span {
+      height: 1.4em;
+      border-bottom: 2px solid #464646; }
+  .nav-menu a:hover:not(.active) {
+    background: #eff3f6; }
+
+.dashboard {
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
 
 .box {
   background-color: #ffffff;
@@ -174,31 +226,6 @@ input[type="password"] {
     margin: 0 10px; }
   .model-select-box button {
     width: 100px; }
-
-.nav-menu ul {
-  list-style: none;
-  display: flex;
-  width: 100%; }
-
-.nav-menu li {
-  display: flex;
-  flex: 1; }
-
-.nav-menu a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  text-align: center;
-  width: 100%;
-  font-size: .9em;
-  text-decoration: none;
-  color: #464646; }
-  .nav-menu a.active {
-    text-decoration: underline;
-    cursor: default; }
-  .nav-menu a:hover:not(.active) {
-    background: #eff3f6; }
 
 .model-header-buttons button:first-of-type {
   margin-right: 5px; }
