@@ -11,6 +11,20 @@
   padding: $row-padding;
   justify-content: space-between;
 }
+.l-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+.l-nav-menu {
+  width: 30%;
+  min-width: 300px;
+}
+.l-dashboard {
+  width: 20%;
+}
 // Helpers
 .l-mtop15 {
   margin-top: 15px;

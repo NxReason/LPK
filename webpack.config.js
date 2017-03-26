@@ -13,6 +13,7 @@ module.exports = {
   entry: {
     learning: './learning/index.js',
     login: './login/index.js',
+    cad: './cad/index.js'
   },
 
   output: {

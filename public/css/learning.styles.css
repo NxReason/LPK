@@ -63,12 +63,6 @@ input[type="password"] {
   padding: 12px;
   justify-content: space-between; }
 
-.l-mtop15 {
-  margin-top: 15px; }
-
-.l-mr15 {
-  margin-right: 15px; }
-
 .l-header {
   display: flex;
   justify-content: space-between;
@@ -76,16 +70,22 @@ input[type="password"] {
   height: 70px;
   width: 100%; }
 
-.l-model-select {
-  display: flex;
-  width: 40%; }
-
 .l-nav-menu {
   width: 30%;
   min-width: 300px; }
 
 .l-dashboard {
   width: 20%; }
+
+.l-mtop15 {
+  margin-top: 15px; }
+
+.l-mr15 {
+  margin-right: 15px; }
+
+.l-model-select {
+  display: flex;
+  width: 40%; }
 
 .l-main {
   width: calc(60% - 20px); }
@@ -157,6 +157,10 @@ input[type="password"] {
     transform: none;
     cursor: auto; }
 
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 3px 21px 9px rgba(0, 0, 0, 0.25); }
+
 .nav-menu ul {
   list-style: none;
   display: flex;
@@ -212,10 +216,6 @@ input[type="password"] {
 .content {
   display: none;
   align-items: flex-start; }
-
-.header {
-  background-color: #ffffff;
-  box-shadow: 0 3px 21px 9px rgba(0, 0, 0, 0.25); }
 
 .model-select-box {
   width: 100%;

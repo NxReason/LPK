@@ -1,4 +1,5 @@
 const Model = require('../database/models').Model;
+const winston = require('winston');
 
 const getLearningView = (req, res) => {
   Model.findAll({ attributes: ['id', 'name' ]})
@@ -6,16 +7,17 @@ const getLearningView = (req, res) => {
     .catch(err => { res.status(500).render('serverError', { message: `Can't get data about models` }) });
 }
 
-const handleError = (err, req, res, next) => {
-  res.status(500).render('serverError', { message: `Oops, something went wrong.` });
-}
-
 const handle404 = (req, res) => {
   res.status(404).render('404');
 }
 
+const handleError = (err, req, res, next) => {
+  winston.log('error', err.message);
+  res.status(500).render('serverError', { message: `Oops, something went wrong.` });
+}
+
 module.exports = {
   getLearningView,
-  handleError,
-  handle404
+  handle404,
+  handleError
 }

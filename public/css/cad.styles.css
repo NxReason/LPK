@@ -44,6 +44,12 @@ input[type="text"], input[type="password"] {
 input[type="password"] {
   font-size: 1.4em; }
 
+.stretch {
+  transition: transform .25s ease-in-out; }
+
+.stretch:hover {
+  transform: scale(1.2, 1.2); }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -76,12 +82,6 @@ input[type="password"] {
 
 .l-mr15 {
   margin-right: 15px; }
-
-.l-login {
-  margin-top: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
 
 .icon {
   display: inline-block;
@@ -132,39 +132,41 @@ input[type="password"] {
     transform: none;
     cursor: auto; }
 
-.login-form {
-  width: 400px; }
-  .login-form fieldset {
-    padding: 20px 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border: 2px solid #4c58fb;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); }
-  .login-form legend {
-    margin-left: 20px;
-    padding: 5px 5px;
-    border: 2px solid #4c58fb;
-    background-color: #fff; }
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 3px 21px 9px rgba(0, 0, 0, 0.25); }
 
-.field {
-  margin-bottom: 20px;
+.nav-menu ul {
+  list-style: none;
   display: flex;
-  align-items: center; }
-  .field label {
-    width: 25%;
-    cursor: pointer; }
-  .field input[type="text"], .field input[type="password"] {
-    width: 75%;
-    height: 25px; }
+  width: 100%; }
 
-.login-error {
-  margin-top: 20px;
+.nav-menu li {
   display: flex;
-  align-items: center; }
-  .login-error p {
-    color: #ff3030;
-    font-weight: bold;
-    margin-left: 10px; }
+  flex: 1; }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvbG9naW4uc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  text-align: center;
+  width: 100%;
+  font-size: .9em;
+  text-decoration: none;
+  color: #464646; }
+  .nav-menu a.active {
+    cursor: default; }
+    .nav-menu a.active span {
+      height: 1.4em;
+      border-bottom: 2px solid #464646; }
+  .nav-menu a:hover:not(.active) {
+    background: #eff3f6; }
+
+.dashboard {
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY2FkLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
