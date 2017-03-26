@@ -1,5 +1,4 @@
 const Model = require('../database/models').Model;
-const winston = require('winston');
 
 const getLearningView = (req, res) => {
   Model.findAll({ attributes: ['id', 'name' ]})
@@ -12,12 +11,12 @@ const getAdminView = (req, res) => {
 }
 
 const handle404 = (req, res) => {
-  res.status(404).render('404');
+  res.status(404).render('error', { code: 404, message: 'Запрашиваемой страницы не существует.' });
 }
 
 const handleError = (err, req, res, next) => {
-  winston.log('error', err.message);
-  res.status(500).render('serverError', { message: `Oops, something went wrong.` });
+  console.log(err.message);
+  res.status(500).render('error', { code: 505, message: `Что-то пошло не так` });
 }
 
 module.exports = {

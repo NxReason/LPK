@@ -1,19 +1,32 @@
 const router = require('express').Router();
-const { auth } = require('../middleware');
-const { mainController, loginController, modelController, cadController } = require('../controllers');
+const { auth, grantAccess } = require('../middleware');
+const {
+  mainController,
+  loginController,
+  modelController,
+  cadController,
+  userController
+} = require('../controllers');
 
 // Allow everyone to send credentials for authorization
+router.get('/login', loginController.getLogInView);
 router.post('/login', loginController.logIn);
-router.use(auth);
 
 // Allow access only to authorized users
+router.use(auth);
 router.get('/', mainController.getLearningView);
 router.get('/models/:id', modelController.getModelById);
 
+router.get('/user', userController.getUserView);
+
+router.get('/logout', loginController.logOut);
+
 // Access to developers and admins
+router.use(grantAccess('dev', 'admin'));
 router.get('/cad', cadController.getCadView);
 
 // Access to admins
+router.use(grantAccess('admin'));
 router.get('/admin', mainController.getAdminView);
 
 // TODO delete

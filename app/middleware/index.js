@@ -1,9 +1,11 @@
 const session = require('./session');
 const auth = require('./auth');
+const grantAccess = require('./grantAccess');
 
 const middlewares = {
   session,
-  auth
+  auth,
+  grantAccess
 }
 
 module.exports = middlewares;

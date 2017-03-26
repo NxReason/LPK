@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+  <title>Document</title>
+
+  <link rel="stylesheet" href="css/admin.styles.css">
+</head>
+<body>
+  <div class="l-content">
+    <div class="l-row l-header header">
+      <% include ../partials/navMenu %>
+      <% include ../partials/dashboard %>
+    </div>
+
+    <div class="l-user user">
+      <ul class="user-data">
+        <li><span class="user-data-key">Username:</span><span class="user-data-value"><%= user.username %></span></li>
+        <li><span class="user-data-key">Имя:</span><span class="user-data-value"><%= user.firstname %></span></li>
+        <li><span class="user-data-key">Фамилия:</span><span class="user-data-value"><%= user.lastname %></span></li>
+        <li><span class="user-data-key">E-mail:</span><span class="user-data-value"><%= user.email %></span></li>
+        <li><span class="user-data-key">Статус:</span><span class="user-data-value"><%= user.level %></span></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

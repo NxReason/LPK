@@ -15,6 +15,7 @@ function auth( username, password ) {
 
           resolve({
             id: user.id,
+            username: user.username,
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,

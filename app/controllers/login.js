@@ -1,5 +1,17 @@
 const auth = require('../services/auth')
 
+const getLogInView = (req, res) => {
+  if ( req.session.user ) {
+    res.redirect('/');
+  } else {
+    // Clean auth error field to hide error message in case when
+    // user refreshes page etc.
+    const error = req.session.authError;
+    req.session.authError = null;
+    res.render('login', { error });
+  }
+}
+
 const logIn = (req, res) => {
   const { username, password } = req.body;
   auth( username, password )
@@ -10,9 +22,19 @@ const logIn = (req, res) => {
   .catch(error => {
     req.session.authError = error;
   })
-  .then(() => res.redirect('/'));
+  .then(() => {
+    const path = req.session.requestedPath || '/';
+    req.session.requestedPath = null;
+    res.redirect(path);
+  });
+}
+
+const logOut = (req, res) => {
+  req.session.destroy(() => res.redirect('/'))
 }
 
 module.exports = {
-  logIn
+  getLogInView,
+  logIn,
+  logOut
 }

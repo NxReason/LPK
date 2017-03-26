@@ -1,13 +1,13 @@
-<% if(user && (user.level === 'dev' || user.level === 'admin')) { %>
-  <div class='l-nav-menu'>
-    <nav class='nav-menu'>
-      <ul>
-        <li><a href="/" <% if (path === '/') { %> class="active" <% } %> ><span>Обучение</span></a></li>
-        <li><a href="/cad" <% if (path === '/cad') { %> class="active" <% } %> ><span>Создание</span></a></li>
-        <% if (user.level === 'admin') { %>
-          <li><a href="/admin" <% if (path === '/admin') { %> class="active" <% } %> ><span>Админ</span></a></li>
-        <% } %>
-      </ul>
-    </nav>
-  </div>
-<% } %>
+<div class='l-nav-menu'>
+  <nav class='nav-menu'>
+    <ul>
+      <li><a href="/" <% if (path === '/') { %> class="active" <% } %> ><span>Обучение</span></a></li>
+      <%  if (user.level === 'dev' || user.level === 'admin') { %>
+      <li><a href="/cad" <% if (path === '/cad') { %> class="active" <% } %> ><span>Создание</span></a></li>
+      <% } %>
+      <% if (user.level === 'admin') { %>
+        <li><a href="/admin" <% if (path === '/admin') { %> class="active" <% } %> ><span>Админ</span></a></li>
+      <% } %>
+    </ul>
+  </nav>
+</div>
