@@ -83,12 +83,6 @@ input[type="password"] {
 .l-mr15 {
   margin-right: 15px; }
 
-.l-cad {
-  display: flex;
-  width: 95%;
-  height: 500px;
-  margin: 30px auto; }
-
 .icon {
   display: inline-block;
   width: 25px;
@@ -175,8 +169,4 @@ input[type="password"] {
   justify-content: flex-end;
   align-items: center; }
 
-.cad {
-  background-color: #fff;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25); }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY2FkLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvYWRtaW4uc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

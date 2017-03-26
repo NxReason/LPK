@@ -7,19 +7,19 @@ module.exports = {
     const usersRaw = [
       {
         id: 1,
-        username: 'Admin',
+        username: 'root',
         firstname: 'John',
         lastname: 'Doe',
-        password: 'verysecret',
+        password: 'root',
         email: 'admin@mail.com',
         level: 'admin'
       },
       {
         id: 2,
-        username: 'DeveloperOne',
+        username: 'dev',
         firstname: 'Jane',
         lastname: 'Doe',
-        password: 'secret',
+        password: 'dev',
         email: 'dev@company.com',
         level: 'dev'
       },
@@ -34,10 +34,10 @@ module.exports = {
       },
       {
         id: 4,
-        username: 'UserOne',
+        username: 'user',
         firstname: 'Alonzo',
         lastname: 'Church',
-        password: 'wowagain',
+        password: 'user',
         email: 'user@mail.com',
         level: 'user'
       },
@@ -46,7 +46,7 @@ module.exports = {
         username: 'UserTwo',
         firstname: 'Haskell',
         lastname: 'Curry',
-        password: 'iamout',
+        password: 'wow',
         email: 'other@mail.com',
         level: 'user'
       }

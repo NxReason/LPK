@@ -7,6 +7,10 @@ const getLearningView = (req, res) => {
     .catch(err => { res.status(500).render('serverError', { message: `Can't get data about models` }) });
 }
 
+const getAdminView = (req, res) => {
+  res.render('admin', { user: req.session.user, path: req.path });
+}
+
 const handle404 = (req, res) => {
   res.status(404).render('404');
 }
@@ -18,6 +22,7 @@ const handleError = (err, req, res, next) => {
 
 module.exports = {
   getLearningView,
+  getAdminView,
   handle404,
   handleError
 }

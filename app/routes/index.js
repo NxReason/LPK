@@ -9,7 +9,12 @@ router.use(auth);
 // Allow access only to authorized users
 router.get('/', mainController.getLearningView);
 router.get('/models/:id', modelController.getModelById);
+
+// Access to developers and admins
 router.get('/cad', cadController.getCadView);
+
+// Access to admins
+router.get('/admin', mainController.getAdminView);
 
 // TODO delete
 router.get('/test', modelController.getModels);
