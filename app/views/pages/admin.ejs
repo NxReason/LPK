@@ -4,7 +4,7 @@
   <% include ../partials/head %>
   <title>Document</title>
 
-  <link rel="stylesheet" href="css/admin.styles.css">
+  <link rel="stylesheet" href="css/common.styles.css">
 </head>
 <body>
   <div class="l-content">
@@ -12,8 +12,16 @@
       <% include ../partials/navMenu %>
       <% include ../partials/dashboard %>
     </div>
+
+    <div class="l-admin">
+      <ul class='admin-sub-menu'>
+        <li><a href="/admin/users"><i class="icon-large icon-users"></i>Пользователи</a></li>
+        <li><a href="/admin/models"><i class="icon-large icon-graph"></i>Модели</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <script src="js/admin.bundle.js" type="text/javascript"></script>
+  <script src="js/common.bundle.js" type="text/javascript"></script>
 </body>
 </html>

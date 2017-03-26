@@ -71,6 +71,11 @@ input[type="password"] {
 .l-dashboard {
   width: 20%; }
 
+.l-user, .l-admin {
+  width: 95%;
+  margin: 25px auto;
+  display: flex; }
+
 .l-mtop15 {
   margin-top: 15px; }
 
@@ -91,6 +96,10 @@ input[type="password"] {
     display: inline-block;
     width: 35px;
     height: 35px; }
+  .icon-large {
+    display: inline-block;
+    width: 50px;
+    height: 50px; }
 
 .icon-model {
   background-image: url(../img/model25.png); }
@@ -106,6 +115,14 @@ input[type="password"] {
 
 .icon-exit {
   background-image: url(../img/exit35.png); }
+
+.icon-users {
+  background-image: url(../img/users50.png); }
+
+.icon-graph {
+  background-image: url(../img/graph50.png);
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .btn {
   background-color: #4c58fb;

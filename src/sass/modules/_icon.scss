@@ -3,6 +3,8 @@ $info-icon-url: '../img/info25.png';
 $error-icon-url: '../img/error25.png';
 $user-icon-url: '../img/user35.png';
 $exit-icon-url: '../img/exit35.png';
+$users-icon-url: '../img/users50.png';
+$graph-icon-url: '../img/graph50.png';
 
 .icon {
   display: inline-block;
@@ -13,6 +15,12 @@ $exit-icon-url: '../img/exit35.png';
     display: inline-block;
     width: 35px;
     height: 35px;
+  }
+
+  &-large {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
   }
 }
 .icon-model {
@@ -29,4 +37,12 @@ $exit-icon-url: '../img/exit35.png';
 }
 .icon-exit {
   background-image: url($exit-icon-url);
+}
+.icon-users {
+  background-image: url($users-icon-url);
+}
+.icon-graph {
+  background-image: url($graph-icon-url);
+  background-repeat: no-repeat;
+  background-position: center;
 }

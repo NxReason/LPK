@@ -14,7 +14,7 @@ module.exports = {
     learning: './learning/index.js',
     login: './login/index.js',
     cad: './cad/index.js',
-    admin: './admin/index.js'
+    common: './common/index.js'
   },
 
   output: {

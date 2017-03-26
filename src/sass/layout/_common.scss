@@ -25,6 +25,11 @@
 .l-dashboard {
   width: 20%;
 }
+.l-user, .l-admin {
+  width: 95%;
+  margin: 25px auto;
+  display: flex;
+}
 // Helpers
 .l-mtop15 {
   margin-top: 15px;

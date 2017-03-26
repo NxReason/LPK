@@ -1,0 +1,24 @@
+.user {
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px $shadow-color;
+}
+.user-data {
+  padding: 20px;
+  width: 100%;
+
+  li {
+    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+  }
+
+  &-key {
+    width: 8%;
+    text-align: right;
+  }
+  &-value {
+    width: 92%;
+    padding-left: 20px;
+    font-weight: bold;
+  }
+}
