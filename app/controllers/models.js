@@ -1,4 +1,4 @@
-const Model = require('../database/models').Model;
+const { Model, State, Tool } = require('../database/models');
 
 const getModelById = (req, res) => {
   const id = parseInt(req.params.id);
@@ -6,7 +6,7 @@ const getModelById = (req, res) => {
   if (Number.isNaN(id)) {
     res.status(400).json({ message: 'Model id should be number' });
   } else {
-    Model.findById(id)
+    Model.findById(id, { include: [ { all: true, nested: true } ]})
     .then(model => {
       res.status(200).json(model);
     })

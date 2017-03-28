@@ -9,6 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     img: {
       type: DataTypes.STRING,
       defaultValue: 'state1.png'
+    },
+    last: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
     timestamps: false,

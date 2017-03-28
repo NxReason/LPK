@@ -8,7 +8,7 @@ class Action {
       this.tools = [];
     } else {
       this.inactive = false;
-      this.tools = data.tools;
+      this.tools = this.initTools(data.tools);
     }
 
   }
@@ -23,17 +23,14 @@ class Action {
   }
 
   rightData(data = []) {
-    if(!Array.isArray(data)) { throw new TypeError(`Invalid type of data from tools. Expected array, got ${typeof data}`); }
     return this.tools.every(tool => {
       // Если среди полученных итемов нет, того который есть в данном экшене
       const checkTool = data.find(obj => obj.id == tool.id);
       if (!checkTool) { return false; }
 
-      // Для переключателя
-      if (typeof tool.value === 'boolean') { return checkTool.value === tool.value; }
+      if (tool.type === 'switch') { return checkTool.value === tool.boolValue; }
 
-      // Для ренджа
-      if (Array.isArray(tool.value)) { return this.includesValue(checkTool.value, tool.value) }
+      if (tool.type === 'range') { return this.includesValue(checkTool.value, [ tool.minValue, tool.maxValue ]) }
 
       return false;
     });
@@ -47,6 +44,18 @@ class Action {
   rightTime(time) {
     if (typeof time !== 'number') throw new TypeError('Time should be integer (ms)');
     return (time >= this.minTime) && (time <= this.maxTime);
+  }
+
+  initTools(tools) {
+    return tools.map(tool => {
+      return {
+        id: tool.id,
+        type: tool.type,
+        minValue: tool.ActionTool.minValue,
+        maxValue: tool.ActionTool.maxValue,
+        boolValue: tool.ActionTool.boolValue
+      }
+    });
   }
 }
 

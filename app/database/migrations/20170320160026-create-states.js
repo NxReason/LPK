@@ -17,6 +17,11 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'state1.png'
       },
+      last: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
       modelId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

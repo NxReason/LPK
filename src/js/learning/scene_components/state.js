@@ -18,11 +18,10 @@ function set({ name, img, params }) {
   setParameters(params);
 }
 
-function setParameters(params) {
+function setParameters(params = []) {
   const frag = document.createDocumentFragment();
-  for (let key in params) {
-    frag.appendChild(createParameteNode(key, params[key]));
-  }
+  params.forEach(param => frag.appendChild(createParameteNode(param.name, param.value)));
+
   $params.innerHTML = "";
   $params.appendChild(frag);
 }

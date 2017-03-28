@@ -1,4 +1,33 @@
 .cad {
   background-color: #fff;
   box-shadow: 0 0 3px 3px $shadow-color;
+  overflow: scroll;
+}
+.cad::-webkit-scrollbar {
+  width: 10px; height: 10px;
+  background-color: $light-grey;
+}
+
+.cad::-webkit-scrollbar-thumb {
+  background-color: $shadow-color;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+$gridSize: 75px;
+$subdivisions: 5;
+.cad-pane {
+  width: 3000px;
+  height: 1000px;
+  background-image:
+    linear-gradient(rgba($primary-grey, .5) 1px, transparent 1px), /*sub horiz*/
+    linear-gradient($primary-grey  1px, transparent 1px), /*main horiz*/
+    linear-gradient(90deg, rgba($primary-grey, .4) 1px, transparent 1px), /*sub vert*/
+    linear-gradient(90deg, rgba($primary-grey, .6) 1px, transparent 1px) /*main vert*/
+    ;
+  background-size:
+    $gridSize / $subdivisions $gridSize / $subdivisions,
+    $gridSize $gridSize,
+    $gridSize / $subdivisions $gridSize / $subdivisions,
+    $gridSize $gridSize
 }

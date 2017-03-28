@@ -89,7 +89,7 @@ input[type="password"] {
   margin-right: 15px; }
 
 .l-cad {
-  display: flex;
+  display: block;
   width: 95%;
   height: 500px;
   margin: 30px auto; }
@@ -194,6 +194,23 @@ input[type="password"] {
 
 .cad {
   background-color: #fff;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  overflow: scroll; }
+
+.cad::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #eff3f6; }
+
+.cad::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  cursor: pointer; }
+
+.cad-pane {
+  width: 3000px;
+  height: 1000px;
+  background-image: linear-gradient(rgba(70, 70, 70, 0.5) 1px, transparent 1px), linear-gradient(#464646 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.6) 1px, transparent 1px);
+  background-size: 15px 15px, 75px 75px, 15px 15px, 75px 75px; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY2FkLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

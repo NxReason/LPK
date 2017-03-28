@@ -105,18 +105,21 @@ module.exports = {
         id: 1,
         name: 'State 1',
         img: 'img/state1.png',
+        last: false,
         modelId: 1
       },
       {
         id: 2,
         name: 'State 2',
         img: 'img/state2.png',
+        last: false,
         modelId: 1
       },
       {
         id: 3,
         name: 'State 3',
         img: 'img/state3.png',
+        last: true,
         modelId: 1
       }
     ];
