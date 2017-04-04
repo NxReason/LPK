@@ -1,8 +1,9 @@
 const join = require('path').join;
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const logger = require('morgan')
+const logger = require('morgan');
+
+const app = express();
 
 const { port } = require('./app/config');
 
@@ -25,12 +26,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(router);
 
-db.sequelize.sync()
-.then(() => serverListen(app, port));
-
-function serverListen(app, port) {
-  app.listen(port, err => {
-    if(err) throw err;
+function serverListen() {
+  app.listen(port, (err) => {
+    if (err) throw err;
     console.log(`Server listening on port: ${port}`);
   });
 }
+db.sequelize.sync()
+.then(() => serverListen());

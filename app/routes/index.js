@@ -5,7 +5,7 @@ const {
   loginController,
   modelController,
   cadController,
-  userController
+  userController,
 } = require('../controllers');
 
 // Allow everyone to send credentials for authorization
@@ -36,6 +36,6 @@ router.get('/test', modelController.getModels);
 router.all('*', mainController.handle404);
 
 // Handle uncaught errors
-router.use('*', mainController.handleError)
+router.use('*', mainController.handleError);
 
 module.exports = router;

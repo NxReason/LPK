@@ -195,7 +195,8 @@ input[type="password"] {
 .cad {
   background-color: #fff;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
-  overflow: scroll; }
+  overflow: scroll;
+  position: relative; }
 
 .cad::-webkit-scrollbar {
   width: 10px;
@@ -212,5 +213,37 @@ input[type="password"] {
   height: 1000px;
   background-image: linear-gradient(rgba(70, 70, 70, 0.5) 1px, transparent 1px), linear-gradient(#464646 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.6) 1px, transparent 1px);
   background-size: 15px 15px, 75px 75px, 15px 15px, 75px 75px; }
+
+.cad-menu {
+  float: left;
+  height: 100%;
+  border: 1px solid #000;
+  background-color: #fff;
+  position: absolute; }
+
+.cad-menu-tab {
+  background: blue;
+  color: #fff; }
+
+.cad-menu-button {
+  color: #464646;
+  background: #fff;
+  transform: rotate(-90deg);
+  transform-origin: top left 0;
+  position: absolute;
+  width: 125px;
+  height: 25px;
+  top: 125px;
+  font-size: .9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #464646;
+  border-left: 2px solid #464646;
+  cursor: pointer;
+  transition: background .15s ease-in-out, font-weight .15s ease-in-out; }
+  .cad-menu-button:hover {
+    background: #eff3f6;
+    font-weight: bold; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY2FkLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

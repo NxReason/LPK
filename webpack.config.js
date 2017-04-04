@@ -1,8 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const isDev = process.env.NODE_ENV == 'development';
-
 const extractSass = new ExtractTextPlugin({
   filename: '../css/[name].styles.css',
 });
@@ -14,7 +12,7 @@ module.exports = {
     learning: './learning/index.js',
     login: './login/index.js',
     cad: './cad/index.js',
-    common: './common/index.js'
+    common: './common/index.js',
   },
 
   output: {
@@ -27,48 +25,48 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'src/js')
+          path.resolve(__dirname, 'src/js'),
         ],
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015']
-            }
-          }
-        ]
+              presets: ['es2015'],
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, 'src/sass')
+          path.resolve(__dirname, 'src/sass'),
         ],
         use: extractSass.extract({
           use: [
             'css-loader',
-            'sass-loader'
+            'sass-loader',
           ],
-          fallback: 'style-loader'
-        })
+          fallback: 'style-loader',
+        }),
       },
       {
         test: /.(jpe?g|gif|png|svg)$/i,
         include: [
-          path.resolve(__dirname, 'src/img')
+          path.resolve(__dirname, 'src/img'),
         ],
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '../img/[name].[ext]'
-            }
-          }
+              name: '../img/[name].[ext]',
+            },
+          },
         ],
-      }
-    ]
+      },
+    ],
   },
 
   plugins: [
-    extractSass
-  ]
-}
+    extractSass,
+  ],
+};
