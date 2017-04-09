@@ -50,6 +50,12 @@ input[type="password"] {
 .stretch:hover {
   transform: scale(1.2, 1.2); }
 
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -88,16 +94,35 @@ input[type="password"] {
 .l-mr15 {
   margin-right: 15px; }
 
+.l-mb15 {
+  margin-bottom: 15px; }
+
 .l-cad {
-  display: block;
-  width: 95%;
-  height: 500px;
-  margin: 30px auto; }
+  width: 96%;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap; }
+
+.l-cad-props-tab {
+  flex: 1;
+  height: 90vh;
+  min-height: 400px;
+  margin-right: 10px;
+  padding: 5px; }
+
+.l-cad-wrapper {
+  flex: 3;
+  min-height: 400px;
+  height: 90vh; }
 
 .icon {
   display: inline-block;
   width: 25px;
   height: 25px; }
+  .icon-small {
+    display: inline-block;
+    width: 15px;
+    height: 15px; }
   .icon-middle {
     display: inline-block;
     width: 35px;
@@ -119,6 +144,12 @@ input[type="password"] {
 .icon-user {
   background-image: url(../img/user35.png); }
 
+.icon-add {
+  background-image: url(../img/add25.png); }
+
+.icon-edit {
+  background-image: url(../img/edit25.png); }
+
 .icon-exit {
   background-image: url(../img/exit35.png); }
 
@@ -129,6 +160,12 @@ input[type="password"] {
   background-image: url(../img/graph50.png);
   background-repeat: no-repeat;
   background-position: center; }
+
+.icon-close {
+  background-image: url(../img/close15.png); }
+
+.icon-forward {
+  background-image: url(../img/forward25.png); }
 
 .btn {
   background-color: #4c58fb;
@@ -192,18 +229,18 @@ input[type="password"] {
   justify-content: flex-end;
   align-items: center; }
 
-.cad {
+.cad-wrapper {
   background-color: #fff;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
   overflow: scroll;
   position: relative; }
 
-.cad::-webkit-scrollbar {
+.cad-wrapper::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: #eff3f6; }
 
-.cad::-webkit-scrollbar-thumb {
+.cad-wrapper::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   cursor: pointer; }
@@ -211,39 +248,152 @@ input[type="password"] {
 .cad-pane {
   width: 3000px;
   height: 1000px;
-  background-image: linear-gradient(rgba(70, 70, 70, 0.5) 1px, transparent 1px), linear-gradient(#464646 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.6) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(70, 70, 70, 0.25) 1px, transparent 1px), linear-gradient(rgba(70, 70, 70, 0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 70, 70, 0.35) 1px, transparent 1px);
   background-size: 15px 15px, 75px 75px, 15px 15px, 75px 75px; }
 
-.cad-menu {
-  float: left;
-  height: 100%;
-  border: 1px solid #000;
-  background-color: #fff;
-  position: absolute; }
+.cad-buttons {
+  display: flex; }
 
-.cad-menu-tab {
-  background: blue;
-  color: #fff; }
-
-.cad-menu-button {
+.cad-button {
   color: #464646;
   background: #fff;
-  transform: rotate(-90deg);
-  transform-origin: top left 0;
-  position: absolute;
-  width: 125px;
-  height: 25px;
-  top: 125px;
   font-size: .9em;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #464646;
-  border-left: 2px solid #464646;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-right: 10px;
   cursor: pointer;
-  transition: background .15s ease-in-out, font-weight .15s ease-in-out; }
-  .cad-menu-button:hover {
-    background: #eff3f6;
-    font-weight: bold; }
+  transition: background .25s ease-in-out; }
+  .cad-button:hover {
+    color: #fff;
+    background-color: #4c58fb; }
+    .cad-button:hover .icon-add {
+      background-image: url(../img/add_white25.png); }
+    .cad-button:hover .icon-edit {
+      background-image: url(../img/edit_white25.png); }
+
+.cad-props-tab {
+  background: #fff;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column; }
+  .cad-props-tab.is-hidden {
+    display: none; }
+  .cad-props-tab .panel-header {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #464646; }
+  .cad-props-tab .icon-small {
+    cursor: pointer; }
+
+.panel-section {
+  display: flex;
+  flex-direction: column;
+  font-size: .65em;
+  flex-shrink: 0;
+  padding: 10px 0; }
+  .panel-section label {
+    margin-bottom: 5px; }
+  .panel-section input {
+    border: none;
+    border-bottom: 1px solid #939393;
+    text-align: center;
+    padding-bottom: 2px; }
+  .panel-section input:focus {
+    outline: none; }
+
+.panel-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .panel-sub .sub-header {
+    font-size: .9rem;
+    display: flex;
+    align-items: center; }
+    .panel-sub .sub-header .icon {
+      margin-right: 5px;
+      cursor: pointer; }
+  .panel-sub .panel-custom-icon {
+    background-image: url(../img/add_white25.png);
+    background-color: #4c58fb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out; }
+    .panel-sub .panel-custom-icon:hover {
+      background-color: #1a29fa; }
+
+.panel-items-content {
+  flex-shrink: 1;
+  overflow-y: scroll;
+  display: block;
+  min-height: 120px;
+  padding-right: 15px; }
+
+.panel-param {
+  display: flex;
+  padding-bottom: 15px; }
+  .panel-param input:first-child {
+    margin-right: 5px;
+    width: calc(67% - 5px);
+    text-align: left; }
+  .panel-param input:last-child {
+    width: 33%;
+    text-align: right; }
+
+.panel-tool {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #797979; }
+  .panel-tool-name {
+    background-color: #4c58fb;
+    color: #fff;
+    border-radius: 5px;
+    align-self: flex-start;
+    padding: 3px; }
+  .panel-tool-type {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+    .panel-tool-type label {
+      padding-top: 3px;
+      margin-right: 10px; }
+    .panel-tool-type select {
+      font-size: .9rem; }
+  .panel-tool-range-values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px; }
+    .panel-tool-range-values div {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      width: 47%; }
+
+.cad-state {
+  width: 150px;
+  min-height: 60px;
+  background-color: #fff;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer; }
+  .cad-state-name {
+    text-align: center; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY2FkLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

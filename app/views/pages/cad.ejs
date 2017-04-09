@@ -13,17 +13,205 @@
       <% include ../partials/dashboard %>
     </div>
 
-    <div class="l-cad cad">
-      <div class="cad-menu">
-        <div class="cad-menu-tab"></div>
-        <div class="cad-menu-tab"></div>
+    <div class="l-cad">
 
-        <div class="cad-menu-button">Параметры</div>
+      <div class="l-row">
+        <div class="cad-buttons">
+          <div class="cad-button" id="new-state-btn"><i class="icon icon-add"></i>Добавить состояние</div>
+          <div class="cad-button" id="model-props-btn"><i class="icon icon-edit"></i>Свойства модели</div>
+        </div>
       </div>
 
+      <div class="l-row">
+        <div class="l-cad-props-tab cad-props-tab is-hidden" id="model-props-panel">
+          <h5 class="panel-header">Свойства модели <i class="icon-small icon-close"></i></h5>
 
-      <div class="cad-pane"></div>
+          <div class="panel-section">
+            <label for="model-name-input">Название модели</label>
+            <input type="text" id="model-name-input">
+          </div>
+
+          <div class="panel-section">
+            <label for="break-time-input">Перерыв (сек.)</label>
+            <input type="text" id="break-time-input">
+          </div>
+
+          <div class="panel-section">
+            <label for="steps-input">Количество шагов</label>
+            <input type="text" id="steps-input">
+          </div>
+
+          <!-- Add parameters -->
+          <div class="panel-section">
+            <div class="panel-sub">
+              <p class='sub-header'><i class="icon icon-forward"></i>Параметры:</p><i class="icon panel-custom-icon"></i>
+            </div>
+          </div>
+
+          <div class="panel-section panel-items-content">
+            <div class="panel-sub l-mb15">
+              <span>Название параметра</span>
+              <span>-</span>
+              <span class='text-right'>Значение по умолчанию</span>
+            </div>
+
+            <!-- Should be created via js -->
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+
+            <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div>
+            <!-- End of dynamic section -->
+          </div>
+
+          <!-- Add tools -->
+          <div class="panel-section">
+            <div class="panel-sub">
+              <p class='sub-header'><i class="icon icon-forward"></i>Приборы:</p><i class="icon panel-custom-icon"></i>
+            </div>
+          </div>
+
+          <div class="panel-section panel-items-content">
+
+            <div class="panel-tool">
+              <label for="tool" class="panel-tool-name">Название прибора:</label>
+              <input type="text" id="tool" name="tool">
+
+              <div class="panel-tool-type">
+                <label for="">Тип прибора</label>
+                <select class="" name="tool-type">
+                  <option value="switch">Switch</option>
+                  <option value="range">Range</option>
+                </select>
+              </div>
+
+              <div class="panel-tool-range-values">
+                <div>
+                  <label for="range-min-1">Минимум</label>
+                  <input type="text" id="range-min-1">
+                </div>
+
+                <div>
+                  <label for="range-max-1">Максимум</label>
+                  <input type="text" id="range-max-1">
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-tool">
+              <label for="tool" class="panel-tool-name">Название прибора:</label>
+              <input type="text" id="tool" name="tool">
+
+              <div class="panel-tool-type">
+                <label for="">Тип прибора</label>
+                <select class="" name="tool-type">
+                  <option value="switch" checked>Switch</option>
+                  <option value="range">Range</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- State panel -->
+        <div class="l-cad-props-tab cad-props-tab is-hidden" id="new-state-panel">
+          <h5 class="panel-header">
+            Свойства состояния <i class="icon-small icon-close"></i>
+          </h5>
+        </div>
+
+        <div class="l-cad-wrapper cad-wrapper" id="cad-wrapper">
+          <div class="cad-pane" id="cad-pane"></div>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
   <script src="js/cad.bundle.js" type="text/javascript"></script>

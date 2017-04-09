@@ -23,9 +23,7 @@ const logIn = (req, res) => {
     req.session.authError = error;
   })
   .then(() => {
-    const path = req.session.requestedPath || '/';
-    req.session.requestedPath = null;
-    res.redirect(path);
+    res.redirect('/');
   });
 };
 

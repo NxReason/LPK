@@ -50,6 +50,12 @@ input[type="password"] {
 .stretch:hover {
   transform: scale(1.2, 1.2); }
 
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -88,6 +94,9 @@ input[type="password"] {
 .l-mr15 {
   margin-right: 15px; }
 
+.l-mb15 {
+  margin-bottom: 15px; }
+
 .l-model-select {
   display: flex;
   width: 40%; }
@@ -117,6 +126,10 @@ input[type="password"] {
   display: inline-block;
   width: 25px;
   height: 25px; }
+  .icon-small {
+    display: inline-block;
+    width: 15px;
+    height: 15px; }
   .icon-middle {
     display: inline-block;
     width: 35px;
@@ -138,6 +151,12 @@ input[type="password"] {
 .icon-user {
   background-image: url(../img/user35.png); }
 
+.icon-add {
+  background-image: url(../img/add25.png); }
+
+.icon-edit {
+  background-image: url(../img/edit25.png); }
+
 .icon-exit {
   background-image: url(../img/exit35.png); }
 
@@ -148,6 +167,12 @@ input[type="password"] {
   background-image: url(../img/graph50.png);
   background-repeat: no-repeat;
   background-position: center; }
+
+.icon-close {
+  background-image: url(../img/close15.png); }
+
+.icon-forward {
+  background-image: url(../img/forward25.png); }
 
 .btn {
   background-color: #4c58fb;

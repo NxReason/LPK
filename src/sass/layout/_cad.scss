@@ -1,7 +1,18 @@
 .l-cad {
-  display: block;
-
-  width: 95%;
-  height: 500px;
-  margin: 30px auto;
+  width: 96%;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.l-cad-props-tab {
+  flex: 1;
+  height: 90vh;
+  min-height: 400px;
+  margin-right: 10px;
+  padding: 5px;
+}
+.l-cad-wrapper {
+  flex: 3;
+  min-height: 400px;
+  height: 90vh;
 }

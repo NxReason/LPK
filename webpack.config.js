@@ -4,9 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractSass = new ExtractTextPlugin({
   filename: '../css/[name].styles.css',
 });
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: isDev ? 'inline-source-map' : 'cheap-source-map',
   context: path.resolve(__dirname, 'src/js'),
   entry: {
     learning: './learning/index.js',

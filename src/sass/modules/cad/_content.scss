@@ -1,15 +1,15 @@
-.cad {
+.cad-wrapper {
   background-color: #fff;
-  box-shadow: 0 0 3px 3px $shadow-color;
+  box-shadow: 0 0 2px 2px $shadow-color;
   overflow: scroll;
   position: relative;
 }
-.cad::-webkit-scrollbar {
+.cad-wrapper::-webkit-scrollbar {
   width: 10px; height: 10px;
   background-color: $light-grey;
 }
 
-.cad::-webkit-scrollbar-thumb {
+.cad-wrapper::-webkit-scrollbar-thumb {
   background-color: $shadow-color;
   border-radius: 5px;
   cursor: pointer;
@@ -21,10 +21,10 @@ $subdivisions: 5;
   width: 3000px;
   height: 1000px;
   background-image:
-    linear-gradient(rgba($primary-grey, .5) 1px, transparent 1px), /*sub horiz*/
-    linear-gradient($primary-grey  1px, transparent 1px), /*main horiz*/
-    linear-gradient(90deg, rgba($primary-grey, .4) 1px, transparent 1px), /*sub vert*/
-    linear-gradient(90deg, rgba($primary-grey, .6) 1px, transparent 1px) /*main vert*/
+    linear-gradient(rgba($primary-grey, .25) 1px, transparent 1px), /*sub horiz*/
+    linear-gradient(rgba($primary-grey,  .35) 1px, transparent 1px), /*main horiz*/
+    linear-gradient(90deg, rgba($primary-grey, .25) 1px, transparent 1px), /*sub vert*/
+    linear-gradient(90deg, rgba($primary-grey, .35) 1px, transparent 1px) /*main vert*/
     ;
   background-size:
     $gridSize / $subdivisions $gridSize / $subdivisions,

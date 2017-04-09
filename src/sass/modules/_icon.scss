@@ -5,11 +5,23 @@ $user-icon-url: '../img/user35.png';
 $exit-icon-url: '../img/exit35.png';
 $users-icon-url: '../img/users50.png';
 $graph-icon-url: '../img/graph50.png';
+$add-icon-url: '../img/add25.png';
+$add-white-icon-url: '../img/add_white25.png';
+$edit-icon-url: '../img/edit25.png';
+$edit-white-icon-url: '../img/edit_white25.png';
+$close-icon-url: '../img/close15.png';
+$forward-icon-url: '../img/forward25.png';
 
 .icon {
   display: inline-block;
   width: 25px;
   height: 25px;
+
+  &-small {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+  }
 
   &-middle {
     display: inline-block;
@@ -35,6 +47,12 @@ $graph-icon-url: '../img/graph50.png';
 .icon-user {
   background-image: url($user-icon-url);
 }
+.icon-add {
+  background-image: url($add-icon-url);
+}
+.icon-edit {
+  background-image: url($edit-icon-url);
+}
 .icon-exit {
   background-image: url($exit-icon-url);
 }
@@ -45,4 +63,10 @@ $graph-icon-url: '../img/graph50.png';
   background-image: url($graph-icon-url);
   background-repeat: no-repeat;
   background-position: center;
+}
+.icon-close {
+  background-image: url($close-icon-url);
+}
+.icon-forward {
+  background-image: url($forward-icon-url);
 }

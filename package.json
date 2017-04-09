@@ -7,9 +7,9 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js",
     "lint": "eslint ./**/*.js",
-    "build": "webpack",
+    "build": "SET NODE_ENV=development&& webpack",
     "build:watch": "npm run build -- --watch",
-    "build:production": "npm run build -- -p",
+    "build:production": "webpack -p",
     "test": "set NODE_ENV=test&& mocha ./test/**/*.js --compilers js:babel-core/register",
     "test:watch": "npm run test -- --watch"
   },

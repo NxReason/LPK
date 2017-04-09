@@ -1,0 +1,18 @@
+.cad-state {
+  width: 150px;
+  min-height: 60px;
+  background-color: #fff;
+  box-shadow: 0 0 2px 2px $shadow-color;
+  overflow: hidden;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+
+  &-name {
+    text-align: center;
+  }
+}
