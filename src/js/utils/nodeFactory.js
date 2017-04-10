@@ -1,4 +1,4 @@
-const nodeFactory = function(type = 'div', params) {
+const nodeFactory = function(type = 'div', params = {}) {
   const node = document.createElement(type);
 
   appendClasses(node, params);

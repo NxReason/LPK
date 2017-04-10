@@ -56,6 +56,9 @@ input[type="password"] {
 .text-right {
   text-align: right; }
 
+.turn-down {
+  transform: rotate(90deg); }
+
 .l-content {
   display: flex;
   flex-direction: column;
@@ -317,10 +320,11 @@ input[type="password"] {
   .panel-sub .sub-header {
     font-size: .9rem;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
     .panel-sub .sub-header .icon {
       margin-right: 5px;
-      cursor: pointer; }
+      transition: transform .35s ease-in-out; }
   .panel-sub .panel-custom-icon {
     background-image: url(../img/add_white25.png);
     background-color: #4c58fb;
@@ -333,7 +337,7 @@ input[type="password"] {
 .panel-items-content {
   flex-shrink: 1;
   overflow-y: scroll;
-  display: block;
+  display: none;
   min-height: 120px;
   padding-right: 15px; }
 
@@ -371,7 +375,7 @@ input[type="password"] {
     .panel-tool-type select {
       font-size: .9rem; }
   .panel-tool-range-values {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 10px; }

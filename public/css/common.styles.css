@@ -56,6 +56,9 @@ input[type="password"] {
 .text-right {
   text-align: right; }
 
+.turn-down {
+  transform: rotate(90deg); }
+
 .l-content {
   display: flex;
   flex-direction: column;

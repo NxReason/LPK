@@ -1,4 +1,5 @@
 import scheme from './scheme';
+import modelPanel from './modelPanel';
 import { jsPlumb } from '../utils/jsplumb.min.js';
 const scene = {};
 
