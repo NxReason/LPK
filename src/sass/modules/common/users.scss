@@ -1,0 +1,67 @@
+.users {
+  width: 95%;
+  margin: 30px auto;
+  background-color: #fff;
+  box-shadow: 0 0 2px 2px $shadow-color;
+  padding: 10px;
+}
+.users-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.users-table tr {
+  display: flex;
+
+  td, th {
+    flex: 1;
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+  }
+  th {
+    text-align: left;
+    background-color: $primary-blue;
+    color: #fff;
+  }
+
+  &:nth-child(2n+2) {
+    background-color: #eee;
+  }
+}
+.users-btn {
+  display: flex;
+  color: #fff;
+  height: 35px;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+  text-decoration: none;
+  font-size: .9rem;
+  justify-content: center;
+  transition: background-color .2s ease-in-out;
+
+  &-new {
+    background-color: $primary-green;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+  &-new:hover {
+    background-color: darken($primary-green, 10%);
+  }
+
+  &-edit {
+    background-color: $primary-blue;
+    margin-right: 10px;
+  }
+  &-edit:hover {
+    background-color: darken($primary-blue, 10%);
+  }
+
+  &-delete {
+    background-color: $error-color;
+  }
+  &-delete:hover {
+    background-color: darken($error-color, 10%);
+  }
+}

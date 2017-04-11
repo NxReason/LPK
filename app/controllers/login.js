@@ -1,6 +1,6 @@
 const auth = require('../services/auth');
 
-const getLogInView = (req, res) => {
+const showLogin = (req, res) => {
   if (req.session.user) {
     res.redirect('/');
   } else {
@@ -12,7 +12,7 @@ const getLogInView = (req, res) => {
   }
 };
 
-const logIn = (req, res) => {
+const processLogin = (req, res) => {
   const { username, password } = req.body;
   auth(username, password)
   .then((user) => {
@@ -27,12 +27,12 @@ const logIn = (req, res) => {
   });
 };
 
-const logOut = (req, res) => {
+const processLogout = (req, res) => {
   req.session.destroy(() => res.redirect('/login'));
 };
 
 module.exports = {
-  getLogInView,
-  logIn,
-  logOut,
+  showLogin,
+  processLogin,
+  processLogout
 };

@@ -1,6 +1,6 @@
 const Model = require('../database/models').Model;
 
-const getLearningView = (req, res) => {
+const learning = (req, res) => {
   Model.findAll({ attributes: ['id', 'name'] })
     .then((models) => { res.render('learning', { models, user: req.session.user, path: req.path }); })
     .catch((err) => {
@@ -9,7 +9,7 @@ const getLearningView = (req, res) => {
     });
 };
 
-const getAdminView = (req, res) => {
+const admin = (req, res) => {
   res.render('admin', { user: req.session.user, path: req.path });
 };
 
@@ -21,7 +21,7 @@ const handle404 = (req, res) => {
 };
 
 const SERVER_ERR_MSG = 'Что-то пошло не так';
-const handleError = (err, req, res, next) => {
+const handle500 = (err, req, res, next) => {
   console.log(err.message);
   if (req.xhr) {
     res.status(500).json({ message: SERVER_ERR_MSG });
@@ -30,8 +30,8 @@ const handleError = (err, req, res, next) => {
 };
 
 module.exports = {
-  getLearningView,
-  getAdminView,
+  learning,
+  admin,
   handle404,
-  handleError,
+  handle500,
 };

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <% include ../partials/head %>
+  <title>Users</title>
+
+  <link rel="stylesheet" href="/css/common.styles.css">
+</head>
+<body>
+  <div class="l-content">
+    <div class="l-row l-header header">
+      <% include ../partials/navMenu %>
+      <% include ../partials/dashboard %>
+    </div>
+
+    <div class="users">
+      <a href="/admin/users/new" class='users-btn users-btn-new'>Новый пользователь</a>
+
+      <table class='users-table'>
+        <thead>
+          <tr>
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>E-mail</th>
+            <th>Уровень</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tobody>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= user.firstname + " " + user.lastname %></td>
+              <td><%= user.email %></td>
+              <td><%= user.level %></td>
+              <td>
+                <a href="/admin/users/edit/<%= user.id %>" class='users-btn users-btn-edit'>Изменить</a>
+                <button href="/admin/users/delete/<%= user.id %>" class='users-btn users-btn-delete'>Удалить</button>
+              </td>
+            </tr>
+          <% }); %>
+        </tobody>
+      </table>
+
+
+
+    </div>
+
+  </div>
+</body>
+</html>
