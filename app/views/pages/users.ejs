@@ -26,26 +26,27 @@
             <th></th>
           </tr>
         </thead>
-        <tobody>
+        <tbody>
           <% users.forEach(user => { %>
-            <tr>
+            <tr data-user-id="<%= user.id %>">
               <td><%= user.username %></td>
               <td><%= user.firstname + " " + user.lastname %></td>
               <td><%= user.email %></td>
               <td><%= user.level %></td>
               <td>
                 <a href="/admin/users/edit/<%= user.id %>" class='users-btn users-btn-edit'>Изменить</a>
-                <button href="/admin/users/delete/<%= user.id %>" class='users-btn users-btn-delete'>Удалить</button>
+                <button class='users-btn users-btn-delete'
+                        data-user-id="<%= user.id %>">
+                        Удалить
+                </button>
               </td>
             </tr>
           <% }); %>
         </tobody>
       </table>
 
-
-
     </div>
-
   </div>
+  <script src="/js/usersList.bundle.js" type="text/javascript"></script>
 </body>
 </html>

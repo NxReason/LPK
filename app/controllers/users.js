@@ -74,7 +74,16 @@ const update = (req, res) => {
 }
 
 const remove = (req, res) => {
-  res.json({ message: `user with id: ${req.params.id} was deleted` });
+  User.destroy({
+    where: { id: req.params.id }
+  })
+  .then(data => {
+    console.log(data);
+    res.json({ deleted: true });
+  })
+  .catch(err => {
+    res.json({ deleted: false, message: err.message });
+  });
 };
 
 const exists = (req, res) => {

@@ -13,7 +13,8 @@ module.exports = {
     learning: './learning/index.js',
     login: './login/index.js',
     cad: './cad/index.js',
-    userForm: './userForm/index.js',
+    usersList: './admin/usersList.js',
+    userForm: './admin/userForm.js',
     common: './common/index.js',
   },
 
