@@ -27,6 +27,8 @@
         <% } %>
       </h2>
 
+      <div class="server-response" id="server-response"></div>
+
       <form action="<%= action %>" method="<%= method %>" class="user-form" id="user-form">
         <input type="hidden" name="id" value="<%= editedUser.id %>">
 
@@ -56,6 +58,14 @@
         <div class="user-form-row">
           <input type="text" name="email" value="<%= editedUser.email %>" placeholder="Электронный адрес">
           <div class="error-field"></div>
+        </div>
+
+        <div class="user-form-row">
+          <select name="level">
+            <option value="user" <%= editedUser.level == 'user' ? "selected" : null %> >Пользователь</option>
+            <option value="dev" <%= editedUser.level == 'dev' ? "selected" : null %> >Разработчик</option>
+            <option value="admin" <%= editedUser.level == 'admin' ? "selected" : null %> >Администратор</option>
+          </select>
         </div>
 
         <button type="submit" class='user-form-btn' id="save-btn">Сохранить</button>

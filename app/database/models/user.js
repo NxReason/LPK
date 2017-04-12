@@ -1,9 +1,12 @@
 'use strict';
+const hashPassword = require('../../services/hashPassword');
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     firstname: {
       type: DataTypes.STRING,
@@ -34,5 +37,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  User.beforeCreate(hashPassword);
+  User.beforeUpdate(hashPassword);
+  
   return User;
 };

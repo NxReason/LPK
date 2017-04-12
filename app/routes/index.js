@@ -33,6 +33,7 @@ router.get('/admin/users/new', usersController.create);
 router.post('/admin/users/new', usersController.save);
 router.get('/admin/users/edit/:id', usersController.edit);
 router.delete('/admin/users/delete/:id', usersController.remove);
+router.get('/admin/users/exists', usersController.exists);
 
 // TODO delete
 router.get('/test', modelController.getModels);

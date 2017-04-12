@@ -49,7 +49,7 @@
     margin-bottom: 15px;
   }
 
-  input {
+  input, select {
     flex-basis: 400px;
     height: 35px;
     font-size: 1rem;
@@ -72,4 +72,22 @@
     }
   }
 
+}
+
+.server-response {
+  color: white;
+  border-radius: 5px;
+
+  &.error {
+    background-color: $error-color;
+  }
+
+  &.success {
+    background-color: $primary-green;
+  }
+
+  &:not(:empty) {
+    margin-bottom: 15px;
+    padding: 10px;
+  }
 }

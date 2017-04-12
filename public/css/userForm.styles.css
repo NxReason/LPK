@@ -250,7 +250,7 @@ input[type="password"] {
       padding-top: 3px; }
   .user-form-header {
     margin-bottom: 15px; }
-  .user-form input {
+  .user-form input, .user-form select {
     flex-basis: 400px;
     height: 35px;
     font-size: 1rem;
@@ -267,5 +267,16 @@ input[type="password"] {
     transition: background-color .2s ease-in-out; }
     .user-form-btn:hover {
       background-color: #1c6e21; }
+
+.server-response {
+  color: white;
+  border-radius: 5px; }
+  .server-response.error {
+    background-color: #ff3030; }
+  .server-response.success {
+    background-color: #26972d; }
+  .server-response:not(:empty) {
+    margin-bottom: 15px;
+    padding: 10px; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvdXNlckZvcm0uc3R5bGVzLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

@@ -23,7 +23,12 @@ const create = (req, res) => {
 }
 
 const save = (req, res) => {
-  res.json(req.body);
+  const { username, password, firstname, lastname, email, level } = req.body;
+  User.create({
+    username, password, firstname, lastname, email, level
+  })
+  .then(user => res.json({ created: true }))
+  .catch(err => res.json({ created: false, message: err.message }));
 }
 
 const edit = (req, res) => {
@@ -57,11 +62,25 @@ const remove = (req, res) => {
   res.json({ message: `user with id: ${req.params.id} was deleted` });
 };
 
+const exists = (req, res) => {
+  const key = Object.keys(req.query)[0];
+  const value = req.query[key];
+  User.findOne({
+    where: { [key]: value }
+  })
+  .then(user => {
+    if (!user) res.json({ exists: false });
+    else res.json({ exists: true });
+  })
+  .catch(err => res.json({ error: true, status: 500, msg: err.message }));
+}
+
 module.exports = {
   profile,
   users,
   create,
   save,
   edit,
-  remove
+  remove,
+  exists
 }

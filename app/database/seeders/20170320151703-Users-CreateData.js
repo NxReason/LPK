@@ -6,7 +6,7 @@ module.exports = {
     const now = new Date();
     const usersRaw = [
       {
-        id: 1,
+        // id: 1,
         username: 'root',
         firstname: 'John',
         lastname: 'Doe',
@@ -15,7 +15,7 @@ module.exports = {
         level: 'admin'
       },
       {
-        id: 2,
+        // id: 2,
         username: 'dev',
         firstname: 'Jane',
         lastname: 'Doe',
@@ -24,7 +24,7 @@ module.exports = {
         level: 'dev'
       },
       {
-        id: 3,
+        // id: 3,
         username: 'DeveloperTwo',
         firstname: 'Alan',
         lastname: 'Turing',
@@ -33,7 +33,7 @@ module.exports = {
         level: 'dev'
       },
       {
-        id: 4,
+        // id: 4,
         username: 'user',
         firstname: 'Alonzo',
         lastname: 'Church',
@@ -42,7 +42,7 @@ module.exports = {
         level: 'user'
       },
       {
-        id: 5,
+        // id: 5,
         username: 'UserTwo',
         firstname: 'Haskell',
         lastname: 'Curry',
