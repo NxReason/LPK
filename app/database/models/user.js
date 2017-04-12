@@ -39,6 +39,10 @@ module.exports = function(sequelize, DataTypes) {
   });
   User.beforeCreate(hashPassword);
   User.beforeUpdate(hashPassword);
-  
+  User.beforeBulkUpdate(function(options = {}) {
+    options.individualHooks = true;
+    return options;
+  });
+
   return User;
 };

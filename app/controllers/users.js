@@ -44,8 +44,8 @@ const edit = (req, res) => {
       res.render('userForm', {
         user: req.session.user,
         path: '/admin',
-        action: '',
-        method: '',
+        action: '/admin/users/update',
+        method: 'POST',
         editedUser: user,
       });
     }
@@ -57,6 +57,21 @@ const edit = (req, res) => {
     });
   });
 };
+
+const update = (req, res) => {
+  User.findById(req.body.id)
+  .then(user => {
+    user.username = req.body.username;
+    if (req.body.password != '') user.password = req.body.password;
+    user.firstname = req.body.firstname;
+    user.lastname = req.body.lastname;
+    user.email = req.body.email;
+    user.level = req.body.level;
+    user.save()
+  })
+  .then(() => res.json({ updated: true }))
+  .catch(err => res.json({ updated: false, message: err.message }));
+}
 
 const remove = (req, res) => {
   res.json({ message: `user with id: ${req.params.id} was deleted` });
@@ -81,6 +96,7 @@ module.exports = {
   create,
   save,
   edit,
+  update,
   remove,
   exists
 }

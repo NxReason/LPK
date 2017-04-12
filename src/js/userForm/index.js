@@ -5,8 +5,8 @@ import ajax from '../utils/ajax';
 /**
  * Form validation
  */
-const INPUT_NAMES = ['username', 'password', 'password-verify', 'firstname',
-  'lastname', 'email'];
+const INPUT_NAMES = ['id', 'username', 'password', 'password-verify',
+  'firstname', 'lastname', 'email', 'level'];
 
 const $rows = INPUT_NAMES.map(name => {
   return document.querySelector(`[name=${name}]`);
@@ -75,8 +75,11 @@ $saveButton.addEventListener('click', (e) => {
     res = JSON.parse(res);
     if (res.created) {
       showSuccessRes('Пользователь успешно создан');
+      clearForm();
+    } else if (res.updated) {
+      showSuccessRes('Данные обновлены')
     } else {
-      showFailureRes(`Не удалось создать пользователя: ${res.message}`);
+      showFailureRes(`Не удалось выполнить операцию: ${res.message}`);
     }
   })
   .catch(err => console.error(err));
@@ -85,7 +88,6 @@ $saveButton.addEventListener('click', (e) => {
 function showSuccessRes(msg) {
   swapClasses($response, 'success', 'error');
   $response.textContent = msg;
-  clearForm();
 }
 
 function showFailureRes(msg) {
