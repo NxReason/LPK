@@ -23,6 +23,7 @@ app.use(logger('dev'));
 // Populate session and request body data to "req" object
 app.use(session);
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(router);
 

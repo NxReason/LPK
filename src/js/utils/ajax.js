@@ -1,4 +1,4 @@
-function ajax(path = '', options = {}) {
+function ajax(path = '', options = {}, fullResponse = false) {
   const xhr = new XMLHttpRequest();
   xhr.open(options.method || 'GET', path, true);
   if (options.headers) { setXHRHeaders(xhr, options.headers); }
@@ -8,7 +8,11 @@ function ajax(path = '', options = {}) {
     xhr.onreadystatechange = function() {
       if(xhr.readyState == 4) {
         if(xhr.status == 200) {
-          resolve(xhr.responseText);
+          if (fullResponse) {
+            resolve(xhr);
+          } else {
+            resolve(xhr.responseText);
+          }
         } else {
           reject(xhr.statusText);
         }
@@ -19,7 +23,7 @@ function ajax(path = '', options = {}) {
 
 function setXHRHeaders(xhr, headers) {
   for (let header in headers) {
-    xhr.setRequestHeader(header, headers[headers]);
+    xhr.setRequestHeader(header, headers[header]);
   }
 }
 

@@ -30,6 +30,7 @@ router.use(grantAccess('admin'));
 router.get('/admin', mainController.admin);
 router.get('/admin/users', usersController.users);
 router.get('/admin/users/new', usersController.create);
+router.post('/admin/users/new', usersController.save);
 router.get('/admin/users/edit/:id', usersController.edit);
 router.delete('/admin/users/delete/:id', usersController.remove);
 

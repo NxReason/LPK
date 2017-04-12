@@ -1,0 +1,75 @@
+.user-form-wrapper {
+  width: 95%;
+  margin: 30px auto;
+  background-color: #fff;
+  box-shadow: 0 0 2px 2px $shadow-color;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+
+  &-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .error-field:not(:empty) {
+    background-color: $error-color;
+    color: white;
+    padding: 10px;
+    margin-left: 10px;
+    min-height: 35px;
+    // flex: 1;
+    border-radius: 5px;
+  }
+
+  &-back {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    text-decoration: none;
+    color: $primary-grey;
+
+    .icon {
+      transform: rotate(180deg);
+      margin-right: 10px;
+    }
+
+    span {
+      padding-top: 3px;
+    }
+  }
+
+  &-header {
+    margin-bottom: 15px;
+  }
+
+  input {
+    flex-basis: 400px;
+    height: 35px;
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  &-btn {
+    width: 100px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-green;
+    border: none;
+    color: white;
+    transition: background-color .2s ease-in-out;
+
+    &:hover {
+      background-color: darken($primary-green, 10%);
+    }
+  }
+
+}

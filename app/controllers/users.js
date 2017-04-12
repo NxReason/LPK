@@ -16,10 +16,14 @@ const create = (req, res) => {
   res.render('userForm', {
     user: req.session.user,
     path: '/admin',
-    action: '',
-    method: '',
+    action: '/admin/users/new',
+    method: 'POST',
     editedUser: {}
   });
+}
+
+const save = (req, res) => {
+  res.json(req.body);
 }
 
 const edit = (req, res) => {
@@ -57,6 +61,7 @@ module.exports = {
   profile,
   users,
   create,
+  save,
   edit,
   remove
 }

@@ -4,7 +4,7 @@
   <% include ../partials/head %>
   <title>Admin Panel</title>
 
-  <link rel="stylesheet" href="/css/common.styles.css">
+  <link rel="stylesheet" href="/css/userForm.styles.css">
 </head>
 <body>
   <div class="l-content">
@@ -14,21 +14,56 @@
     </div>
 
     <div class="user-form-wrapper">
-      <form action="<%= action %>" method="<%= method %>" class="user-form">
-        <input type="text" name="username" value="<%= editedUser.username %>" placeholder="Логин">
+      <a href="/admin/users/" class="user-form-back">
+        <i class="icon icon-forward"></i>
+        <span>Список пользователей</span>
+      </a>
 
-        <input type="password" name="password" id="password" placeholder="Пароль">
-        <input type="password" name="password-verify" id="password-verify" placeholder="Подтверждение пароля">
+      <h2 class='user-form-header'>
+        <% if (editedUser.id) { %>
+          Редактирование пользователя
+        <% } else { %>
+          Новый пользователь
+        <% } %>
+      </h2>
 
-        <input type="text" name="firstname" value="<%= editedUser.firstname %>" placeholder="Имя">
-        <input type="text" name="lastname" value="<%= editedUser.lastname %>" placeholder="Фамилия">
+      <form action="<%= action %>" method="<%= method %>" class="user-form" id="user-form">
+        <input type="hidden" name="id" value="<%= editedUser.id %>">
 
-        <input type="email" name="email" value="<%= editedUser.email %>">
+        <div class="user-form-row">
+          <input type="text" name="username" value="<%= editedUser.username %>" placeholder="Логин">
+          <div class="error-field"></div>
+        </div>
+
+        <div class="user-form-row">
+          <input type="password" name="password" placeholder="Пароль">
+          <div class="error-field"></div>
+        </div>
+        <div class="user-form-row">
+          <input type="password" name="password-verify" placeholder="Подтверждение пароля">
+          <div class="error-field"></div>
+        </div>
+
+        <div class="user-form-row">
+          <input type="text" name="firstname" value="<%= editedUser.firstname %>" placeholder="Имя">
+          <div class="error-field"></div>
+        </div>
+        <div class="user-form-row">
+          <input type="text" name="lastname" value="<%= editedUser.lastname %>" placeholder="Фамилия">
+          <div class="error-field"></div>
+        </div>
+
+        <div class="user-form-row">
+          <input type="text" name="email" value="<%= editedUser.email %>" placeholder="Электронный адрес">
+          <div class="error-field"></div>
+        </div>
+
+        <button type="submit" class='user-form-btn' id="save-btn">Сохранить</button>
       </form>
     </div>
 
   </div>
 
-  <script src="/js/common.bundle.js" type="text/javascript"></script>
+  <script src="/js/userForm.bundle.js" type="text/javascript"></script>
 </body>
 </html>
