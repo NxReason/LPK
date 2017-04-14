@@ -11,7 +11,7 @@ const ajaxConfig = {
 class Report {
   constructor(name, steps) {
     this.modelName = name;
-    this.steps = steps;
+    this.maxSteps = steps;
     this.states = [];
     this.currentState = null;
   }

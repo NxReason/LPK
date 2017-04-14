@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
         Model.hasMany(models.Tool, {
           foreignKey: 'modelId',
           as: 'tools'
-        })
+        });
       }
     }
   });

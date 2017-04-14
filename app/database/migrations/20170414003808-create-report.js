@@ -1,33 +1,30 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('LearningReport_States', {
+    return queryInterface.createTable('Reports', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      time_spent: {
-        type: Sequelize.INTEGER
+      modelName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'Неизвестная модель'
       },
-      actions_number: {
-        type: Sequelize.INTEGER
-      },
-      is_inactive: {
-        type: Sequelize.BOOLEAN
+      maxSteps: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: -1
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('LearningReport_States');
+    return queryInterface.dropTable('Reports');
   }
 };
