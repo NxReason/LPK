@@ -17,7 +17,9 @@ function loadModel(id) {
  */
 const $select = document.querySelector("#model-select");
 const $loadButton = document.querySelector('#load-model-btn');
+
 let model = null;
+
 $loadButton.addEventListener('click', () => {
   if ( model ) { model.stop(); }
   const modelId = $select.value;
@@ -41,7 +43,7 @@ $startButton.addEventListener('click', () => {
 
 const $stopButton = document.querySelector('#stop-btn');
 $stopButton.addEventListener('click', () => {
-  model.stop();
+  pubsub.publish('model_stop');
   scene.enableButtons($startButton);
   scene.disableButtons($stopButton, $runButton);
 });

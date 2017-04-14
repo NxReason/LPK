@@ -9,6 +9,11 @@ const learning = (req, res) => {
     });
 };
 
+const report = (req, res) => {
+  console.log(req.body);
+  res.json({ success: true });
+}
+
 const admin = (req, res) => {
   res.render('admin', { user: req.session.user, path: req.path });
 };
@@ -31,6 +36,7 @@ const handle500 = (err, req, res, next) => {
 
 module.exports = {
   learning,
+  report,
   admin,
   handle404,
   handle500,

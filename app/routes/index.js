@@ -16,6 +16,7 @@ router.post('/login', loginController.processLogin);
 router.use(auth);
 router.get('/', mainController.learning);
 router.get('/models/:id', modelController.getModelById);
+router.post('/learning/report', mainController.report);
 
 router.get('/user', usersController.profile);
 

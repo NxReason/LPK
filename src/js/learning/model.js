@@ -1,5 +1,6 @@
 import State from './model_components/state';
 import pubsub from '../utils/pubsub';
+import Report from './report';
 
 const INITIAL_STATE_NAME = 'Состояние модели';
 const STOP_STATE_NAME = 'Обучение остановлено';
@@ -12,8 +13,7 @@ class Model {
     this.steps = data.steps;
 
     this.states = data.states.map(state => new State(state));
-    this.initialState = data.initialState;
-    this.currentState = this.getState(this.initialState);
+    this.currentState = this.getState(data.initialState);
 
     this.timeout = null;
     this.subInput = null;
@@ -27,8 +27,8 @@ class Model {
   }
 
   start() {
-    this.currentState = this.getState(this.initialState);
-    pubsub.publish('new_state', this.currentState);
+    this.report = new Report(this.name, this.steps);
+    this.handleNewState(this.currentState); // set initial state
     let intervals = Promise.resolve(); // init promise chain
     for (let i = 0; i < this.steps; i++) {
       intervals = intervals
@@ -36,7 +36,13 @@ class Model {
        .then(() => { return this.handleEvent() })
        .then(state => { this.handleNewState(state) })
     }
-    intervals.catch(state => this.handleNewState(state));
+    intervals
+      .catch(state => this.handleNewState(state))
+      .then(() => {
+        if (this.currentState.name !== STOP_STATE_NAME) {
+          this.report.send();
+        }
+      });
     return intervals;
   }
 
@@ -60,14 +66,17 @@ class Model {
       // listen to user action
       // and if user input correct go to next state
       this.subInput = pubsub.subscribe('user_input', data => {
+        this.report.increaseActionsNumber();
         const timeSpent = Date.now() - eventStartTime;
         const nextStateId = this.currentState.handleInput(data, timeSpent);
         const nextState = this.getState(nextStateId);
         if ( nextState ) {
+          this.report.setSpentTime(timeSpent);
           nextState.last ? reject(nextState) : resolve(nextState);
         }
       });
 
+      // handle user stop button click
       this.subStop = pubsub.subscribe('model_stop', () => {
         reject(this.stopState);
       });
@@ -82,11 +91,8 @@ class Model {
     })
   }
 
-  stop() {
-    pubsub.publish('model_stop');
-  }
-
   handleNewState(state) {
+    this.report.pushState(state);
     this.currentState = state;
     clearTimeout(this.timeout);
     this.clearSubs();
