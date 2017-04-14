@@ -33,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'developerId',
           as: 'createdModels'
         });
+        User.hasMany(models.Report, {
+          foreignKey: 'userId',
+          as: 'learningReports'
+        });
       }
     }
   });

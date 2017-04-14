@@ -1,4 +1,5 @@
-const Model = require('../database/models').Model;
+const { Model, Report } = require('../database/models');
+const report = require('../services/report');
 
 const learning = (req, res) => {
   Model.findAll({ attributes: ['id', 'name'] })
@@ -9,9 +10,12 @@ const learning = (req, res) => {
     });
 };
 
-const report = (req, res) => {
-  console.log(req.body);
-  res.json({ success: true });
+const newReport = (req, res) => {
+  const data = req.body;
+  data.userId = req.session.user.id;
+  report.save(data)
+    .then(() => res.json({ saved: true }))
+    .catch(err => res.json({ saved: false, message: err.message }));
 }
 
 const admin = (req, res) => {
@@ -30,13 +34,14 @@ const handle500 = (err, req, res, next) => {
   console.log(err.message);
   if (req.xhr) {
     res.status(500).json({ message: SERVER_ERR_MSG });
-  }
-  res.status(500).render('error', { code: 505, message: SERVER_ERR_MSG });
+  } else {
+    res.status(500).render('error', { code: 505, message: SERVER_ERR_MSG });
+  }  
 };
 
 module.exports = {
   learning,
-  report,
+  newReport,
   admin,
   handle404,
   handle500,

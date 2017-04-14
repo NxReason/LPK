@@ -16,10 +16,14 @@ module.exports = function(sequelize, DataTypes) {
     updatedAt: false,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        Report.hasMany(models.ReporState, {
+        Report.hasMany(models.ReportState, {
           foreignKey: 'reportId',
           as: 'states',
+        });
+        Report.belongsTo(models.User, {
+          foreignKey: 'userId',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
         });
       }
     }

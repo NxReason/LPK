@@ -1,7 +1,9 @@
-const User = require('../database/models').User;
+const { User, Report } = require('../database/models');
 
 const profile = (req, res) => {
-  res.render('user', { path: null, user: req.session.user });
+  Report.findAll({ include: [{ all: true, nested: true }] })
+  .then(reports =>
+    res.render('user', { path: null, user: req.session.user, reports }));
 }
 
 const users = (req, res) => {

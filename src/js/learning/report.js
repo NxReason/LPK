@@ -45,10 +45,10 @@ class Report {
     }
     ajaxConfig.data = JSON.stringify({
       modelName: this.modelName,
-      steps: this.steps,
+      maxSteps: this.steps,
       states: this.states
     });
-    ajax(REPORT_URL, ajaxConfig);
+    return ajax(REPORT_URL, ajaxConfig);
   }
 }
 

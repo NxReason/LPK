@@ -40,7 +40,8 @@ class Model {
       .catch(state => this.handleNewState(state))
       .then(() => {
         if (this.currentState.name !== STOP_STATE_NAME) {
-          this.report.send();
+          this.report.send()
+          .then((response) => console.log(response));
         }
       });
     return intervals;
