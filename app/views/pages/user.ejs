@@ -21,6 +21,44 @@
         <li><span class="user-data-key">E-mail:</span><span class="user-data-value"><%= user.email %></span></li>
         <li><span class="user-data-key">Статус:</span><span class="user-data-value"><%= user.level %></span></li>
       </ul>
+
+      <div class="user-reports">
+        <% if (reports.length == 0) { %>
+          <h3 class="user-reports-header">Пользователь пока не прошел ни 1 обучения.</h3>
+        <% } else {%>
+          <h3 class="user-reports-header">Отчет о пройденных обучениях</h3>
+          <ul class="user-reports-list">
+          <% reports.forEach(report => { %>
+            <li>
+              <h3><span class="user-reports-value"><%= report.modelName %></span></h3>
+              <p>Время прохождения: <span class="user-reports-value"><%= report.createdAt %></span></p>
+              <p>Максимальное количество переходов: <span class="user-reports-value"><%= report.maxSteps %></span></p>
+
+              <table class="user-reports-states">
+                <thead>
+                  <tr>
+                    <th>Название перехода</th>
+                    <th>Время (макс.)</th>
+                    <th>Количество действий</th>
+                    <th>Inactive</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% report.states.forEach(state => { %>
+                    <tr>
+                      <td><%= state.name %></td>
+                      <td><%= state.spentTime %> (<%= state.maxTime %>)</td>
+                      <td><%= state.actionsNumber %></td>
+                      <td><%= state.inactive %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </li>
+          <% }); %>
+          </ul>
+        <% } %>
+      </div>
     </div>
   </div>
 

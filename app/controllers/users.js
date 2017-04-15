@@ -1,9 +1,18 @@
-const { User, Report } = require('../database/models');
+const { User, Report, ReportState } = require('../database/models');
 
 const profile = (req, res) => {
-  Report.findAll({ include: [{ all: true, nested: true }] })
-  .then(reports =>
-    res.render('user', { path: null, user: req.session.user, reports }));
+  Report.findAll({
+    where: { userId: req.session.user.id },
+    include: [{ all: true }],
+  })
+  .then(reports => {
+    reports.forEach(report => report.states.sort(sortById));
+    res.render('user', { path: null, user: req.session.user, reports })
+  });
+}
+
+function sortById(a, b) {
+  return a.id - b.id;
 }
 
 const users = (req, res) => {
