@@ -246,6 +246,10 @@ input[type="password"] {
   padding: 3px;
   border-radius: 5px; }
 
+.user-reports-name {
+  display: flex;
+  cursor: pointer; }
+
 .user-reports-list {
   display: flex;
   flex-direction: column; }
@@ -261,6 +265,15 @@ input[type="password"] {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none; }
+
+.user-report.closed > .user-reports-data-wrapper {
+  display: none; }
+
+.user-report .icon-forward {
+  transition: transform .25s ease-in-out; }
+
+.user-report.closed .icon-forward {
+  transform: rotate(90deg); }
 
 .user-reports-states {
   width: 100%;

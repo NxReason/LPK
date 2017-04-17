@@ -27,33 +27,51 @@
           <h3 class="user-reports-header">Пользователь пока не прошел ни 1 обучения.</h3>
         <% } else {%>
           <h3 class="user-reports-header">Отчет о пройденных обучениях</h3>
-          <ul class="user-reports-list">
+          <ul class="user-reports-list" id="user-reports-list">
           <% reports.forEach(report => { %>
-            <li>
-              <h3><span class="user-reports-value"><%= report.modelName %></span></h3>
-              <p>Время прохождения: <span class="user-reports-value"><%= report.createdAt %></span></p>
-              <p>Максимальное количество переходов: <span class="user-reports-value"><%= report.maxSteps %></span></p>
+            <li class="user-report closed">
+              <div class='user-reports-name'>
+                <h3 class="l-mr15"><span class="user-reports-value"><%= report.modelName %></span></h3>
+                <i class="icon icon-forward"></i>
+              </div>
 
-              <table class="user-reports-states">
-                <thead>
-                  <tr>
-                    <th>Название перехода</th>
-                    <th>Время (макс.)</th>
-                    <th>Количество действий</th>
-                    <th>Inactive</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% report.states.forEach(state => { %>
+              <div class="user-reports-data-wrapper">
+                <p>Дата прохождения: <span class="user-reports-value"><%= report.createdAt %></span></p>
+                <p>Время прохождения (в среднем на состояние):
+                  <span class="user-reports-value">
+                    <%= report.allTime %>
+                    (<%= report.avgTime %>)
+                  </span>
+                </p>
+                <p>Максимальное количество переходов: <span class="user-reports-value"><%= report.maxSteps %></span></p>
+                <p>Пройдено состояний (из них - неактивных):
+                  <span class="user-reports-value">
+                    <%= report.allStates %>
+                    (<%= report.inactiveStates %>)
+                  </span>
+                </p>
+
+                <table class="user-reports-states">
+                  <thead>
                     <tr>
-                      <td><%= state.name %></td>
-                      <td><%= state.spentTime %> (<%= state.maxTime %>)</td>
-                      <td><%= state.actionsNumber %></td>
-                      <td><%= state.inactive %></td>
+                      <th>Название перехода</th>
+                      <th>Время (макс.)</th>
+                      <th>Количество действий</th>
+                      <th>Inactive</th>
                     </tr>
-                  <% }) %>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <% report.states.forEach(state => { %>
+                      <tr>
+                        <td><%= state.name %></td>
+                        <td><%= state.spentTime %> (<%= state.maxTime %>)</td>
+                        <td><%= state.actionsNumber %></td>
+                        <td><%= state.inactive %></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
             </li>
           <% }); %>
           </ul>
@@ -62,5 +80,13 @@
     </div>
   </div>
 
+  <script>
+    const $reportNames = document.querySelectorAll(".user-reports-name");
+    $reportNames.forEach(handleNameClick);
+
+    function handleNameClick($name) {
+      $name.addEventListener('click', () => $name.parentNode.classList.toggle('closed'));
+    }
+  </script>
 </body>
 </html>

@@ -19,9 +19,10 @@ class Report {
   pushState(state) {
     const { name } = state;
     const maxTime = state.last ? -1 : state.getInactiveTime();
+    const spentTime = maxTime;
     const inactive = true;
     const actionsNumber = 0;
-    this.states.push({ name, maxTime, inactive, actionsNumber });
+    this.states.push({ name, maxTime, inactive, actionsNumber, spentTime });
     this.currentState = this.states[this.states.length - 1];
   }
 
@@ -45,7 +46,7 @@ class Report {
     }
     ajaxConfig.data = JSON.stringify({
       modelName: this.modelName,
-      maxSteps: this.steps,
+      maxSteps: this.maxSteps,
       states: this.states
     });
     return ajax(REPORT_URL, ajaxConfig);

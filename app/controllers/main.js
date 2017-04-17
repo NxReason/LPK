@@ -1,4 +1,4 @@
-const { Model, Report } = require('../database/models');
+const { Model } = require('../database/models');
 const report = require('../services/report');
 
 const learning = (req, res) => {
@@ -36,7 +36,7 @@ const handle500 = (err, req, res, next) => {
     res.status(500).json({ message: SERVER_ERR_MSG });
   } else {
     res.status(500).render('error', { code: 505, message: SERVER_ERR_MSG });
-  }  
+  }
 };
 
 module.exports = {

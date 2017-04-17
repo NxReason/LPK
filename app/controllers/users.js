@@ -1,18 +1,13 @@
 const { User, Report, ReportState } = require('../database/models');
+const report = require('../services/report');
 
 const profile = (req, res) => {
-  Report.findAll({
-    where: { userId: req.session.user.id },
-    include: [{ all: true }],
-  })
-  .then(reports => {
-    reports.forEach(report => report.states.sort(sortById));
-    res.render('user', { path: null, user: req.session.user, reports })
-  });
-}
-
-function sortById(a, b) {
-  return a.id - b.id;
+  report.userReports(req.session.user.id)
+    .then(reports => res.render('user', { path: null, user: req.session.user, reports }))
+    .catch(err => {
+      console.log(err.message);
+      res.render('user', { path: null, user: req.session.user, reports: null });
+    });
 }
 
 const users = (req, res) => {

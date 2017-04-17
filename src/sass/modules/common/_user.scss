@@ -38,6 +38,10 @@
     padding: 3px;
     border-radius: 5px;
   }
+  &-name {
+    display: flex;
+    cursor: pointer;
+  }
 }
 .user-reports-list {
   display: flex;
@@ -59,6 +63,16 @@
     border-bottom: none;
   }
 }
+.user-report.closed > .user-reports-data-wrapper {
+  display: none;
+}
+.user-report .icon-forward {
+  transition: transform .25s ease-in-out;
+}
+.user-report.closed .icon-forward {
+  transform: rotate(90deg);
+}
+
 .user-reports-states {
   width: 100%;
   table-layout: fixed;
