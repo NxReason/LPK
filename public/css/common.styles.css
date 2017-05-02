@@ -152,6 +152,9 @@ input[type="password"] {
 .icon-forward {
   background-image: url(../img/forward25.png); }
 
+.icon-image {
+  background-image: url(../img/image25.png); }
+
 .btn {
   background-color: #4c58fb;
   color: #fff;

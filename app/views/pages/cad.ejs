@@ -41,32 +41,6 @@
             <input type="text" id="steps-input">
           </div>
 
-          <!-- Add parameters -->
-          <div class="panel-section">
-            <div class="panel-sub">
-              <p class='sub-header' id="panel-params-open">
-                <i class="icon icon-forward"></i>
-                Параметры:
-              </p>
-              <i class="icon panel-custom-icon" id="add-param-btn"></i>
-            </div>
-          </div>
-
-          <div class="panel-section panel-items-content" id="panel-params-list">
-            <div class="panel-sub l-mb15">
-              <span>Название параметра</span>
-              <span>-</span>
-              <span class='text-right'>Значение по умолчанию</span>
-            </div>
-
-            <!-- Should be created via js -->
-            <!-- <div class="panel-param">
-              <input type="text" placeholder="Name" name="param1">
-              <input type="text" placeholder="Value" name="value1">
-            </div> -->
-            <!-- End of dynamic section -->
-          </div>
-
           <!-- Add tools -->
           <div class="panel-section">
             <div class="panel-sub">
@@ -126,8 +100,54 @@
           <h5 class="panel-header">
             Свойства состояния <i class="icon-small icon-close"></i>
           </h5>
+
+          <div class="panel-section">
+            <label for="state-name-input">Название состояния</label>
+            <input type="text" id="state-name-input">
+          </div>
+
+          <div class="panel-section">
+            <label for="event-name-input">Cобытиe</label>
+            <input type="text" id="event-name-input">
+            <textarea id="event-description-input"></textarea>
+          </div>
+
+          <div class="panel-section">
+            <label for="state-image-input" class="file-label" id="state-image-label">
+              <i class="icon icon-image"></i>
+              <span>Изображение</span>
+            </label>
+            <input type="file" id="state-image-input" class="file-input">
+          </div>
+
+          <!-- Add parameters -->
+          <div class="panel-section">
+            <div class="panel-sub">
+              <p class='sub-header' id="panel-params-open">
+                <i class="icon icon-forward"></i>
+                Параметры:
+              </p>
+              <i class="icon panel-custom-icon" id="add-param-btn"></i>
+            </div>
+          </div>
+
+          <div class="panel-section panel-items-content" id="panel-params-list">
+            <div class="panel-sub l-mb15">
+              <span>Название параметра</span>
+              <span>-</span>
+              <span class='text-right'>Значение по умолчанию</span>
+            </div>
+
+            <!-- Should be created via js -->
+            <!-- <div class="panel-param">
+              <input type="text" placeholder="Name" name="param1">
+              <input type="text" placeholder="Value" name="value1">
+            </div> -->
+            <!-- End of dynamic section -->
+          </div>
         </div>
 
+        <!--Cad pane-->
         <div class="l-cad-wrapper cad-wrapper" id="cad-wrapper">
           <div class="cad-pane" id="cad-pane"></div>
         </div>

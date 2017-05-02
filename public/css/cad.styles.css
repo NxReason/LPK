@@ -170,6 +170,9 @@ input[type="password"] {
 .icon-forward {
   background-image: url(../img/forward25.png); }
 
+.icon-image {
+  background-image: url(../img/image25.png); }
+
 .btn {
   background-color: #4c58fb;
   color: #fff;
@@ -312,6 +315,35 @@ input[type="password"] {
     padding-bottom: 2px; }
   .panel-section input:focus {
     outline: none; }
+  .panel-section .file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+  .panel-section .file-label {
+    font-size: .8rem;
+    font-weight: 700;
+    color: white;
+    background-color: #4c58fb;
+    display: inline-block;
+    width: fit-content;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center; }
+    .panel-section .file-label:focus, .panel-section .file-label:hover {
+      background-color: #1a29fa; }
+  .panel-section textarea {
+    margin-top: 5px;
+    border: 1px solid #939393;
+    height: 100px;
+    resize: none;
+    font-family: "Comfortaa", "Ubuntu", Helvetica, Arial, sans-serif;
+    outline: none;
+    padding: 5px; }
 
 .panel-sub {
   display: flex;

@@ -11,6 +11,7 @@ $edit-icon-url: '../img/edit25.png';
 $edit-white-icon-url: '../img/edit_white25.png';
 $close-icon-url: '../img/close15.png';
 $forward-icon-url: '../img/forward25.png';
+$image-icon-url: '../img/image25.png';
 
 .icon {
   display: inline-block;
@@ -69,4 +70,7 @@ $forward-icon-url: '../img/forward25.png';
 }
 .icon-forward {
   background-image: url($forward-icon-url);
+}
+.icon-image {
+  background-image: url($image-icon-url);
 }
