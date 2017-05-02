@@ -37,6 +37,12 @@ class Scheme {
     return this.addComponent(stateIdGen, stateStore, 'states');
   }
 
+  /**
+   * Create new scheme component with underlying DOM node
+   * @param {function} gen - Function for generating id
+   * @param {function} store - Function for creating new object
+   * @param {object} list - Object containing scheme components
+   */
   addComponent(gen, store, list) {
     const id = gen();
     const newComponent = store({ id });
@@ -44,6 +50,10 @@ class Scheme {
     return newComponent;
   }
 
+  /**
+   * Set new type for tool with given id
+   * @param { id: String, value: String } data
+   */
   setToolType(data) {
     this.tools[data.id].type = data.value;
   }
@@ -55,6 +65,32 @@ class Scheme {
   setToolValue(data) {
     const prop = `${data.limit}Value`;
     this.tools[data.id][prop] = data.value;
+  }
+
+  /**
+   * Handle state data change
+   */
+  setStateName(data) {
+    this.states[data.id].name = data.value;
+  }
+
+  setEventName(data) {
+    this.states[data.id].eventName = data.value;
+  }
+
+  setEventDesc(data) {
+    this.states[data.id].eventDesc = data.value;
+  }
+
+  /**
+   * Handle state parameters change
+   */
+  setParamName(data) {
+    
+  }
+
+  setParamValue(data) {
+
   }
 }
 

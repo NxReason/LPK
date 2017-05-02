@@ -85,9 +85,28 @@ $addToolBtn.addEventListener('click', () => {
   toolsListClosed = appendListElement(tool.$node, $toolsList, toolsListClosed, $toolsOpenIcon);
 });
 
+// TODO change to array with key (topic) => value (handler) object 
+// and map them with 'setHandlerForTopic'
 pubsub.subscribe('toolTypeChange', data => scheme.setToolType(data));
 pubsub.subscribe('toolNameChange', data => scheme.setToolName(data));
 pubsub.subscribe('toolValueChange', data => scheme.setToolValue(data));
+
+setHandlerForTopic('stateNameChange', 'setStateName');
+setHandlerForTopic('eventNameChange', 'setEventName');
+setHandlerForTopic('eventDescChange', 'setEventDesc');
+
+pubsub.subscribe('paramNameChange', data => scheme.setParamName(data));
+pubsub.subscribe('paramValueChange', data => scheme.setParamValue(data));
+
+function setHandlerForTopic(topic, handler) {
+  pubsub.subscribe(topic, data => scheme[handler](data));
+}
+
+pubsub.subscribe('stateNameChange', (data) => {
+  const $stateNode = document.querySelector(`#${data.id}`);
+  const $stateName = $stateNode.querySelector('.cad-state-name');
+  $stateName.textContent = data.value;
+});
 
 /**
  * State-objects management
@@ -95,12 +114,14 @@ pubsub.subscribe('toolValueChange', data => scheme.setToolValue(data));
 scene.addState = () => {
   const state = scheme.addState();
   $cadPane.appendChild(state.$node);
-  console.log(state);
+
   jsPlumb.draggable(state.$node.id, {
     containment: true,
   });
+
   state.$node.addEventListener('contextmenu', (e) => {
     e.preventDefault();
+    statePanel.fillContent(state);
     scene.showStatePanel();
   });
 };
