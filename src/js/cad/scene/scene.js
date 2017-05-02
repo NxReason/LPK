@@ -1,11 +1,14 @@
 import Scheme from '../scheme/scheme';
-import modelPanel from './modelPanel';
+import panel from './panel';
 import statePanel from './statePanel';
 import { jsPlumb } from '../../utils/jsplumb.min';
+import pubsub from '../../utils/pubsub';
+
+const { appendListElement, toggleListDisplay } = panel;
 
 const scene = {};
-
 const scheme = new Scheme();
+
 /**
  * Tabs control
  */
@@ -53,18 +56,51 @@ scene.hideStatePanel = () => {
 };
 
 /**
+ * Model panel listeners
+ */
+const $modelNameInput = document.querySelector('#model-name-input');
+handleModelParamChange($modelNameInput, 'setModelName');
+
+const $breakTimeInput = document.querySelector('#break-time-input');
+handleModelParamChange($breakTimeInput, 'setBreakTime');
+
+const $stepsInput = document.querySelector('#steps-input');
+handleModelParamChange($stepsInput, 'setSteps');
+
+function handleModelParamChange($node, handler) {
+  $node.addEventListener('change', e => scheme[handler](e.target.value));
+}
+
+const $toolsOpenBtn = document.querySelector('#panel-tools-open');
+const $toolsOpenIcon = $toolsOpenBtn.querySelector('.icon-forward');
+const $addToolBtn = document.querySelector('#add-tool-btn');
+const $toolsList = document.querySelector('#panel-tools-list');
+
+let toolsListClosed = true;
+$toolsOpenBtn.addEventListener('click', () => {
+  toolsListClosed = toggleListDisplay(toolsListClosed, $toolsList, $toolsOpenIcon);
+});
+$addToolBtn.addEventListener('click', () => {
+  const tool = scheme.addTool();
+  toolsListClosed = appendListElement(tool.$node, $toolsList, toolsListClosed, $toolsOpenIcon);
+});
+
+pubsub.subscribe('toolTypeChange', data => scheme.setToolType(data));
+pubsub.subscribe('toolNameChange', data => scheme.setToolName(data));
+pubsub.subscribe('toolValueChange', data => scheme.setToolValue(data));
+
+/**
  * State-objects management
  */
 scene.addState = () => {
   const state = scheme.addState();
   $cadPane.appendChild(state.$node);
+  console.log(state);
   jsPlumb.draggable(state.$node.id, {
     containment: true,
   });
   state.$node.addEventListener('contextmenu', (e) => {
     e.preventDefault();
-    console.log(state);
-    console.log(this);
     scene.showStatePanel();
   });
 };

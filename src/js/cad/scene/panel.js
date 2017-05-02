@@ -17,9 +17,14 @@ function hideList($list, $icon) {
   $list.style.display = 'none';
 }
 
-function appendListElement(creator, $list, flag, $icon) {
+function appendListElement(element, $list, flag, $icon) {
   let listHidden = flag;
-  const $li = creator();
+  let $li;
+  if (typeof element === 'function') {
+    $li = element();
+  } else {
+    $li = element;
+  }
   $list.appendChild($li);
   if (listHidden) {
     listHidden = toggleListDisplay(flag, $list, $icon);

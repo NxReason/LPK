@@ -1,8 +1,8 @@
 import nodeFactory from '../../utils/nodeFactory';
 
-function init(params = {}) {
+function createStateNode(params = {}) {
   const name = params.name || 'Состояние';
-  const id = params.id || `state${Date.now()}`;
+  const id = `state-${params.id || Date.now()}`;
 
   const $node = nodeFactory('div', { classList: ['cad-state'], attrs: { id } });
   const $stateName = nodeFactory('h5', { classList: ['cad-state-name'], textContent: name });
@@ -15,4 +15,4 @@ function init(params = {}) {
   };
 }
 
-export default init;
+export default createStateNode;
