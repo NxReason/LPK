@@ -85,18 +85,21 @@ $addToolBtn.addEventListener('click', () => {
   toolsListClosed = appendListElement(tool.$node, $toolsList, toolsListClosed, $toolsOpenIcon);
 });
 
-// TODO change to array with key (topic) => value (handler) object 
-// and map them with 'setHandlerForTopic'
-pubsub.subscribe('toolTypeChange', data => scheme.setToolType(data));
-pubsub.subscribe('toolNameChange', data => scheme.setToolName(data));
-pubsub.subscribe('toolValueChange', data => scheme.setToolValue(data));
 
-setHandlerForTopic('stateNameChange', 'setStateName');
-setHandlerForTopic('eventNameChange', 'setEventName');
-setHandlerForTopic('eventDescChange', 'setEventDesc');
+const subscriptions = {
+  toolTypeChange: 'setToolType',
+  toolNameChange: 'setToolName',
+  toolValueChange: 'setToolValue',
+  stateNameChange: 'setStateName',
+  eventNameChange: 'setEventName',
+  eventDescChange: 'setEventDesc',
+  paramNameChange: 'setParamName',
+  paramValueChange: 'setParamValue',
+};
 
-pubsub.subscribe('paramNameChange', data => scheme.setParamName(data));
-pubsub.subscribe('paramValueChange', data => scheme.setParamValue(data));
+Object.keys(subscriptions).forEach((key) => {
+  setHandlerForTopic(key, subscriptions[key]);
+});
 
 function setHandlerForTopic(topic, handler) {
   pubsub.subscribe(topic, data => scheme[handler](data));
@@ -106,6 +109,11 @@ pubsub.subscribe('stateNameChange', (data) => {
   const $stateNode = document.querySelector(`#${data.id}`);
   const $stateName = $stateNode.querySelector('.cad-state-name');
   $stateName.textContent = data.value;
+});
+
+pubsub.subscribe('paramCreated', (data) => {
+  const newParam = scheme.addParameter(data);
+  statePanel.appendParam(newParam.$paramWrapper);
 });
 
 /**

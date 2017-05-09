@@ -1,9 +1,11 @@
 import stateStore from '../scene/stateStore';
 import toolStore from '../scene/toolStore';
+import paramStore from '../scene/paramStore';
 import idGenerator from './idGen';
 
 const stateIdGen = idGenerator();
 const toolIdGen = idGenerator();
+const paramIdGen = idGenerator();
 
 class Scheme {
   constructor() {
@@ -16,6 +18,9 @@ class Scheme {
     this.tools = {};
   }
 
+  /**
+   * Model info
+   */
   setModelName(name) {
     this.modelName = name;
     console.log(this);
@@ -29,12 +34,22 @@ class Scheme {
     this.steps = steps;
   }
 
+  /**
+   * Add components to scheme
+   */
   addTool() {
     return this.addComponent(toolIdGen, toolStore, 'tools');
   }
 
   addState() {
     return this.addComponent(stateIdGen, stateStore, 'states');
+  }
+
+  addParameter(data) {
+    const id = paramIdGen();
+    const newComponent = paramStore({ id, stateId: data.id });
+    this.states[data.id].params[newComponent.id] = newComponent;
+    return newComponent;
   }
 
   /**
@@ -85,12 +100,12 @@ class Scheme {
   /**
    * Handle state parameters change
    */
-  setParamName(data) {
-    
+  setParamName({ id, value, stateId }) {
+    this.states[stateId].params[id].name = value;
   }
 
-  setParamValue(data) {
-
+  setParamValue({ id, value, stateId }) {
+    this.states[stateId].params[id].value = value;
   }
 }
 

@@ -1,10 +1,11 @@
 import nodeFactory from '../../utils/nodeFactory';
 
-function createStateNode(params = {}) {
-  const id = `state-${params.id || Date.now()}`;
-  const name = params.name || 'Состояние';
+function createStateNode(data = {}) {
+  const id = `state-${data.id || Date.now()}`;
+  const name = data.name || 'Состояние';
   const eventName = '';
   const eventDesc = '';
+  const params = {};
 
   const $node = nodeFactory('div', { classList: ['cad-state'], attrs: { id } });
   const $stateName = nodeFactory('h5', { classList: ['cad-state-name'], textContent: name });
@@ -15,6 +16,7 @@ function createStateNode(params = {}) {
     name,
     eventName,
     eventDesc,
+    params,
     $node,
   };
 }

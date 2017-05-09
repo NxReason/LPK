@@ -17,8 +17,7 @@ function hideList($list, $icon) {
   $list.style.display = 'none';
 }
 
-function appendListElement(element, $list, flag, $icon) {
-  let listHidden = flag;
+function appendListElement(element, $list) {
   let $li;
   if (typeof element === 'function') {
     $li = element();
@@ -26,10 +25,6 @@ function appendListElement(element, $list, flag, $icon) {
     $li = element;
   }
   $list.appendChild($li);
-  if (listHidden) {
-    listHidden = toggleListDisplay(flag, $list, $icon);
-  }
-  return listHidden;
 }
 
 function appendChildren(parent, children) {

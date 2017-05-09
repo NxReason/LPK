@@ -6,8 +6,8 @@ const { appendChildren } = panel;
 
 const TOOL_TYPES = [ 'Switch', 'Range' ];
 
-function createToolNode(params = {}) {
-  const id = `tool-${params.id || Date.now()}`;
+function createToolNode(data = {}) {
+  const id = `tool-${data.id || Date.now()}`;
   const name = '';
   const minValue = '';
   const maxValue = '';
@@ -69,13 +69,13 @@ function createRangeValues(id) {
   );
 }
 
-function createRangeValue(params, id = 1) {
-  const $div = nodeFactory('div', { attrs: { 'data-limit': params.limit } });
-  const $label = nodeFactory('label', { textContent: params.text });
+function createRangeValue(data, id = 1) {
+  const $div = nodeFactory('div', { attrs: { 'data-limit': data.limit } });
+  const $label = nodeFactory('label', { textContent: data.text });
   const $input = nodeFactory('input', { attrs: { type: 'text' } });
   $input.addEventListener('change', (e) => {
     const value = e.target.value;
-    const limit = params.limit || 'min';
+    const limit = data.limit || 'min';
     pubsub.publish('toolValueChange', { id, value, limit });
   });
   return appendChildren($div, [ $label, $input ]);
