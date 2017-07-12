@@ -81,7 +81,7 @@ input[type="password"] {
 
 .l-nav-menu {
   width: 30%;
-  min-width: 300px; }
+  min-width: 500px; }
 
 .l-dashboard {
   width: 20%; }
@@ -335,9 +335,10 @@ input[type="password"] {
 
 .users-btn {
   display: flex;
-  color: #fff;
+  color: #464646;
   height: 35px;
   padding: 5px;
+  border: 1px solid #464646;
   border-radius: 5px;
   align-items: center;
   text-decoration: none;
@@ -345,20 +346,24 @@ input[type="password"] {
   justify-content: center;
   transition: background-color .2s ease-in-out; }
   .users-btn-new {
-    background-color: #26972d;
+    background-color: #4c58fb;
+    color: #fff;
+    border: none;
     width: 200px;
     margin-bottom: 10px; }
   .users-btn-new:hover {
-    background-color: #1c6e21; }
+    background-color: #1a29fa; }
   .users-btn-edit {
-    background-color: #4c58fb;
+    background-color: #fff;
     margin-right: 10px; }
   .users-btn-edit:hover {
-    background-color: #1a29fa; }
+    color: #fff;
+    background-color: #6c6c6c; }
   .users-btn-delete {
-    background-color: #ff3030; }
+    background-color: #fff; }
   .users-btn-delete:hover {
-    background-color: #fc0000; }
+    color: #fff;
+    background-color: #6c6c6c; }
 
 .admin-sub-menu {
   display: flex;
@@ -385,5 +390,54 @@ input[type="password"] {
       text-decoration: none; }
       .admin-sub-menu li a .icon-large {
         margin-right: 15px; }
+
+.models {
+  padding: 20px; }
+
+.new-model-btn {
+  display: inline-block;
+  line-height: 25px;
+  height: 35px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none; }
+
+.models-list {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start; }
+
+.model {
+  width: 24%;
+  background-color: #FFF;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), -1px 0 3px rgba(0, 0, 0, 0.3); }
+  .model__name {
+    margin-bottom: 7px;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2); }
+  .model__controls {
+    display: flex; }
+  .model__control {
+    border: 1px solid #777;
+    height: 30px;
+    display: inline-block;
+    line-height: 24px;
+    font-size: .8rem;
+    padding: 3px;
+    text-decoration: none;
+    color: #464646;
+    border-radius: 5px;
+    transition: all .25s ease; }
+    .model__control-edit {
+      margin-right: 5px; }
+    .model__control-delete {
+      margin-right: auto; }
+  .model__control:hover {
+    color: #fff;
+    background-color: #777; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvY29tbW9uLnN0eWxlcy5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

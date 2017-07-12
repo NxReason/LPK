@@ -14,7 +14,7 @@ $timerContainer.appendChild(timer.node);
 
 function set({ name, img, params }) {
   $name.textContent = name;
-  $img.setAttribute('src', img);
+  $img.setAttribute('src', `img/states/${img}`);
   setParameters(params);
 }
 
@@ -63,5 +63,5 @@ function hideTimer() {
 export default {
   set,
   showEvent,
-  hideEvent
-}
+  hideEvent,
+};

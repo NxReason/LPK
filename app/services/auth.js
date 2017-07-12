@@ -1,11 +1,15 @@
 const User = require('../database/models').User;
 const bcrypt = require('bcrypt-nodejs');
 
+const INVALID_INPUT_DATA = 'Логин и пароль должны быть указаны';
 const INVALID_USER_MSG = 'Пользователь не найден';
 const INVALID_PASS_MSG = 'Неверный пароль';
 
 function auth(username, password) {
   return new Promise((resolve, reject) => {
+    if (!username || !password) {
+      reject(INVALID_INPUT_DATA);
+    }
     User.findOne({ where: { username } })
     .then((user) => {
       if (!user) reject(INVALID_USER_MSG);

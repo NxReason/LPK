@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <% include ../partials/head %>
+  <title>Galery</title>
+
+  <!-- todo -->
+  <link rel="stylesheet" href="/css/galery.styles.css"> 
+</head>
+<body>
+  <div class="l-content">
+    <div class="l-row l-header header">
+      <% include ../partials/navMenu %>
+      <% include ../partials/dashboard %>
+    </div>
+
+    <div class="galery">
+      <section class="new-image">
+        <input type="text" placeholder="Название изображения" class="new-image-name">
+        <label for="new-image-input" class="file-label" id="new-image-label">
+          <i class="icon icon-image"></i>
+          <span>Загрузить изображение</span>
+        </label>
+        <input type="file" id="new-image-input" class="file-input">
+
+        <button class="btn new-image-save">Сохранить</button>
+      </section>
+      <section class="images-list">
+        <% if (images.length) { %> 
+          <ul>
+          <% images.forEach(image => { %>
+            <li class="image-item">
+              <span class="image-item-name"><%= image.name %></span>
+              <span class="icon-wrapper">
+                <i class="icon icon-image"></i>
+              </span>
+            </li>
+          <% }); %>
+          </ul>
+        <% } else { %>
+          <p class="message">Нет изображений</p>
+        <% } %>
+      </section>
+    </div>
+    
+  </div>
+
+  <script src="/js/galery.bundle.js" type="text/javascript"></script>
+</body>
+</html>

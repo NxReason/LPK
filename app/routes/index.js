@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { auth, grantAccess } = require('../middleware');
+const { auth, grantAccess, fileLoader } = require('../middleware');
 const {
   mainController,
   loginController,
@@ -26,6 +26,9 @@ router.get('/logout', loginController.processLogout);
 router.use(grantAccess('dev', 'admin'));
 router.get('/cad', cadController.cad);
 
+router.get('/galery', cadController.galery);
+router.post('/galery/images', fileLoader.single('img'), cadController.saveImage);
+
 // Access to admins
 router.use(grantAccess('admin'));
 router.get('/admin', mainController.admin);
@@ -37,8 +40,11 @@ router.post('/admin/users/update', usersController.update);
 router.delete('/admin/users/delete/:id', usersController.remove);
 router.get('/admin/users/exists', usersController.exists);
 
+router.get('/admin/models', modelController.getAll);
+router.delete('/admin/models/:id', modelController.remove);
+
 // TODO delete
-router.get('/test', modelController.getModels);
+router.get('/test', modelController.getModelsTest);
 
 // Handle not found (404)
 router.all('*', mainController.handle404);

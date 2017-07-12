@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var State = sequelize.define('State', {
+  const State = sequelize.define('State', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -32,6 +33,11 @@ module.exports = function(sequelize, DataTypes) {
         State.hasOne(models.Event, {
           foreignKey: 'stateId',
           as: 'event'
+        });
+        State.belongsTo(models.Image, {
+          foreignKey: 'imageId',
+          onDelete: 'set null',
+          onUpdate: 'cascade',
         });
         State.hasMany(models.Action, {
           foreignKey: 'stateId',

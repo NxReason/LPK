@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: models => {
-        // associations can be defined here
+        // associations
         User.hasMany(models.Model, {
           foreignKey: 'developerId',
           as: 'createdModels'

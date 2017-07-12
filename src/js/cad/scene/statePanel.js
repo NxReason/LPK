@@ -44,9 +44,6 @@ const $paramsOpenBtn = document.querySelector('#panel-params-open');
 const $paramsOpenIcon = $paramsOpenBtn.querySelector('.icon-forward');
 const $addParamBtn = document.querySelector('#add-param-btn');
 
-const $imgLabel = document.querySelector('#state-image-label');
-const $imgInput = document.querySelector('#state-image-input');
-
 let paramsListClosed = true;
 
 $paramsOpenBtn.addEventListener('click', () => {
@@ -68,6 +65,9 @@ statePanel.appendParam = ($node) => {
 /**
  * Handle state images
  */
+const $imgLabel = document.querySelector('#state-image-label');
+const $imgInput = document.querySelector('#state-image-input');
+
 $imgInput.addEventListener('change', (e) => {
   let content = '';
   if (e.target.files) {
@@ -77,5 +77,31 @@ $imgInput.addEventListener('change', (e) => {
   }
   $imgLabel.querySelector('span').textContent = content;
 });
+
+/**
+ * Actions
+ */
+const $actionsOpenBtn = document.querySelector('#panel-actions-open');
+const $actionsOpenIcon = $actionsOpenBtn.querySelector('.icon-forward');
+const $addActionBtn = document.querySelector('#add-action-btn');
+const $actionsList = document.querySelector('#panel-actions-list');
+
+let actionsListClosed = true;
+
+$actionsOpenBtn.addEventListener('click', () => {
+  actionsListClosed = toggleListDisplay(actionsListClosed, $actionsList, $actionsOpenIcon);
+});
+
+$addActionBtn.addEventListener('click', () => {
+  // const id = $currentStateId.value;
+  // pubsub.publish('paramCreated', { id });
+  if (actionsListClosed) {
+    actionsListClosed = toggleListDisplay(actionsListClosed, $actionsList, $actionsOpenIcon);
+  }
+});
+
+// statePanel.appendParam = ($node) => {
+//   $paramsList.appendChild($node);
+// };
 
 export default statePanel;

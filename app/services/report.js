@@ -49,7 +49,7 @@ function addCommonData(report) {
     return common;
   }, {
     allTime: 0,
-    inactiveStates: 0
+    inactiveStates: 0,
   });
 
   report.allStates = report.states.length;

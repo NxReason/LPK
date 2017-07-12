@@ -81,7 +81,7 @@ input[type="password"] {
 
 .l-nav-menu {
   width: 30%;
-  min-width: 300px; }
+  min-width: 500px; }
 
 .l-dashboard {
   width: 20%; }
@@ -364,7 +364,6 @@ input[type="password"] {
   padding: 10px 0;
   border-bottom: 1px solid #cedbe4; }
   .tool-name {
-    height: 30px;
     border-bottom: 1px dotted #cedbe4;
     text-align: center; }
   .tool:nth-child(odd) {

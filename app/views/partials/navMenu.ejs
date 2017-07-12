@@ -4,6 +4,7 @@
       <li><a href="/" <% if (path === '/') { %> class="active" <% } %> ><span>Обучение</span></a></li>
       <%  if (user.level === 'dev' || user.level === 'admin') { %>
       <li><a href="/cad" <% if (path === '/cad') { %> class="active" <% } %> ><span>Создание</span></a></li>
+      <li><a href="/galery" <% if (path === '/galery') { %> class="active" <% } %> ><span>Изображения</span></a></li>
       <% } %>
       <% if (user.level === 'admin') { %>
         <li><a href="/admin" <% if (path === '/admin') { %> class="active" <% } %> ><span>Админ</span></a></li>

@@ -51,7 +51,8 @@ function createRangeTool(tool) {
       'name': tool.name,
       'type': 'range',
       'min': tool.min,
-      'max': tool.max
+      'max': tool.max,
+      'value': 0,
     }
   });
   divInput.appendChild(input);

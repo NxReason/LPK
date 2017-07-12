@@ -31,9 +31,10 @@
 }
 .users-btn {
   display: flex;
-  color: #fff;
+  color: $primary-grey;
   height: 35px;
   padding: 5px;
+  border: 1px solid $primary-grey;
   border-radius: 5px;
   align-items: center;
   text-decoration: none;
@@ -42,26 +43,30 @@
   transition: background-color .2s ease-in-out;
 
   &-new {
-    background-color: $primary-green;
+    background-color: $primary-blue;
+    color: #fff;
+    border: none;
     width: 200px;
     margin-bottom: 10px;
   }
   &-new:hover {
-    background-color: darken($primary-green, 10%);
-  }
-
-  &-edit {
-    background-color: $primary-blue;
-    margin-right: 10px;
-  }
-  &-edit:hover {
     background-color: darken($primary-blue, 10%);
   }
 
+  &-edit {
+    background-color: #fff;
+    margin-right: 10px;
+  }
+  &-edit:hover {
+    color: #fff;
+    background-color: lighten($primary-grey, 15%);
+  }
+
   &-delete {
-    background-color: $error-color;
+    background-color: #fff;
   }
   &-delete:hover {
-    background-color: darken($error-color, 10%);
+    color: #fff;
+    background-color: lighten($primary-grey, 15%);
   }
 }

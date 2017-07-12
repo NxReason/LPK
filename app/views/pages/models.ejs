@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <% include ../partials/head %>
+  <title>Models</title>
+
+  <link rel="stylesheet" href="/css/common.styles.css">
+</head>
+<body>
+  <div class="l-content">
+    <div class="l-row l-header header">
+      <% include ../partials/navMenu %>
+      <% include ../partials/dashboard %>
+    </div>
+
+    <div class="models">
+      <a href="/cad" class='btn new-model-btn'>Новая модель</a>
+
+      <div class="models-list">
+        <% if (models) { -%>
+          <% models.forEach(model => { %>
+            <div class="model" id="model-<%= model.id %>">
+              <p class="model__name"><%= model.name %></p>
+              <div class="model__controls">
+                <a href="/cad/models/<%= model.id %>" class="model__control model__control-edit">Изменить</a>
+                <button class="model__control model__control-delete" data-id="<%= model.id %>">Удалить</button>
+              </div>
+            </div>
+          <% }); %>
+        <% } else { -%>
+          <p class="models-message">Нет моделей</p>  
+        <% } -%>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/models.bundle.js" type="text/javascript"></script>
+</body>
+</html>

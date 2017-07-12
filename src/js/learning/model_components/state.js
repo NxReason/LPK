@@ -8,7 +8,7 @@ class State {
     this.img = data.img;
     this.params = data.params;
 
-    if(data.last) {
+    if (data.last) {
       this.last = true;
       this.event = null;
       this.actions = null;

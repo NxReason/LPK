@@ -34,4 +34,4 @@ function serverListen() {
   });
 }
 db.sequelize.sync()
-.then(() => serverListen());
+.then(serverListen);

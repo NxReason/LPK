@@ -96,13 +96,9 @@
           </div>
 
           <div class="panel-section panel-items-content" id="panel-params-list">
-            <div class="panel-sub l-mb15">
-              <span>Название параметра</span>
-              <span>-</span>
-              <span class='text-right'>Значение по умолчанию</span>
-            </div>
           </div>
 
+          <!-- Add actions -->
           <div class="panel-section">
             <div class="panel-sub">
               <p class='sub-header' id="panel-actions-open">
@@ -111,6 +107,48 @@
               </p>
               <i class="icon panel-custom-icon" id="add-action-btn"></i>
             </div>
+          </div>
+
+          <div class="panel-section panel-items-content" id="panel-actions-list">
+            <!-- Dynamic section -->
+            <div class="panel-action">
+              <label>Следующее состояние</label>
+              <select class='next-state-select'>
+                <option value="state-2">State 2</option>
+                <option value="state-3">State 3</option>
+              </select>
+
+              <div class="panel-action-tools-header">
+                <label>Значения приборов</label>
+                <i class="icon icon-add"></i>
+              </div>
+              
+              <div class="panel-action-tool">
+                <select>
+                  <option value="tool-1">Tool-1</option>
+                  <option value="tool-2">Tool-2</option>
+                </select>
+
+                <div class="panel-action-tool-value">
+                  <label for="action-tool-checkbox">Включен?</label>
+                  <input type="checkbox" id="action-tool-checkbox">
+                </div>
+              </div>
+
+              <div class="panel-action-tool">
+                <select>
+                  <option value="tool-1">Tool-1</option>
+                  <option value="tool-2">Tool-2</option>
+                </select>
+
+                <div class="panel-action-tool-value">
+                  <input type="text" placeholder="Минимум">
+                  <input type="text" placeholder="Максимум">
+                </div>
+              </div>
+
+            </div>
+            <!-- End of dynamic section -->
           </div>
         </div>
 

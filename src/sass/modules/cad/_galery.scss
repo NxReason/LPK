@@ -1,0 +1,71 @@
+.galery {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .25);
+}
+.new-image {
+  display: flex;
+  margin-bottom: 10px;
+}
+.new-image-name {
+  margin-right: 15px;
+  width: 250px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  outline: none;
+}
+.new-image-name:focus {
+  border-bottom-color: #777;
+}
+.new-image-save {
+  height: 35px;
+  margin-right: auto;
+}
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.file-label {
+  font-size: .8rem;
+  font-weight: 700;
+  color: white;
+  background-color: $primary-blue;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 5px;
+  height: 35px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  &:focus, &:hover {
+    background-color: darken($primary-blue, 10%);
+  }
+}
+
+.image-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #777;
+  width: 25%;
+
+  &-name {
+    width: 150px;
+    overflow: hidden;
+  }
+}
+.icon-wrapper {
+  display: inline-block;
+  background-color: $primary-blue;
+  padding: 5px;
+  border-radius: 5px;
+}

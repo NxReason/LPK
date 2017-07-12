@@ -18,8 +18,8 @@ class Model {
     this.timeout = null;
     this.subInput = null;
     this.subStop = null;
-    this.startState = new State({ id: 0, name: INITIAL_STATE_NAME, img: 'img/start.png', last: true });
-    this.stopState = new State({ id: -1, name: STOP_STATE_NAME, img: 'img/stop.png', last: true });
+    this.startState = new State({ id: 0, name: INITIAL_STATE_NAME, img: 'start.png', last: true });
+    this.stopState = new State({ id: -1, name: STOP_STATE_NAME, img: 'stop.png', last: true });
   }
 
   getState(id) {

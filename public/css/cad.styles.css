@@ -81,7 +81,7 @@ input[type="password"] {
 
 .l-nav-menu {
   width: 30%;
-  min-width: 300px; }
+  min-width: 500px; }
 
 .l-dashboard {
   width: 20%; }
@@ -285,7 +285,8 @@ input[type="password"] {
   background: #fff;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  overflow: hidden; }
   .cad-props-tab.is-hidden {
     display: none; }
   .cad-props-tab .panel-header {
@@ -416,6 +417,42 @@ input[type="password"] {
       display: flex;
       flex-direction: column;
       width: 47%; }
+
+.panel-action {
+  display: flex;
+  flex-direction: column; }
+  .panel-action-tools-header {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .panel-action-tools-header .icon:hover {
+      transform: scale(1.1);
+      cursor: pointer; }
+  .panel-action-tool {
+    display: flex;
+    flex-direction: column; }
+    .panel-action-tool select {
+      height: 20px;
+      font-size: .8rem;
+      margin-top: 10px;
+      margin-bottom: 5px; }
+    .panel-action-tool-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%; }
+      .panel-action-tool-value label {
+        font-size: .8rem; }
+      .panel-action-tool-value input[type='text'] {
+        width: 48%; }
+      .panel-action-tool-value input[type='checkbox'] {
+        width: 20px;
+        height: 20px; }
+  .panel-action .next-state-select {
+    height: 25px;
+    font-size: .9rem; }
 
 .cad-state {
   width: 150px;

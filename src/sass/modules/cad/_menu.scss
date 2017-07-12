@@ -36,6 +36,7 @@
   box-shadow: 0 0 2px 2px $shadow-color;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   &.is-hidden {
     display: none;
@@ -210,3 +211,57 @@
     }
   }
 }
+
+.panel-action {
+  display: flex;
+  flex-direction: column;
+
+  &-tools-header {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+
+  &-tool {
+    display: flex;
+    flex-direction: column;
+
+    select {
+      height: 20px;
+      font-size: .8rem;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    &-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      label {
+        font-size: .8rem;
+      }
+
+      input[type='text'] {
+        width: 48%;
+      }
+      input[type='checkbox'] {
+        width: 20px; height: 20px;
+      }
+    }
+  }
+
+  .next-state-select {
+    height: 25px;
+    font-size: .9rem;
+  }
+}
+
