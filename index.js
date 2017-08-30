@@ -5,11 +5,11 @@ const logger = require('morgan');
 
 const app = express();
 
-const { port } = require('./app/config');
+const { port, dbPath } = require('./app/config');
 
 const { session } = require('./app/middleware');
 const router = require('./app/routes');
-const db = require('./app/database/models');
+const db = require('./app/database');
 
 // Template engine
 app.set('views', join('.', 'app', 'views', 'pages'));
@@ -33,5 +33,9 @@ function serverListen() {
     console.log(`Server listening on port: ${port}`);
   });
 }
-db.sequelize.sync()
-.then(serverListen);
+
+db.connect(dbPath)
+  .then(serverListen)
+  .catch((err) => {
+    console.log(err);
+  });

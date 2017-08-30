@@ -1,12 +1,13 @@
-import Event from './event' ;
+import Event from './event';
 import Action from './action';
 
 class State {
   constructor(data) {
-    this.id = data.id;
+    this._id = data._id;
+    this.uuid = data.uuid;
     this.name = data.name;
     this.img = data.img;
-    this.params = data.params;
+    this.parameters = data.parameters;
 
     if (data.last) {
       this.last = true;
@@ -20,16 +21,12 @@ class State {
   }
 
   getInactiveTime() {
-    const times = this.getAllActionTimes();
+    const times = this.actions.map(action => action.time.max || 0);
     return Math.max(...times);
   }
 
   getInactiveAction() {
     return this.actions.find(action => action.inactive === true);
-  }
-
-  getAllActionTimes() {
-    return this.actions.map(action => action.maxTime || 0);
   }
 
   handleInput(data, time) {

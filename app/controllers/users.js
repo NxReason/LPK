@@ -1,22 +1,24 @@
-const { User, Report, ReportState } = require('../database/models');
-const report = require('../services/report');
+const { User } = require('../database').models;
+const Report = require('../lib/report');
 
 const profile = (req, res) => {
-  report.userReports(req.session.user.id)
+  User.findOne({ _id: req.session.user._id })
+    .then(user => Report.format(user.reports))
     .then(reports => res.render('user', { path: null, user: req.session.user, reports }))
-    .catch(err => {
+    .catch((err) => {
       console.log(err.message);
       res.render('user', { path: null, user: req.session.user, reports: null });
     });
-}
+};
 
 const users = (req, res) => {
-  User.findAll()
-  .then(users => res.render('users', { path: '/admin', users, user: req.session.user }))
-  .catch(err => {
+  User.find({ })
+  .then(data => res.render('users', { path: '/admin', users: data, user: req.session.user }))
+  .catch((err) => {
+    console.log(err);
     res.render('error', { code: 505, message: 'Не удалось получить список пользователей' })
   });
-}
+};
 
 const create = (req, res) => {
   res.render('userForm', {
@@ -24,23 +26,21 @@ const create = (req, res) => {
     path: '/admin',
     action: '/admin/users/new',
     method: 'POST',
-    editedUser: {}
+    editedUser: { },
   });
-}
+};
 
 const save = (req, res) => {
   const { username, password, firstname, lastname, email, level } = req.body;
-  User.create({
-    username, password, firstname, lastname, email, level
-  })
-  .then(user => res.json({ created: true }))
+  User.create({ username, password, firstName: firstname, lastName: lastname, email, level })
+  .then(() => res.json({ created: true }))
   .catch(err => res.json({ created: false, message: err.message }));
-}
+};
 
 const edit = (req, res) => {
-  const { id } = req.params;
-  User.findById(id)
-  .then(user => {
+  const { _id } = req.params;
+  User.findOne({ _id })
+  .then((user) => {
     if (!user) {
       res.status(404).render('error', {
         code: 404,
@@ -56,7 +56,8 @@ const edit = (req, res) => {
       });
     }
   })
-  .catch(err => {
+  .catch((err) => {
+    console.log(err);
     res.status(500).render('error', {
       code: 500,
       message: 'Не удалось получить данные о пользователе'
@@ -65,45 +66,41 @@ const edit = (req, res) => {
 };
 
 const update = (req, res) => {
-  User.findById(req.body.id)
-  .then(user => {
+  User.findOne({ _id: req.body.id })
+  .then((user) => {
     user.username = req.body.username;
-    if (req.body.password != '') user.password = req.body.password;
-    user.firstname = req.body.firstname;
-    user.lastname = req.body.lastname;
+    if (req.body.password !== '') user.password = req.body.password;
+    user.firstName = req.body.firstname;
+    user.lastName = req.body.lastname;
     user.email = req.body.email;
     user.level = req.body.level;
-    user.save()
+    return user.save();
   })
   .then(() => res.json({ updated: true }))
   .catch(err => res.json({ updated: false, message: err.message }));
 }
 
 const remove = (req, res) => {
-  User.destroy({
-    where: { id: req.params.id }
-  })
-  .then(data => {
-    console.log(data);
+  const { _id } = req.params;
+  User.remove({ _id })
+  .then(() => {
     res.json({ deleted: true });
   })
-  .catch(err => {
+  .catch((err) => {
+    console.log(err);
     res.json({ deleted: false, message: err.message });
   });
 };
 
 const exists = (req, res) => {
-  const key = Object.keys(req.query)[0];
-  const value = req.query[key];
-  User.findOne({
-    where: { [key]: value }
-  })
-  .then(user => {
+  const { username } = req.query;
+  User.findOne({ username })
+  .then((user) => {
     if (!user) res.json({ exists: false });
     else res.json({ exists: true });
   })
   .catch(err => res.json({ error: true, status: 500, msg: err.message }));
-}
+};
 
 module.exports = {
   profile,
@@ -113,5 +110,5 @@ module.exports = {
   edit,
   update,
   remove,
-  exists
+  exists,
 }

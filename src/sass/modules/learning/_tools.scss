@@ -36,7 +36,6 @@
 .range {
   display: flex;
   align-items: center;
-
   margin-top: 10px;
 
   span {
@@ -53,6 +52,7 @@
 
   input {
     display: inline-block;
+    cursor: pointer;
     flex: 1;
   }
 }

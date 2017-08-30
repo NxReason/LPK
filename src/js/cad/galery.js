@@ -1,5 +1,6 @@
 import '../../sass/galery.scss';
-import ajax from '../utils/ajax.js';
+import ajax from '../utils/ajax';
+import nodeFactory from '../utils/nodeFactory';
 
 const $imgLabel = document.querySelector('#new-image-label');
 const $imgInput = document.querySelector('#new-image-input');
@@ -34,7 +35,8 @@ function sendImage() {
     data: formdata,
   })
   .then((res) => {
-    console.log(res);
+    const img = JSON.parse(res);
+    addImageNode(img);
   })
   .catch((err) => {
     console.warn(err);
@@ -43,4 +45,23 @@ function sendImage() {
 
 function isFiles($input) { 
   return ($input.files.length >= 1);
+}
+
+const $imagesList = document.querySelector('.images-list-ul');
+function addImageNode(img) {
+  const $li = nodeFactory('li', { classList: ['image-item'] });
+
+  const $span = nodeFactory('span', { classList: ['image-item-name'], textContent: img.name });
+  const $a = nodeFactory('a',{
+    attrs: { href: `/uploads/${img.url}`, target: '_blank' },
+  });
+  const $iconWrapper = nodeFactory('span', { classList: ['icon-wrapper'] });
+  const $icon = nodeFactory('i', { classList: [ 'icon', 'icon-image' ] });
+
+  $iconWrapper.appendChild($icon);
+  $a.appendChild($iconWrapper);
+  $li.appendChild($span);
+  $li.appendChild($a);
+
+  $imagesList.appendChild($li);
 }

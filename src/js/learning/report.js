@@ -4,13 +4,13 @@ const REPORT_URL = '/learning/report';
 const ajaxConfig = {
   method: 'POST',
   headers: {
-    'Content-type': 'application/json'
-  }
-}
+    'Content-type': 'application/json',
+  },
+};
 
 class Report {
   constructor(name, steps) {
-    this.modelName = name;
+    this.model = name;
     this.maxSteps = steps;
     this.states = [];
     this.currentState = null;
@@ -45,9 +45,9 @@ class Report {
       this.states = this.states.slice(0, -1);
     }
     ajaxConfig.data = JSON.stringify({
-      modelName: this.modelName,
+      model: this.model,
       maxSteps: this.maxSteps,
-      states: this.states
+      states: this.states,
     });
     return ajax(REPORT_URL, ajaxConfig);
   }

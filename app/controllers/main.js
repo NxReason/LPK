@@ -1,8 +1,10 @@
-const { Model } = require('../database/models');
-const report = require('../services/report');
+const { Model } = require('../database/').models;
+const Report = require('../lib/report');
 
 const learning = (req, res) => {
-  Model.findAll({ attributes: ['id', 'name'] })
+  Model
+    .find({})
+    .select({ name: 1 })
     .then((models) => { res.render('learning', { models, user: req.session.user, path: req.path }); })
     .catch((err) => {
       console.log(err.message);
@@ -11,12 +13,13 @@ const learning = (req, res) => {
 };
 
 const newReport = (req, res) => {
-  const data = req.body;
-  data.userId = req.session.user.id;
-  report.save(data)
+  const data = {};
+  data.report = req.body;
+  data.userId = req.session.user._id;
+  Report.save(data)
     .then(() => res.json({ saved: true }))
     .catch(err => res.json({ saved: false, message: err.message }));
-}
+};
 
 const admin = (req, res) => {
   res.render('admin', { user: req.session.user, path: req.path });

@@ -316,27 +316,10 @@ input[type="password"] {
     padding-bottom: 2px; }
   .panel-section input:focus {
     outline: none; }
-  .panel-section .file-input {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1; }
-  .panel-section .file-label {
-    font-size: .8rem;
-    font-weight: 700;
-    color: white;
-    background-color: #4c58fb;
-    display: inline-block;
-    width: fit-content;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center; }
-    .panel-section .file-label:focus, .panel-section .file-label:hover {
-      background-color: #1a29fa; }
+  .panel-section .image-select {
+    height: 25px;
+    font-size: .85rem;
+    cursor: pointer; }
   .panel-section textarea {
     margin-top: 5px;
     border: 1px solid #939393;
@@ -420,7 +403,10 @@ input[type="password"] {
 
 .panel-action {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.25); }
   .panel-action-tools-header {
     width: 100%;
     margin-top: 5px;
@@ -450,9 +436,10 @@ input[type="password"] {
       .panel-action-tool-value input[type='checkbox'] {
         width: 20px;
         height: 20px; }
-  .panel-action .next-state-select {
+  .panel-action .next-state-select, .panel-action .action-tool-select {
     height: 25px;
-    font-size: .9rem; }
+    font-size: .9rem;
+    cursor: pointer; }
 
 .cad-state {
   width: 150px;

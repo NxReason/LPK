@@ -78,31 +78,10 @@
     outline: none;
   }
 
-  .file-input {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-  }
-  .file-label {
-    font-size: .8rem;
-    font-weight: 700;
-    color: white;
-    background-color: $primary-blue;
-    display: inline-block;
-    width: fit-content;
+  .image-select {
+    height: 25px;
+    font-size: .85rem;
     cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-
-    &:focus, &:hover {
-      background-color: darken($primary-blue, 10%);
-    }
   }
 
   textarea {
@@ -215,6 +194,9 @@
 .panel-action {
   display: flex;
   flex-direction: column;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted rgba(0, 0, 0, .25);
 
   &-tools-header {
     width: 100%;
@@ -259,9 +241,10 @@
     }
   }
 
-  .next-state-select {
+  .next-state-select, .action-tool-select {
     height: 25px;
     font-size: .9rem;
+    cursor: pointer;
   }
 }
 

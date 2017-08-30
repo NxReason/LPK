@@ -12,9 +12,11 @@
     "no-param-reassign": ["error", { "props": false }],
     "no-plusplus": "off",
     "no-use-before-define": ["error", "nofunc"],
-    "array-bracket-spacing": ["error", "always", { 
-      "singleValue": false,
-      "objectsInArrays": false 
-    }]
+    "array-bracket-spacing": ["error", "always", {
+      "objectsInArrays": false
+    }],
+    "import/no-unresolved": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off"
   }
 }

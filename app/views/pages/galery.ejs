@@ -17,7 +17,7 @@
     <div class="galery">
       <section class="new-image">
         <input type="text" placeholder="Название изображения" class="new-image-name">
-        <label for="new-image-input" class="file-label" id="new-image-label">
+        <label for="new-image-input" class="file-label new-image-label" id="new-image-label">
           <i class="icon icon-image"></i>
           <span>Загрузить изображение</span>
         </label>
@@ -26,20 +26,22 @@
         <button class="btn new-image-save">Сохранить</button>
       </section>
       <section class="images-list">
+        <ul class="images-list-ul">
         <% if (images.length) { %> 
-          <ul>
           <% images.forEach(image => { %>
             <li class="image-item">
               <span class="image-item-name"><%= image.name %></span>
-              <span class="icon-wrapper">
-                <i class="icon icon-image"></i>
-              </span>
+              <a href="/uploads/<%= image.url %>" target="_blank">
+                <span class="icon-wrapper">
+                  <i class="icon icon-image"></i>
+                </span>
+              </a>
             </li>
           <% }); %>
-          </ul>
         <% } else { %>
           <p class="message">Нет изображений</p>
         <% } %>
+        </ul>
       </section>
     </div>
     

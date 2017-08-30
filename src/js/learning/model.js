@@ -7,7 +7,7 @@ const STOP_STATE_NAME = 'Обучение остановлено';
 
 class Model {
   constructor(data) {
-    this.id = data.id;
+    this._id = data._id;
     this.name = data.name;
     this.breakTime = data.breakTime;
     this.steps = data.steps;
@@ -18,30 +18,31 @@ class Model {
     this.timeout = null;
     this.subInput = null;
     this.subStop = null;
-    this.startState = new State({ id: 0, name: INITIAL_STATE_NAME, img: 'start.png', last: true });
-    this.stopState = new State({ id: -1, name: STOP_STATE_NAME, img: 'stop.png', last: true });
+    this.startState = new State({ id: 0, name: INITIAL_STATE_NAME, img: { url: 'start.png' }, last: true });
+    this.stopState = new State({ id: -1, name: STOP_STATE_NAME, img: { url: 'stop.png' }, last: true });
   }
 
-  getState(id) {
-    return this.states.find(state => state.id == id);
+  getState(uuid) {
+    return this.states.find(state => state.uuid === uuid);
   }
 
   start() {
+    // TODO: refactor
     this.report = new Report(this.name, this.steps);
     this.handleNewState(this.currentState); // set initial state
     let intervals = Promise.resolve(); // init promise chain
     for (let i = 0; i < this.steps; i++) {
       intervals = intervals
-       .then(() => { return this.makeBreak() })
-       .then(() => { return this.handleEvent() })
-       .then(state => { this.handleNewState(state) })
+       .then(() => this.makeBreak())
+       .then(() => this.handleEvent())
+       .then((state) => { this.handleNewState(state); });
     }
     intervals
       .catch(state => this.handleNewState(state))
       .then(() => {
         if (this.currentState.name !== STOP_STATE_NAME) {
           this.report.send()
-          .then((response) => console.log(response));
+          .then(response => console.log(response));
         }
       });
     return intervals;
@@ -49,10 +50,10 @@ class Model {
 
   makeBreak() {
     return new Promise((resolve, reject) => {
-      this.subStop = pubsub.subscribe('model_stop', () => { reject(this.stopState); })
+      this.subStop = pubsub.subscribe('model_stop', () => { reject(this.stopState); });
       setTimeout(() => {
         this.clearSubs();
-        resolve()
+        resolve();
       }, this.breakTime);
     });
   }
@@ -66,14 +67,18 @@ class Model {
 
       // listen to user action
       // and if user input correct go to next state
-      this.subInput = pubsub.subscribe('user_input', data => {
+      this.subInput = pubsub.subscribe('user_input', (data) => {
         this.report.increaseActionsNumber();
         const timeSpent = Date.now() - eventStartTime;
         const nextStateId = this.currentState.handleInput(data, timeSpent);
         const nextState = this.getState(nextStateId);
-        if ( nextState ) {
+        if (nextState) {
           this.report.setSpentTime(timeSpent);
-          nextState.last ? reject(nextState) : resolve(nextState);
+          if (nextState.last) {
+            reject(nextState);
+          } else {
+            resolve(nextState);
+          }
         }
       });
 
@@ -87,9 +92,13 @@ class Model {
       this.timeout = setTimeout(() => {
         const nextStateId = this.currentState.getInactiveAction().nextState;
         const nextState = this.getState(nextStateId);
-        nextState.last ? reject(nextState) : resolve(nextState);
+        if (nextState.last) {
+          reject(nextState);
+        } else {
+          resolve(nextState);
+        }
       }, inactiveTime);
-    })
+    });
   }
 
   handleNewState(state) {
@@ -108,6 +117,8 @@ class Model {
       this.subStop.remove();
     }
   }
+
+  stop() {}
 
 }
 

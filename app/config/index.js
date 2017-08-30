@@ -1,6 +1,4 @@
-const config = {
+module.exports = {
   port: 8000,
-  db: require('./database')
+  dbPath: 'mongodb://localhost/lpk',
 };
-
-module.exports = config;

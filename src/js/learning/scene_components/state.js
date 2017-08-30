@@ -12,22 +12,22 @@ const $eventBody = $event.querySelector('.model-event-info');
 const $timerContainer = document.querySelector('.model-timer');
 $timerContainer.appendChild(timer.node);
 
-function set({ name, img, params }) {
+function set({ name, img, parameters }) {
   $name.textContent = name;
-  $img.setAttribute('src', `img/states/${img}`);
-  setParameters(params);
+  $img.setAttribute('src', `uploads/${img.url}`);
+  setParameters(parameters);
 }
 
 function setParameters(params = []) {
   const frag = document.createDocumentFragment();
   params.forEach(param => frag.appendChild(createParameteNode(param.name, param.value)));
 
-  $params.innerHTML = "";
+  $params.innerHTML = '';
   $params.appendChild(frag);
 }
 
 function createParameteNode(key, value) {
-  const div = nodeFactory('div', { classList: ['parameter'] });
+  const div = nodeFactory('div', { classList: [ 'parameter' ] });
 
   const keySpan = nodeFactory('span', { textContent: key });
   div.appendChild(keySpan);
@@ -38,11 +38,10 @@ function createParameteNode(key, value) {
   return div;
 }
 
-
 /** Sets event data to UI */
 function showEvent(event) {
   $eventHeader.textContent = event.name;
-  $eventBody.textContent = event.description;
+  $eventBody.textContent = event.desc;
   $event.classList.remove('is-hidden', 'slide-top');
   showTimer();
 }

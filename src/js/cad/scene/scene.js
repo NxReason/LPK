@@ -91,6 +91,7 @@ const subscriptions = {
   toolNameChange: 'setToolName',
   toolValueChange: 'setToolValue',
   stateNameChange: 'setStateName',
+  stateImgChange: 'setStateImg',
   eventNameChange: 'setEventName',
   eventDescChange: 'setEventDesc',
   paramNameChange: 'setParamName',
@@ -114,6 +115,18 @@ pubsub.subscribe('stateNameChange', (data) => {
 pubsub.subscribe('paramCreated', (data) => {
   const newParam = scheme.addParameter(data);
   statePanel.appendParam(newParam.$paramWrapper);
+});
+
+pubsub.subscribe('actionCreated', (data) => {
+  const newAction = scheme.addAction(data);
+  statePanel.appendAction(newAction.$actionWrapper);
+});
+
+pubsub.subscribe('nextStateChange', (data) => {
+  // create jsPlumb link
+  const { source, target, actionId } = data;
+  jsPlumb.connect({ source, target });
+  scheme.setAction(source, target, actionId);
 });
 
 /**

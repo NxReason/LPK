@@ -31,12 +31,12 @@
           <% reports.forEach(report => { %>
             <li class="user-report closed">
               <div class='user-reports-name'>
-                <h3 class="l-mr15"><span class="user-reports-value"><%= report.modelName %></span></h3>
+                <h3 class="l-mr15"><span class="user-reports-value"><%= report.model %></span></h3>
                 <i class="icon icon-forward"></i>
               </div>
 
               <div class="user-reports-data-wrapper">
-                <p>Дата прохождения: <span class="user-reports-value"><%= report.createdAt %></span></p>
+                <p>Дата прохождения: <span class="user-reports-value"><%= report.datePassed %></span></p>
                 <p>Время прохождения (в среднем на состояние):
                   <span class="user-reports-value">
                     <%= report.allTime %>

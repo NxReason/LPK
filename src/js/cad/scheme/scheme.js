@@ -1,11 +1,13 @@
 import stateStore from '../scene/stateStore';
 import toolStore from '../scene/toolStore';
 import paramStore from '../scene/paramStore';
+import actionStore from '../scene/actionStore';
 import idGenerator from './idGen';
 
 const stateIdGen = idGenerator();
 const toolIdGen = idGenerator();
 const paramIdGen = idGenerator();
+const actionIdGen = idGenerator();
 
 class Scheme {
   constructor() {
@@ -52,6 +54,13 @@ class Scheme {
     return newComponent;
   }
 
+  addAction(data) {
+    const id = actionIdGen();
+    const newAction = actionStore({ id, stateId: data.id, states: this.states, tools: this.tools });
+    this.states[data.id].actions[newAction.id] = newAction;
+    return newAction;
+  }
+
   /**
    * Create new scheme component with underlying DOM node
    * @param {function} gen - Function for generating id
@@ -89,6 +98,10 @@ class Scheme {
     this.states[data.id].name = data.value;
   }
 
+  setStateImg(data) {
+    this.states[data.id].img = data.value;
+  }
+
   setEventName(data) {
     this.states[data.id].eventName = data.value;
   }
@@ -106,6 +119,14 @@ class Scheme {
 
   setParamValue({ id, value, stateId }) {
     this.states[stateId].params[id].value = value;
+  }
+
+  /**
+   * Handle actions
+   */
+  setAction(source, target, actionId) {
+    this.states[source].actions[actionId].nextState = target;
+    return; // todo
   }
 }
 

@@ -1,4 +1,4 @@
-const auth = require('../services/auth');
+const auth = require('../lib/auth');
 
 const showLogin = (req, res) => {
   if (req.session.user) {
@@ -15,16 +15,15 @@ const showLogin = (req, res) => {
 const processLogin = (req, res) => {
   const { username, password } = req.body;
   auth(username, password)
-  .then((user) => {
-    req.session.user = user;
-    req.session.authError = null;
-  })
-  .catch((error) => {
-    req.session.authError = error;
-  })
-  .then(() => {
-    res.redirect('/');
-  });
+    .then((user) => {
+      req.session.user = user;
+      req.session.authError = null;
+      res.redirect('/');
+    })
+    .catch((error) => {
+      req.session.authError = error;
+      res.redirect('/login');
+    });
 };
 
 const processLogout = (req, res) => {
@@ -34,5 +33,5 @@ const processLogout = (req, res) => {
 module.exports = {
   showLogin,
   processLogin,
-  processLogout
+  processLogout,
 };

@@ -1,7 +1,6 @@
 class Action {
   constructor(data) {
-    this.minTime = data.minTime;
-    this.maxTime = data.maxTime;
+    this.time = data.time || {};
     this.nextState = data.nextState;
     if (data.inactive) {
       this.inactive = true;
@@ -10,27 +9,22 @@ class Action {
       this.inactive = false;
       this.tools = this.initTools(data.tools);
     }
-
   }
 
-  /**
-   * @param [{ id: Number, value: Number/Boolean }, {...}]
-   * @param Number
-   * @return Boolean
-   */
   isSuitable(data, time) {
     return this.rightTime(time) && this.rightData(data);
   }
 
   rightData(data = []) {
-    return this.tools.every(tool => {
+    // TODO: refactor
+    return this.tools.every((tool) => {
       // Если среди полученных итемов нет, того который есть в данном экшене
-      const checkTool = data.find(obj => obj.id == tool.id);
-      if (!checkTool) { return false; }
+      const receivedTool = data.find(obj => obj.uuid === tool.uuid);
+      if (!receivedTool) { return false; }
 
-      if (tool.type === 'switch') { return checkTool.value === tool.boolValue; }
+      if (tool.type === 'switch') { return receivedTool.value === tool.switchValue; }
 
-      if (tool.type === 'range') { return this.includesValue(checkTool.value, [ tool.minValue, tool.maxValue ]) }
+      if (tool.type === 'range') { return this.includesValue(receivedTool.value, [ tool.rangeValues[0], tool.rangeValues[1] ]); }
 
       return false;
     });
@@ -43,19 +37,16 @@ class Action {
 
   rightTime(time) {
     if (typeof time !== 'number') throw new TypeError('Time should be integer (ms)');
-    return (time >= this.minTime) && (time <= this.maxTime);
+    return (time >= this.time.min) && (time <= this.time.max);
   }
 
   initTools(tools) {
-    return tools.map(tool => {
-      return {
-        id: tool.id,
-        type: tool.type,
-        minValue: tool.ActionTool.minValue,
-        maxValue: tool.ActionTool.maxValue,
-        boolValue: tool.ActionTool.boolValue
-      }
-    });
+    return tools.map(tool => ({
+      uuid: tool.uuid,
+      type: tool.type,
+      rangeValues: tool.rangeValues,
+      switchValue: tool.switchValue,
+    }));
   }
 }
 
