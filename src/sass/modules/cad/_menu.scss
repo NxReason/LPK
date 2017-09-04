@@ -1,5 +1,6 @@
 .cad-buttons {
   display: flex;
+  width: 100%;
 }
 .cad-button {
   color: $primary-grey;
@@ -29,6 +30,11 @@
       background-image: url($edit-white-icon-url);
     }
   }
+
+  &-save {
+    margin-right: 0;
+    margin-left: auto;
+  }
 }
 
 .cad-props-tab {
@@ -36,7 +42,7 @@
   box-shadow: 0 0 2px 2px $shadow-color;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: scroll;
 
   &.is-hidden {
     display: none;
@@ -127,13 +133,13 @@
 }
 .panel-items-content {
   flex-shrink: 1;
-  overflow-y: scroll;
-  display: none;
+  // overflow-y: scroll;
   min-height: 120px;
   padding-right: 15px;
 }
 .panel-param {
   display: flex;
+  flex-shrink: 0;
   padding-bottom: 15px;
 
   input:first-child {
@@ -150,6 +156,7 @@
 .panel-tool {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px dotted lighten($primary-grey, 20%);
@@ -193,6 +200,7 @@
 
 .panel-action {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   padding-bottom: 5px;
   margin-bottom: 5px;
@@ -246,5 +254,36 @@
     font-size: .9rem;
     cursor: pointer;
   }
+
+  &-time {
+    margin: 5px 0;
+
+    &-controls {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 45%;
+      font-family: $font-stack;
+    }
+  }
 }
 
+.initial-state-section {
+  flex-direction: row;
+
+  span {
+    font-size: .85rem;
+  }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}

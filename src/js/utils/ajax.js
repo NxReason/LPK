@@ -6,8 +6,8 @@ function ajax(path = '', options = {}, fullResponse = false) {
 
   return new Promise((resolve, reject) => {
     xhr.onreadystatechange = function() {
-      if(xhr.readyState == 4) {
-        if(xhr.status == 200) {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
           if (fullResponse) {
             resolve(xhr);
           } else {

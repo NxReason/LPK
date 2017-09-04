@@ -44,6 +44,9 @@ input[type="text"], input[type="password"] {
 input[type="password"] {
   font-size: 1.4em; }
 
+.is-hidden {
+  display: none !important; }
+
 .stretch {
   transition: transform .25s ease-in-out; }
 

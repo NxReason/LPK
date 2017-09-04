@@ -19,6 +19,8 @@
         <div class="cad-buttons">
           <div class="cad-button" id="new-state-btn"><i class="icon icon-add"></i>Добавить состояние</div>
           <div class="cad-button" id="model-props-btn"><i class="icon icon-edit"></i>Свойства модели</div>
+
+          <div class="cad-button cad-button-save" id="save-model-btn">Сохранить</div>
         </div>
       </div>
 
@@ -52,7 +54,7 @@
             </div>
           </div>
 
-          <div class="panel-section panel-items-content" id="panel-tools-list">
+          <div class="panel-section panel-items-content is-hidden" id="panel-tools-list">
 
           </div>
         </div>
@@ -70,6 +72,11 @@
             <input type="text" id="state-name-input">
           </div>
 
+          <div class="panel-section initial-state-section">
+            <span>Сделать начальным состоянием</span>
+            <input type="checkbox" id="initial-state-checkbox">
+          </div>
+
           <div class="panel-section">
             <label for="event-name-input">Cобытиe</label>
             <input type="text" id="event-name-input">
@@ -79,7 +86,7 @@
           <div class="panel-section">
             <select id="image-select" class="image-select">
               <% images.forEach(image => { %>
-                <option value="<%= image.id %>"><%= image.name %></option>
+                <option value="<%= image._id %>"><%= image.name %></option>
               <% }); %>
             </select>
           </div>
@@ -95,7 +102,7 @@
             </div>
           </div>
 
-          <div class="panel-section panel-items-content" id="panel-params-list">
+          <div class="panel-section panel-items-content is-hidden" id="panel-params-list">
           </div>
 
           <!-- Add actions -->
@@ -109,7 +116,7 @@
             </div>
           </div>
 
-          <div class="panel-section panel-items-content" id="panel-actions-list">
+          <div class="panel-section panel-items-content is-hidden" id="panel-actions-list">
             <!-- Dynamic section -->
           </div>
         </div>
@@ -124,6 +131,7 @@
 
   </div>
 
+  <!-- <script src="libs/jsplumb.min.js" type="text/javascript"></script> -->
   <script src="js/cad.bundle.js" type="text/javascript"></script>
 </body>
 </html>

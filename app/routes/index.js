@@ -25,8 +25,8 @@ router.get('/logout', loginController.processLogout);
 
 // Access to developers and admins
 router.use(grantAccess('dev', 'admin'));
-// router.get('/cad', cadController.cad);
-// router.post('/cad/models/', cadController.saveModel);
+router.get('/cad', cadController.cad);
+router.post('/cad/models/', cadController.saveModel);
 
 router.get('/galery', cadController.galery);
 router.post('/galery/images', fileLoader.single('img'), cadController.saveImage);

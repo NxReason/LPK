@@ -21,8 +21,8 @@ const stateSchema = Schema({
     { name: { type: String, required: true }, value: { type: Number, required: true, default: 0 } },
   ],
   event: {
-    name: { type: String, required: true, default: 'Event name' },
-    desc: { type: String, required: true, default: 'Event description' },
+    name: { type: String, default: 'Event name' },
+    desc: { type: String, default: 'Event description' },
   },
   last: Boolean,
   actions: [{
@@ -33,7 +33,10 @@ const stateSchema = Schema({
     },
     tools: [
       {
-        id: String,
+        uuid: {
+          type: String,
+          required: true,
+        },
         type: {
           type: String,
           enum: [ 'range', 'switch' ],

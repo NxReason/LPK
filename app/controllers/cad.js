@@ -1,7 +1,7 @@
-const { Image } = require('../database').models;
+const { Image, Model } = require('../database').models;
 
 const cad = (req, res) => {
-  Image.findAll({ raw: true })
+  Image.find()
   .then((images) => {
     res.render('cad', { user: req.session.user, path: req.path, images });
   })
@@ -36,8 +36,15 @@ const saveImage = (req, res) => {
 };
 
 const saveModel = (req, res) => {
-  // todo
-  res.send('Not implemented');
+  const model = req.body;
+  Model.create(model)
+    .then((newModel) => {
+      res.status(200).json({ status: 200, model: newModel });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ status: 500, message: 'Something went wrong' });
+    });
 };
 
 module.exports = {
